@@ -15,7 +15,7 @@
         <slf4j.version>1.7.26</slf4j.version>
         <mybatis.version>3.5.1</mybatis.version>
         <mysql.version>5.1.47</mysql.version>
-        <jackson.version>2.9.0</jackson.version>
+        <jackson.version>2.10.0.pr3</jackson.version>
     </properties>
 
     <dependencies>
