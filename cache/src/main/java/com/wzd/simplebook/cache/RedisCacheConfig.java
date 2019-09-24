@@ -61,6 +61,10 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
                 //规定  本类名+方法名+参数名 为key
                 StringBuilder sb = new StringBuilder();
                 sb.append(target.getClass().getName());
+                sb.append("_"+method.getName());
+                for (Object param : params) {
+                    sb.append("_"+param.toString());
+                }
                 return sb.toString();
             }
         };

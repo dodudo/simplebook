@@ -1,5 +1,6 @@
 package com.wzd.simplebook.service;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.wzd.simplebook.domain.Comment;
 
@@ -18,5 +19,5 @@ public interface CommentService {
      * @param uid
      * @return
      */
-    List<Comment> findCommentsByUid(String uid) throws Exception;
+    PageInfo<Comment> findCommentsByUid(String uid,int pageNum) throws Exception;
 }

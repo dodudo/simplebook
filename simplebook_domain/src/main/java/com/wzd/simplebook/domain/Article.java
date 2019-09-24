@@ -13,6 +13,7 @@ public class Article implements Serializable {
     private String articleId;
     private String uid;
     private String head;
+    private String headurl;
     private String describe;
     private Date releaseDate;
     private Integer fontCount;
@@ -24,6 +25,14 @@ public class Article implements Serializable {
     private Integer classId;
     private List<Comment> comments;
     private ArticleContent articleContent;
+
+    public String getHeadurl() {
+        return headurl;
+    }
+
+    public void setHeadurl(String headurl) {
+        this.headurl = headurl;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -141,13 +150,13 @@ public class Article implements Serializable {
         this.comments = comments;
     }
 
-
     @Override
     public String toString() {
         return "Article{" +
-                "articleId=" + articleId +
-                ", uid=" + uid +
+                "articleId='" + articleId + '\'' +
+                ", uid='" + uid + '\'' +
                 ", head='" + head + '\'' +
+                ", headurl='" + headurl + '\'' +
                 ", describe='" + describe + '\'' +
                 ", releaseDate=" + releaseDate +
                 ", fontCount=" + fontCount +

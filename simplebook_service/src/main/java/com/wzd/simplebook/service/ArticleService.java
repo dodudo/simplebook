@@ -12,14 +12,14 @@ public interface ArticleService {
      * @param uid
      * @return
      */
-    List<Article> findArticlesByUid(String uid) throws Exception;
+    PageInfo<Article> findArticlesByUid(String uid,int pageNum) throws Exception;
 
     /**
      * 根据用户id查询用户收藏文章
      * @param uid
      * @return
      */
-    List<Article> findFavorArticlesByUid(String uid) throws Exception;
+    PageInfo<Article> findFavorArticlesByUid(String uid,int pageNum) throws Exception;
 
     /**
      * 查询用户所写文章总字数

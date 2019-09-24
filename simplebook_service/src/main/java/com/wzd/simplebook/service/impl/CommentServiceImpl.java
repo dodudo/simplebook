@@ -23,8 +23,11 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    @Cacheable(value = "commentsCache",key = "#uid")
-    public List<Comment> findCommentsByUid(String uid) throws Exception {
-        return commentDao.findCommentsByUid(uid);
+    @Cacheable(value = "commentsCache")
+    public PageInfo<Comment> findCommentsByUid(String uid,int pageNum) throws Exception {
+        PageHelper.startPage(pageNum,3);
+        List<Comment> comments = commentDao.findCommentsByUid(uid);
+        PageInfo pageInfo = new PageInfo(comments);
+        return pageInfo;
     }
 }

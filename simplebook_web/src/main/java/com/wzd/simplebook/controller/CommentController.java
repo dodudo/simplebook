@@ -34,10 +34,9 @@ public class CommentController {
     public @ResponseBody Map<String ,Object> findCommentsByUid(ModelMap modelMap, int pageNum) throws Exception {
         Map<String,Object> map = new HashMap<>();
         User user = (User) modelMap.get("user");
-        PageHelper.startPage(pageNum,1);
-        List<Comment> comments = commentService.findCommentsByUid(user.getUid());
-        PageInfo commentPageInfo = new PageInfo(comments);
-        map.put("articlePageInfo",commentPageInfo);
+        PageHelper.startPage(pageNum,5);
+        PageInfo<Comment> commentPageInfo = commentService.findCommentsByUid(user.getUid(),pageNum);
+        map.put("commentPageInfo",commentPageInfo);
         return map;
     }
 }

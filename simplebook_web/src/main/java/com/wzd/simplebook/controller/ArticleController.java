@@ -36,8 +36,7 @@ public class ArticleController {
         Map<String,Object> map = new HashMap<>();
         User user = (User) modelMap.get("user");
         PageHelper.startPage(pageNum,3);
-        List<Article> articles = articleService.findArticlesByUid(user.getUid());
-        PageInfo articlePageInfo = new PageInfo(articles);
+        PageInfo<Article> articlePageInfo = articleService.findArticlesByUid(user.getUid(),pageNum);
         map.put("articlePageInfo",articlePageInfo);
         return map;
     }
@@ -54,8 +53,7 @@ public class ArticleController {
         System.out.println(user);
         System.out.println(pageNum);
         PageHelper.startPage(pageNum,3);
-        List<Article> favorArticles = articleService.findFavorArticlesByUid(user.getUid());
-        PageInfo favorArticlePageInfo = new PageInfo(favorArticles);
+        PageInfo<Article> favorArticlePageInfo = articleService.findFavorArticlesByUid(user.getUid(),pageNum);
         map.put("favorArticlePageInfo",favorArticlePageInfo);
         return map;
     }

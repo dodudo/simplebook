@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 24/09/2019 12:50:24
+ Date: 24/09/2019 19:37:08
 */
 
 SET NAMES utf8mb4;
@@ -44,6 +44,7 @@ CREATE TABLE `article`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户id',
   `head` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文章标题',
+  `headurl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文章头图片路径',
   `describe` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
   `releasedate` datetime(0) NULL DEFAULT NULL COMMENT '发布日期',
   `fontcount` int(255) NULL DEFAULT NULL COMMENT '文章字数',
@@ -58,7 +59,7 @@ CREATE TABLE `article`  (
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES ('1', 1, '2', '哈哈哈', NULL, '2019-09-03 15:41:47', 50, 50, 100, 1, 0, 1);
+INSERT INTO `article` VALUES ('1', 1, '2', '哈哈哈', NULL, '这是一篇测试文章哈哈哈哈哈哈哈红红火火恍恍惚惚', '2019-09-03 15:41:47', 50, 50, 100, 1, 0, 1);
 
 -- ----------------------------
 -- Table structure for articlecontent
@@ -92,13 +93,17 @@ CREATE TABLE `comment`  (
   `commentdate` datetime(0) NULL DEFAULT NULL COMMENT '评论日期',
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '评论内容',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
 INSERT INTO `comment` VALUES (1, '1', '1', '2', NULL, 1, '2019-09-18 15:46:02', '啊的说法烦烦烦烦烦烦烦烦烦');
 INSERT INTO `comment` VALUES (2, '2', '1', '2', NULL, 2, '2019-09-22 15:46:53', '的撒烦烦烦烦烦烦发');
+INSERT INTO `comment` VALUES (3, '3', '1', '2', NULL, 3, '2019-09-11 15:46:09', 'dsfaaaaaaaaaaaa');
+INSERT INTO `comment` VALUES (4, '4', '1', '2', NULL, 4, '2019-09-25 15:46:26', 'sdfaaaa');
+INSERT INTO `comment` VALUES (5, '5', '1', '2', NULL, 5, '2019-09-10 15:46:44', 'sddfsdgwegwgewega');
+INSERT INTO `comment` VALUES (6, '6', '1', '2', NULL, 6, '2019-09-26 15:47:00', 'sdagsadfgsadg');
 
 -- ----------------------------
 -- Table structure for favor

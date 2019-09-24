@@ -29,6 +29,7 @@ public interface ArticleDao {
                     @Result(id = true,column = "articleid",property = "articleId"),
                     @Result(column = "uid",property = "uid"),
                     @Result(column = "head",property = "head"),
+                    @Result(column = "headurl",property = "headurl"),
                     @Result(column = "describe",property = "describe"),
                     @Result(column = "releasedate",property = "releaseDate"),
                     @Result(column = "fontcount",property = "fontCount"),
@@ -40,8 +41,8 @@ public interface ArticleDao {
                     @Result(column = "classid",property = "classId"),
                     @Result(column = "articleid",property = "articleContent",
                             one = @One(
-                                    select = "com.wzd.simplebook.dao.ArticleContentDao.findByArticleId",
-                                    fetchType = FetchType.LAZY //开启懒加载
+                                    select = "com.wzd.simplebook.dao.ArticleContentDao.findByArticleId"
+//                                    fetchType = FetchType.LAZY //开启懒加载
                             ))
             })
     List<Article> findByArticleId(@Param("articleid") String articleId) throws Exception;

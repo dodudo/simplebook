@@ -20,15 +20,21 @@ public class ArticleServiceImpl implements ArticleService {
     ArticleDao articleDao;
 
     @Override
-    @Cacheable(value = "articleCache",key = "#uid")
-    public List<Article> findArticlesByUid(String uid) throws Exception {
-        return articleDao.findByUid(uid);
+    @Cacheable(value = "articleCache")
+    public PageInfo<Article> findArticlesByUid(String uid,int pageNum) throws Exception {
+        PageHelper.startPage(pageNum,3);
+        List<Article> articles = articleDao.findByUid(uid);
+        PageInfo pageInfo = new PageInfo(articles);
+        return pageInfo;
     }
 
     @Override
-    @Cacheable(value = "favorArticleCache",key = "#uid")
-    public List<Article> findFavorArticlesByUid(String uid) throws Exception {
-       return articleDao.findFavorArticlByUid(uid);
+    @Cacheable(value = "favorArticleCache")
+    public PageInfo<Article> findFavorArticlesByUid(String uid,int pageNum) throws Exception {
+        PageHelper.startPage(pageNum,3);
+        List<Article> favorArticles = articleDao.findFavorArticlByUid(uid);
+        PageInfo pageInfo = new PageInfo(favorArticles);
+        return pageInfo;
     }
     /**
      * 查询用户所写文章总字数

@@ -44,6 +44,8 @@
     <!-- Main Stylesheet -->
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 
+    <%--引入分页插件css--%>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.sPage.red.css">
     <!--Favicon-->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
@@ -177,7 +179,7 @@
     </section>
     <!-- /about me 介绍自己 -->
 
-    <!-- my attention 我的关注 -->
+    <!-- my attention 我的文章 -->
     <section class="section my-services" data-section="section2">
         <div class="container">
             <div class="section-heading">
@@ -186,228 +188,60 @@
                 <span></span>
             </div>
             <div class="row" id="article_list">
-                <%--第一个文章--%>
-                <div class="col-md-12">
-                    <div class="service-item" style="padding: 20px">
-                        <a href="essay-detail" class="media">
-                            <div class="media-left media-middle">
-                                <img class="media-object" src="..." alt="...">
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Middle aligned media</h4>
-                                <p>
-                                    Phasellus non convallis dolor. Integer tempor hendrerit arcu
-                                    at bibendum. Sed ac ante non metus vehicula congue quis eget
-                                    eros.
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                <%--文章列表内容显示区--%>
             </div>
+            <%--分页条--%>
+            <div id="articlePage"></div>
         </div>
     </section>
-    <!-- /my attention 我的关注 -->
+    <!-- /my attention 我的文章 -->
 
     <%--<div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >建站模板</a></div>--%>
 
-    <!-- 我的文章 -->
+    <!-- 我的收藏 -->
     <section class="section my-work" data-section="section3">
         <div class="container">
             <div class="section-heading">
-                <h2>My Work</h2>
+                <h2>我的收藏</h2>
                 <div class="line-dec"></div>
                 <!-- 签名？ -->
-                <span
-                >Aenean sollicitudin ex mauris, lobortis lobortis diam euismod sit
-              amet. Duis ac elit vulputate, lobortis arcu quis, vehicula
-              mauris.</span
-                >
+                <span></span>
             </div>
-            <div class="row">
-                <div class="isotope-wrapper">
-                    <!-- 文章分类，分为全部，人文，自然等.... -->
-                    <form class="isotope-toolbar">
-                        <label
-                        ><input
-                                type="radio"
-                                data-type="*"
-                                checked=""
-                                name="isotope-filter"
-                        />
-                            <span>all</span></label
-                        >
-                        <label
-                        ><input
-                                type="radio"
-                                data-type="people"
-                                name="isotope-filter"
-                        />
-                            <span>people</span></label
-                        >
-                        <label
-                        ><input
-                                type="radio"
-                                data-type="nature"
-                                name="isotope-filter"
-                        />
-                            <span>nature</span></label
-                        >
-                        <label
-                        ><input
-                                type="radio"
-                                data-type="animals"
-                                name="isotope-filter"
-                        />
-                            <span>animals</span></label
-                        >
-                    </form>
-                    <div class="isotope-box">
-                        <!-- 第一个first，下面有个data-type="?" ?就是分类的名字 -->
-                        <div class="isotope-item" data-type="nature">
-                            <figure class="snip1321">
-                                <img
-                                        src="${pageContext.request.contextPath}/assets/images/portfolio-01.jpg"
-                                        alt="sq-sample26"
-                                />
-                                <figcaption>
-                                    <a
-                                            href="${pageContext.request.contextPath}/assets/images/portfolio-01.jpg"
-                                            data-lightbox="image-1"
-                                            data-title="Caption"
-                                    ><i class="fa fa-search"></i
-                                    ></a>
-                                    <a href="essay-detail">
-                                        <h4>First Title</h4>
-                                        <span>free to use our template</span>
-                                    </a>
-                                </figcaption>
-                            </figure>
-                        </div>
-
-                        <%--第二个--%>
-
-                        <div class="isotope-item" data-type="people">
-                            <figure class="snip1321">
-                                <img
-                                        src="${pageContext.request.contextPath}/assets/images/portfolio-02.jpg"
-                                        alt="sq-sample26"
-                                />
-                                <figcaption>
-                                    <a
-                                            href="${pageContext.request.contextPath}/assets/images/portfolio-02.jpg"
-                                            data-lightbox="image-1"
-                                            data-title="Caption"
-                                    ><i class="fa fa-search"></i
-                                    ></a>
-                                    <a href="essay-detail">
-                                        <h4>Second Title</h4>
-                                        <span>please tell your friends</span>
-                                    </a>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <%--第三个--%>
-                        <div class="isotope-item" data-type="animals">
-                            <figure class="snip1321">
-                                <img
-                                        src="${pageContext.request.contextPath}/assets/images/portfolio-03.jpg"
-                                        alt="sq-sample26"
-                                />
-                                <figcaption>
-                                    <a
-                                            href="${pageContext.request.contextPath}/assets/images/portfolio-03.jpg"
-                                            data-lightbox="image-1"
-                                            data-title="Caption"
-                                    ><i class="fa fa-search"></i
-                                    ></a>
-                                    <a href="essay-detail">
-                                        <h4>Item Third</h4>
-                                        <span>customize anything</span>
-                                    </a>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <%--第四个--%>
-                        <div class="isotope-item" data-type="people">
-                            <figure class="snip1321">
-                                <img
-                                        src="${pageContext.request.contextPath}/assets/images/portfolio-04.jpg"
-                                        alt="sq-sample26"
-                                />
-                                <figcaption>
-                                    <a
-                                            href="${pageContext.request.contextPath}/assets/images/portfolio-04.jpg"
-                                            data-lightbox="image-1"
-                                            data-title="Caption"
-                                    ><i class="fa fa-search"></i
-                                    ></a>
-                                    <a href="essay-detail">
-                                        <h4>Item Fourth</h4>
-                                        <span>Re-distribution not allowed</span>
-                                    </a>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <%--第五个--%>
-                        <div class="isotope-item" data-type="nature">
-                            <figure class="snip1321">
-                                <img
-                                        src="${pageContext.request.contextPath}/assets/images/portfolio-05.jpg"
-                                        alt="sq-sample26"
-                                />
-                                <figcaption>
-                                    <a
-                                            href="${pageContext.request.contextPath}/assets/images/portfolio-05.jpg"
-                                            data-lightbox="image-1"
-                                            data-title="Caption"
-                                    ><i class="fa fa-search"></i
-                                    ></a>
-                                    <a href="essay-detail">
-                                        <h4>Fifth Awesome</h4>
-                                        <span>Ut sollicitudin risus</span>
-                                    </a>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <%--第六个--%>
-                        <div class="isotope-item" data-type="animals">
-                            <figure class="snip1321">
-                                <img
-                                        src="${pageContext.request.contextPath}/assets/images/portfolio-06.jpg"
-                                        alt="sq-sample26"
-                                />
-                                <figcaption>
-                                    <a
-                                            href="${pageContext.request.contextPath}/assets/images/portfolio-06.jpg"
-                                            data-lightbox="image-1"
-                                            data-title="Caption"
-                                    ><i class="fa fa-search"></i
-                                    ></a>
-                                    <a href="essay-detail">
-                                        <h4>Awesome Sixth</h4>
-                                        <span>Donec eget massa ante</span>
-                                    </a>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
+            <div class="row" id="favorArticle_list">
+                <%--文章列表内容显示区--%>
             </div>
+            <%--分页条--%>
+            <div id="favorArticlePage"></div>
         </div>
     </section>
-    <!-- /我的文章 -->
+    <!-- /我的收藏 -->
 
-    <!-- 修改个人信息 -->
+    <!-- 我的评论 -->
     <section class="section contact-me" data-section="section4">
+        <div class="container">
+            <div class="section-heading">
+                <h2>我的评论</h2>
+                <div class="line-dec"></div>
+                <!-- 签名？ -->
+                <span></span>
+            </div>
+            <div class="row media" id="comment_list">
+                <%--评论列表内容--%>
+            </div>
+            <%--分页条--%>
+            <div id="commentPage"></div>
+        </div>
+    </section>
+    <!-- 修改个人信息 -->
+    <section class="section contact-me" data-section="section5">
         <div class="container">
             <div class="section-heading">
                 <h2>Modify</h2>
                 <div class="line-dec"></div>
                 <span
                 >Fusce eget nibh nec justo interdum condimentum. Morbi justo ex,
-              efficitur at ante ac, tincidunt maximus ligula. Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit.</span
+                efficitur at ante ac, tincidunt maximus ligula. Lorem ipsum dolor
+                sit amet, consectetur adipiscing elit.</span
                 >
             </div>
             <div class="row">
@@ -522,6 +356,7 @@
 
                                     </fieldset>
                                 </div>
+
                             </div>
                         </form>
                     </div>
@@ -529,8 +364,6 @@
             </div>
         </div>
     </section>
-    <!-- /修改个人信息 -->
-
 </div>
 
 <!-- Scripts -->
@@ -543,7 +376,9 @@
 <script src="${pageContext.request.contextPath}/assets/js/lightbox.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/custom.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.sPage.js"></script>
 <script src="${pageContext.request.contextPath}/js/user.js"></script>
+
 <script>
     console.log("${sessionScope.user}");
     //according to loftblog tut

@@ -32,4 +32,15 @@
 .base-info-text {
 
 }
-
+.comment-body .article-body {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.comment-body {
+    -webkit-line-clamp: 3;
+}
+.article-body {
+    -webkit-line-clamp: 2;
+}

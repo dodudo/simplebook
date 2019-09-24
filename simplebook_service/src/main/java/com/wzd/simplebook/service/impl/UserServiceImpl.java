@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Cacheable(value = "userCache",key = "#uid")
+    @Cacheable(value = "userCache")
     public User findUserByUid(String uid) throws Exception {
         System.out.println("哈哈哈");
         return userDao.findUserByUid(uid);
