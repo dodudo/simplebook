@@ -68,8 +68,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Cacheable(value = "userCache",key = "#uid")
     public User findUserByUid(String uid) throws Exception {
-        int uid1 = Integer.parseInt(uid);
         System.out.println("哈哈哈");
-        return userDao.findUserByUid(uid1);
+        return userDao.findUserByUid(uid);
     }
 }

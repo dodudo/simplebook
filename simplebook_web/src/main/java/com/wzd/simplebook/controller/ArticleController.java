@@ -38,7 +38,7 @@ public class ArticleController {
      * @return
      */
     @RequestMapping("/findFavorArticlesByUid")
-    public @ResponseBody Map<String ,Object> findFavorArticlesByUid(int uid,int pageNum){
+    public @ResponseBody Map<String ,Object> findFavorArticlesByUid(String uid,int pageNum){
         Map<String,Object> map = new HashMap<>();
         PageInfo<Article> articlePageInfo = articleService.findFavorArticlesByUid(uid, pageNum, 3);
         map.put("articles",articlePageInfo);
