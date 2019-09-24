@@ -6,6 +6,7 @@ import com.wzd.simplebook.dao.CommentDao;
 import com.wzd.simplebook.domain.Comment;
 import com.wzd.simplebook.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +23,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public PageInfo<Comment> findCommentsByUid(int uid, int pageNum, int pageSize) throws Exception {
+    @Cacheable(value = "commentsCache",key = "#uid")
+    public PageInfo<Comment> findCommentsByUid(String uid, int pageNum, int pageSize) throws Exception {
         PageHelper.startPage(pageNum,pageSize);
         List<Comment> comments = commentDao.findCommentsByUid(uid);
         PageInfo pageInfo = new PageInfo(comments);

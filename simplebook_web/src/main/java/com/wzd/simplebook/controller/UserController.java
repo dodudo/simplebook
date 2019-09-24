@@ -149,7 +149,7 @@ public class UserController {
         //获得当前登录用户
         User user = (User) map.get("user");
         //获取用户详细信息
-        User userInfo = userService.findUserByUid(user.getUid()+"");
+        User userInfo = userService.findUserByUid(user.getUid());
 
         //将usermap，userTotal等对象存入map集合中
         userMap.put("userMap",userInfo);

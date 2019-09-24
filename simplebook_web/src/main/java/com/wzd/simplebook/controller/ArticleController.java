@@ -24,7 +24,7 @@ public class ArticleController {
      * @return
      */
     @RequestMapping("/findArticlesByUid")
-    public @ResponseBody Map<String ,Object> findArticlesByUid(int uid,int pageNum){
+    public @ResponseBody Map<String ,Object> findArticlesByUid(String uid,int pageNum){
         Map<String,Object> map = new HashMap<>();
         PageInfo<Article> articlePageInfo = articleService.findArticlesByUid(uid, pageNum, 3);
         map.put("articles",articlePageInfo);

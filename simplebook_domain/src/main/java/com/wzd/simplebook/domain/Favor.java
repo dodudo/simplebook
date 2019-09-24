@@ -6,32 +6,32 @@ import java.io.Serializable;
 @JsonIgnoreProperties(value = "handler",ignoreUnknown = true)
 public class Favor implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Integer favorId; //收藏id
-    private Integer uid;// 用户id
-    private Integer articleId; //文章id
+    private String favorId; //收藏id
+    private String uid;// 用户id
+    private String articleId; //文章id
 
 
-    public Integer getFavorId() {
+    public String getFavorId() {
         return favorId;
     }
 
-    public void setFavorId(Integer favorId) {
+    public void setFavorId(String favorId) {
         this.favorId = favorId;
     }
 
-    public Integer getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(Integer uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 
-    public Integer getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Integer articleId) {
+    public void setArticleId(String articleId) {
         this.articleId = articleId;
     }
 

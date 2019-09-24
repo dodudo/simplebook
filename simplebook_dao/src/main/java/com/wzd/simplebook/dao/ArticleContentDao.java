@@ -14,5 +14,5 @@ public interface ArticleContentDao {
      * @return
      */
     @Select("select * from articlecontent where articleid = #{articleId}")
-    ArticleContent findByArticleId(@Param("articleId") Integer articleId);
+    ArticleContent findByArticleId(@Param("articleId") String articleId);
 }

@@ -3,22 +3,22 @@ package com.wzd.simplebook.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
-import java.util.Objects;
+
 @JsonIgnoreProperties(value = "handler",ignoreUnknown = true)
 public class Admin implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Integer adminId;
+    private String adminId;
     private String aname;
     private String apassword;
     private Integer power;
     private String powerStr;
 
 
-    public Integer getAdminId() {
+    public String getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(Integer adminId) {
+    public void setAdminId(String adminId) {
         this.adminId = adminId;
     }
 

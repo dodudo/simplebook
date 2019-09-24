@@ -18,7 +18,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     ArticleDao articleDao;
     @Override
-    public PageInfo<Article> findArticlesByUid(Integer uid,int pageNum,int pageSize) {
+    public PageInfo<Article> findArticlesByUid(String uid,int pageNum,int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         List<Article> articles = articleDao.findByUid(uid);
         PageInfo pageInfo = new PageInfo(articles);
@@ -26,7 +26,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public PageInfo<Article> findFavorArticlesByUid(Integer uid,int pageNum,int pageSize) {
+    public PageInfo<Article> findFavorArticlesByUid(String uid,int pageNum,int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         List<Article> favorArticles = articleDao.findFavorArticlByUid(uid);
         PageInfo pageInfo = new PageInfo(favorArticles);

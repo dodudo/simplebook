@@ -7,26 +7,26 @@ import java.util.Objects;
 @JsonIgnoreProperties(value = "handler",ignoreUnknown = true)
 public class ArticleContent implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Integer articleContentId;
-    private Integer articleId;
+    private String articleContentId;
+    private String articleId;
     private String articleImgUrl;
     private String articleContent;
 
 
 
-    public Integer getArticleContentId() {
+    public String getArticleContentId() {
         return articleContentId;
     }
 
-    public void setArticleContentId(Integer articleContentId) {
+    public void setArticleContentId(String articleContentId) {
         this.articleContentId = articleContentId;
     }
 
-    public Integer getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Integer articleId) {
+    public void setArticleId(String articleId) {
         this.articleId = articleId;
     }
 

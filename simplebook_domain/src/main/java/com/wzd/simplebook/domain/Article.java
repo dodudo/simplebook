@@ -10,8 +10,8 @@ import java.util.Objects;
 @JsonIgnoreProperties(value = "handler",ignoreUnknown = true)
 public class Article implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Integer articleId;
-    private Integer uid;
+    private String articleId;
+    private String uid;
     private String head;
     private String describe;
     private Date releaseDate;
@@ -45,19 +45,19 @@ public class Article implements Serializable {
         this.articleContent = articleContent;
     }
 
-    public Integer getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Integer articleId) {
+    public void setArticleId(String articleId) {
         this.articleId = articleId;
     }
 
-    public Integer getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(Integer uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 

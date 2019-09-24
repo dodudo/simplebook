@@ -10,12 +10,12 @@ public interface ArticleService {
      * @param uid
      * @return
      */
-    PageInfo<Article> findArticlesByUid(Integer uid,int pageNum,int pageSize);
+    PageInfo<Article> findArticlesByUid(String uid,int pageNum,int pageSize);
 
     /**
      * 根据用户id查询用户收藏文章
      * @param uid
      * @return
      */
-    PageInfo<Article> findFavorArticlesByUid(Integer uid,int pageNum,int pageSize);
+    PageInfo<Article> findFavorArticlesByUid(String uid,int pageNum,int pageSize);
 }

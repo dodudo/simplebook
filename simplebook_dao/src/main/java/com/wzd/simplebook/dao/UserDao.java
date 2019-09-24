@@ -79,5 +79,5 @@ public interface UserDao {
             @Result(column = "headimgs",property = "headImgs"),
             @Result(column = "userstate",property = "userState"),
     })
-    User findUserByUid(@Param("uid") Integer uid) throws Exception;
+    User findUserByUid(@Param("uid") String uid) throws Exception;
 }

@@ -10,7 +10,7 @@ import java.util.Objects;
 @JsonIgnoreProperties(value = "handler",ignoreUnknown = true)
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Integer uid; //用户id
+    private String uid; //用户id
     private String uname;   //用户昵称
     private String phone;   //手机号
     private String email;   //电子邮箱
@@ -50,11 +50,11 @@ public class User implements Serializable {
         this.articles = articles;
     }
 
-    public Integer getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(Integer uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 

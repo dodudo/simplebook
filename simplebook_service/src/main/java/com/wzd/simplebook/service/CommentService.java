@@ -18,5 +18,5 @@ public interface CommentService {
      * @param pageSize
      * @return
      */
-    PageInfo<Comment> findCommentsByUid(int uid,int pageNum,int pageSize) throws Exception;
+    PageInfo<Comment> findCommentsByUid(String uid,int pageNum,int pageSize) throws Exception;
 }

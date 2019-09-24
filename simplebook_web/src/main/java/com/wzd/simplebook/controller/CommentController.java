@@ -26,7 +26,7 @@ public class CommentController {
      * @throws Exception
      */
     @RequestMapping("/findCommentsByUid")
-    public @ResponseBody Map<String ,Object> findCommentsByUid(int uid,int pageNum) throws Exception {
+    public @ResponseBody Map<String ,Object> findCommentsByUid(String uid,int pageNum) throws Exception {
         Map<String,Object> map = new HashMap<>();
         PageInfo<Comment> articlePageInfo = commentService.findCommentsByUid(uid, pageNum, 3);
         map.put("articles",articlePageInfo);

@@ -23,14 +23,14 @@ public interface CommentDao {
      * @return
      */
     @Select("select * from comment where articleid = #{articleId}")
-    List<Comment> findCommentsByArticleId(@Param("articleId") Integer articleId) throws Exception;
+    List<Comment> findCommentsByArticleId(@Param("articleId") String articleId) throws Exception;
 
     /**
      * 根据用户id查询该用户的所有评论
      * @return
      */
     @Select("select * from comment where uid = #{uid}")
-    List<Comment> findCommentsByUid(@Param("uid") Integer uid) throws Exception;
+    List<Comment> findCommentsByUid(@Param("uid") String uid) throws Exception;
 
     /**
      * 添加评论

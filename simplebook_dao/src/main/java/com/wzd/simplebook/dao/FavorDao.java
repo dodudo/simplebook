@@ -22,5 +22,5 @@ public interface FavorDao {
      * @return
      */
     @Select("select articleid from favor where uid = #{uid}")
-    List<Integer> findFavorArticleId(Integer uid);
+    List<Integer> findFavorArticleId(String uid);
 }
