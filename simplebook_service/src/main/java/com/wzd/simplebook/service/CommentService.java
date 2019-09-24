@@ -3,6 +3,8 @@ package com.wzd.simplebook.service;
 import com.github.pagehelper.PageInfo;
 import com.wzd.simplebook.domain.Comment;
 
+import java.util.List;
+
 public interface CommentService {
     /**
      * 添加评论
@@ -14,9 +16,7 @@ public interface CommentService {
     /**
      * 根据用户id查询该用户所有评论
      * @param uid
-     * @param pageNum
-     * @param pageSize
      * @return
      */
-    PageInfo<Comment> findCommentsByUid(String uid,int pageNum,int pageSize) throws Exception;
+    List<Comment> findCommentsByUid(String uid) throws Exception;
 }

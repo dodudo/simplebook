@@ -16,7 +16,7 @@ public interface ArticleDao {
      * @return
      */
     @Select("select * from article where uid = #{uid}")
-    List<Article> findByUid(@Param("uid") String uid);
+    List<Article> findByUid(@Param("uid") String uid) throws Exception;
 
     /**
      * 根据文章id查询文章所有内容
@@ -44,7 +44,7 @@ public interface ArticleDao {
                                     fetchType = FetchType.LAZY //开启懒加载
                             ))
             })
-    List<Article> findByArticleId(@Param("articleid") String articleId);
+    List<Article> findByArticleId(@Param("articleid") String articleId) throws Exception;
 
     /**
      * 查询所有文章信息
@@ -56,7 +56,7 @@ public interface ArticleDao {
      * 统计用户文章数
      */
     @Select("select count(*) from article where uid = #{uid}")
-    int findTotalByUid(@Param("uid") String uid);
+    int findTotalByUid(@Param("uid") String uid) throws Exception;
 
     /**
      * 根据用户id在favor表中查询出用户收藏文章id再查询出用户收藏文章
@@ -64,6 +64,21 @@ public interface ArticleDao {
      * @return
      */
     @Select("select * from article where articleid in (select articleid from favor where uid = #{uid} )")
-    List<Article> findFavorArticlByUid(String uid);
+    List<Article> findFavorArticlByUid(String uid) throws Exception;
 
+    /**
+     * 统计用户所有文章字数
+     * @param uid
+     * @return
+     */
+    @Select("select sum(fontcount) as userfontcount from article where uid = #{uid}")
+    int findUserArticleFont(@Param("uid") String uid) throws Exception;
+
+    /**
+     * 统计用户收到的赞
+     * @param uid
+     * @return
+     */
+    @Select("select sum(good) as usergood from article where uid = #{uid}")
+    int findUserArticleFavor(@Param("uid") String uid) throws Exception;
 }

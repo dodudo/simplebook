@@ -24,8 +24,7 @@ public interface UserDao {
      * @param user
      * @return
      */
-    @Insert("insert into user(uname,upassword,email,userstate) values(#{uname},#{upassword},#{email},1)")
-    @SelectKey(keyColumn = "uid",keyProperty = "uid",resultType = Integer.class,before = false,statement = "select last_insert_id()")
+    @Insert("insert into user(uid,uname,upassword,email,userstate) values(#{uid},#{uname},#{upassword},#{email},1)")
     Integer addUser(User user) throws Exception;
 
     /**

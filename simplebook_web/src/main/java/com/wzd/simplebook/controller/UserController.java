@@ -4,6 +4,7 @@ package com.wzd.simplebook.controller;
 import com.wzd.simplebook.domain.Article;
 import com.wzd.simplebook.domain.User;
 import com.wzd.simplebook.domain.UserTotal;
+import com.wzd.simplebook.service.ArticleService;
 import com.wzd.simplebook.service.UserService;
 import com.wzd.simplebook.utils.EmailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import javax.jws.WebParam;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/user")
@@ -27,6 +29,8 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private ArticleService articleService;
 
     @Autowired
     private EmailUtil emailUtil;
@@ -50,6 +54,8 @@ public class UserController {
      */
     @RequestMapping("/addUser")
    public String addUser(User user,String checkCode) throws Exception {
+        String uid = UUID.randomUUID().toString();
+        user.setUid(uid);
        if (userService.addUser(user)){
            System.out.println("添加成功");
        }
@@ -139,21 +145,21 @@ public class UserController {
      * @return
      * @throws Exception
      */
-    @RequestMapping("/findUserInfo")
+    @RequestMapping("/findUserTotal")
     public @ResponseBody Map<String,Object> findUserInfo(ModelMap map) throws Exception {
         Map<String ,Object> userMap = new HashMap<>();
         //记录总字数
         int fontCount = 0;
         //记录总点赞数
         int totalGood = 0;
-        //获得当前登录用户
+        //在session域中获得当前登录用户
         User user = (User) map.get("user");
         //获取用户详细信息
-        User userInfo = userService.findUserByUid(user.getUid());
-
+        UserTotal userTotal = new UserTotal();
+        userTotal.setFontCount(articleService.findUserArticleFont(user.getUid()));
+        userTotal.setFavorTotal(articleService.findUserArticleFavor(user.getUid()));
         //将usermap，userTotal等对象存入map集合中
-        userMap.put("userMap",userInfo);
-
+        userMap.put("userTotal",userTotal);
         return userMap;
     }
 }
