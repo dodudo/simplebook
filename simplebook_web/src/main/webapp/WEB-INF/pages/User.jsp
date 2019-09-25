@@ -49,11 +49,13 @@
     <!--Favicon-->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/cropper/cropper.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/cropper/ImgCropping.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user.css">
-
 </head>
 
 <body>
+<i id="uid">${sessionScope.user.uid}</i>
 <!-- 导航 -->
 <header class="navigation">
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -105,8 +107,8 @@
         <div id="menu" class="menu">
             <i class="fa fa-times" id="menu-close"></i>
             <div class="container">
-                <div class="image">
-                    <a href="#"><img src="${sessionScope.user.headImgs}" alt="" /></a>
+                <div class="image" >
+                    <a href="#"><img id="user_headImg" src="${sessionScope.user.headImgs}" alt="" /></a>
                 </div>
                 <div class="author-content">
                     <h4>${sessionScope.user.uname}</h4>
@@ -232,45 +234,50 @@
             <div id="commentPage"></div>
         </div>
     </section>
+
     <!-- 修改个人信息 -->
     <section class="section contact-me" data-section="section5">
         <div class="container">
             <div class="section-heading">
-                <h2>Modify</h2>
+                <h2>修改个人信息</h2>
                 <div class="line-dec"></div>
-                <span
-                >Fusce eget nibh nec justo interdum condimentum. Morbi justo ex,
-                efficitur at ante ac, tincidunt maximus ligula. Lorem ipsum dolor
-                sit amet, consectetur adipiscing elit.</span
-                >
+            </div>
+            <div class="row" style="margin-bottom: 20px">
+                <div class="right-content">
+                    <div class="container">
+                        <form id="headImg" action="" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label  title="上传图片" for="chooseImg" class="btn btn-warning ">
+                                        <input type="file" accept="image/jpg,image/jpeg,image/png" name="file" id="chooseImg" class="hidden" onchange="selectImg(this)">
+                                        选择图片
+                                    </label>
+                                    <img id="finalImg"  src="" style="width: 80px;margin-left: 20px">
+                                    <label class="btn btn-info" style="margin-left: 20px" onclick="upload()" >上传</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="right-content">
                     <div class="container">
-                        <form id="contact" action="" method="post">
+                        <form id="contact"class="changeUserInfo-form" action="${pageContext.request.contextPath}/user/changeUserInfo" method="post">
                             <div class="row">
                                 <div class="col-md-6">
                                     <fieldset>
                                         <input class="aa"
-                                               name="name"
+                                               name="uname"
                                                type="text"
                                                class="form-control"
-                                               id="name"
+                                               id="uname"
+                                               value="${sessionScope.user.uname}"
                                                placeholder="Your name..."
                                                required=""
+                                               onblur="checkHadUser()"
                                         />
-                                    </fieldset>
-                                </div>
-                                <div class="col-md-6">
-                                    <fieldset>
-                                        <input class="aa"
-                                               name="email"
-                                               type="text"
-                                               class="form-control"
-                                               id="email"
-                                               placeholder="Your email..."
-                                               required=""
-                                        />
+                                        <i class="uname-warm"></i>
                                     </fieldset>
                                 </div>
                                 <div class="col-md-6">
@@ -280,79 +287,42 @@
                                                 type="text"
                                                 class="form-control"
                                                 id="phone"
+                                                value="${sessionScope.user.phone}"
                                                 placeholder="Your phone..."
                                                 required=""
+                                                onblur="checkMobile()"
                                         />
-                                    </fieldset>
-                                </div>
-                                <div class="col-md-6">
-                                    <fieldset>
-                                        <input
-                                                name="birthday"
-                                                type="date"
-                                                class="form-control"
-                                                id="birthday"
-                                                placeholder="Your birthday..."
-                                                required=""
-                                        />
+                                        <i class="phone-warm"></i>
                                     </fieldset>
                                 </div>
 
-                                <div class="col-md-6" style="margin-left: 250px;">
+                                <div class="col-md-6" style="margin-bottom: 40px">
                                     <fieldset>
-                                        <div style="width: 50px;float: left;" >
-                                            <input
-                                                    name="sex"
-                                                    type="radio"
-                                                    class="form-control"
-                                                    id="boy"
-                                                    value=""
-                                                    required=""
-                                            /><label>男</label>
-                                        </div>
-
-                                        <div style="width: 50px;float: right;">
-                                            <input
-                                                    name="sex"
-                                                    type="radio"
-                                                    class="form-control"
-                                                    id="girl"
-                                                    value=""
-                                                    required=""
-                                            /><label>女</label>
-                                        </div>
-
+                                        <select name="sex" style="border:1px #fff solid;background-color: rgba(250,250,250,0.1);color: #fff;" class="form-control" id="sex">
+                                            <option value="男" style="color:#000;">男</option>
+                                            <option value="女" style="color:#000;">女</option>
+                                        </select>
                                     </fieldset>
                                 </div>
-                                <div class="col-md-6">
-                                    <fieldset>
-                                        <input  style="border:0px;width:250px;background-color:#e3dbdb00;"
-                                                name="title"
-                                                type="file"
-                                                class="form-control"
-                                                id="title"
-                                                value=""
-                                                required=""
-                                        />
-                                    </fieldset>
-                                </div>
+
                                 <div class="col-md-12">
                                     <fieldset>
                           <textarea
-                                  name="message"
+                                  name="about"
                                   rows="6"
                                   class="form-control"
-                                  id="message"
+                                  id="about"
                                   placeholder="Your message..."
                                   required=""
-                          ></textarea>
+                          >${sessionScope.user.about}</textarea>
+                                        <i class="about-warm"></i>
                                     </fieldset>
                                 </div>
                                 <div class="col-md-12">
                                     <fieldset>
-                                        <button type="submit" id="form-submit" class="button">
-                                            Send Message
-                                        </button>
+                                        <label  id="form-submit" onclick="submitUserInfo()" class="button btn btn-danger">
+                                            修改
+                                        </label>
 
                                     </fieldset>
                                 </div>
@@ -365,22 +335,55 @@
         </div>
     </section>
 </div>
+<!--图片裁剪框 start-->
 
+<div style="display: none" class="tailoring-container">
+    <div class="black-cloth" onclick="closeTailor(this)"></div>
+    <div class="tailoring-content">
+        <div class="tailoring-content-one">
+            <div class="close-tailoring" onclick="closeTailor(this)">×</div>
+        </div>
+        <div class="tailoring-content-two">
+            <div class="tailoring-box-parcel">
+                <img id="tailoringImg" width="100%">
+            </div>
+            <div class="preview-box-parcel">
+                <p>图片预览：</p>
+                <%--<div class="square previewImg"></div>--%>
+                <div class="circular previewImg">
+                </div>
+            </div>
+        </div>
+        <div class="tailoring-content-three">
+            <button class="l-btn cropper-reset-btn">复位</button>
+            <button class="l-btn cropper-rotate-btn">旋转</button>
+            <button class="l-btn cropper-scaleX-btn">换向</button>
+            <button class="l-btn sureCut" id="sureCut">确定</button>
+        </div>
+    </div>
+</div>
+
+
+<!--图片裁剪框 end-->
 <!-- Scripts -->
 <!-- Bootstrap core JavaScript -->
 <script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 <script src="${pageContext.request.contextPath}/assets/js/isotope.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/owl-carousel.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/lightbox.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/custom.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="${pageContext.request.contextPath}/plugins/cropper/cropper.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery.sPage.js"></script>
+<script src="${pageContext.request.contextPath}/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/upload.js"></script>
+<script src="${pageContext.request.contextPath}/js/check.js"></script>
 <script src="${pageContext.request.contextPath}/js/user.js"></script>
-
 <script>
-    console.log("${sessionScope.user}");
+    $(".sex").val('${sessionScope.user.sex}');
+   // console.log("${sessionScope.user}");
     //according to loftblog tut
     $(".main-menu li:first").addClass("active");
 

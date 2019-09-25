@@ -1,27 +1,34 @@
 package com.wzd.simplebook.controller;
 
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import com.sun.xml.internal.rngom.parse.host.Base;
 import com.wzd.simplebook.domain.Article;
 import com.wzd.simplebook.domain.User;
 import com.wzd.simplebook.domain.UserTotal;
 import com.wzd.simplebook.service.ArticleService;
 import com.wzd.simplebook.service.UserService;
 import com.wzd.simplebook.utils.EmailUtil;
+import com.wzd.simplebook.utils.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.jws.WebParam;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 @RequestMapping("/user")
@@ -34,6 +41,8 @@ public class UserController {
 
     @Autowired
     private EmailUtil emailUtil;
+    @Autowired
+    private FileUtil fileUtil;
     /**
      * 查询所有用户
      * @return
@@ -162,4 +171,57 @@ public class UserController {
         userMap.put("userTotal",userTotal);
         return userMap;
     }
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    @RequestMapping("/changeUserInfo")
+    public String changeUserInfo(ModelMap modelMap,User user) throws Exception {
+        Object sessionUser = modelMap.get("user");
+        System.out.println(user);
+        //判断用户信息是否被修改
+        if (userService.changeUserInfo(user)){
+            System.out.println("修改成功！");
+        }else {
+            System.out.println("修改失败");
+        }
+        return "redirect:/user";
+    }
+
+    /**
+     * 修改用户头像
+     * @param modelMap
+     * @param file
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/changeUserImg")
+    public @ResponseBody Map<String,Object> changeUserImg(ModelMap modelMap,@RequestParam("file") String file, HttpServletRequest request)throws Exception{
+        Map<String,Object> map = new HashMap<>();
+        String path = request.getSession().getServletContext().getRealPath("");
+        //System.out.println("path::::::::::::::"+path);
+        String contextPath = request.getContextPath();
+        //System.out.println("contextPath::::::::"+contextPath);
+        path = path  + "userImg";
+        //将文件写入指定路径
+        String fileName = fileUtil.writeFile(file,path);
+        //定义图片在服务器中的虚拟路径
+        String virtualPath =  "/userHeadImg/"+fileName;
+        //获取当前登录用户
+        User user = (User) modelMap.get("user");
+        user.setHeadImgs(virtualPath);
+        modelMap.addAttribute("user",user);
+       //更改数据库中用户头像路径
+        if ( userService.changeUserHeadImg(user.getUid(),virtualPath)){
+            map.put("headImgPath",virtualPath);
+        }else {
+            map.put("headImgPath","/image/moren.jpg");
+        }
+        return map;
+    }
+
+
 }

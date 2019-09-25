@@ -15,7 +15,7 @@ public interface ArticleDao {
      * @param uid
      * @return
      */
-    @Select("select * from article where uid = #{uid}")
+    @Select("select * from article where uid = #{uid} and articlestate = 1")
     List<Article> findByUid(@Param("uid") String uid) throws Exception;
 
     /**
@@ -23,7 +23,7 @@ public interface ArticleDao {
      * @param articleId
      * @return
      */
-    @Select("select * from article where articleid = #{articleid}")
+    @Select("select * from article where articleid = #{articleid} and articlestate = 1")
     @Results(id = "articleMap",
             value = {
                     @Result(id = true,column = "articleid",property = "articleId"),
@@ -56,7 +56,7 @@ public interface ArticleDao {
     /**
      * 统计用户文章数
      */
-    @Select("select count(*) from article where uid = #{uid}")
+    @Select("select count(*) from article where uid = #{uid} and articlestate = 1")
     int findTotalByUid(@Param("uid") String uid) throws Exception;
 
     /**
@@ -64,7 +64,7 @@ public interface ArticleDao {
      * @param uid
      * @return
      */
-    @Select("select * from article where articleid in (select articleid from favor where uid = #{uid} )")
+    @Select("select * from article where articleid in (select articleid from favor where uid = #{uid} ) and articlestate = 1")
     List<Article> findFavorArticlByUid(String uid) throws Exception;
 
     /**
@@ -72,7 +72,7 @@ public interface ArticleDao {
      * @param uid
      * @return
      */
-    @Select("select sum(fontcount) as userfontcount from article where uid = #{uid}")
+    @Select("select sum(fontcount) as userfontcount from article where uid = #{uid} and articlestate = 1")
     int findUserArticleFont(@Param("uid") String uid) throws Exception;
 
     /**
@@ -80,6 +80,17 @@ public interface ArticleDao {
      * @param uid
      * @return
      */
-    @Select("select sum(good) as usergood from article where uid = #{uid}")
+    @Select("select sum(good) as usergood from article where uid = #{uid} and articlestate = 1")
     int findUserArticleFavor(@Param("uid") String uid) throws Exception;
+
+    /**
+     * 更改文章状态
+     * @param articleId
+     * @return
+     * @throws Exception
+     */
+    @Update("update article set articlestate = 2 where articleid = #{articleId}")
+    int changeArticleState(@Param("articleId") String articleId) throws Exception;
+
+
 }

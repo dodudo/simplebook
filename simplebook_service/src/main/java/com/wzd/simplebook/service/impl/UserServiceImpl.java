@@ -4,6 +4,8 @@ import com.wzd.simplebook.dao.UserDao;
 import com.wzd.simplebook.domain.User;
 import com.wzd.simplebook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -70,5 +72,25 @@ public class UserServiceImpl implements UserService {
     public User findUserByUid(String uid) throws Exception {
         System.out.println("哈哈哈");
         return userDao.findUserByUid(uid);
+    }
+
+    @Override
+    @CachePut(value = "userCache")
+    public boolean changeUserHeadImg(String uid, String virtualPath) throws Exception {
+        if (userDao.chanteUserHeadImg(uid,virtualPath)>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    @CachePut(value = ("userCache"))
+    public boolean changeUserInfo(User user) throws Exception {
+        if (userDao.changeUserInfo(user)>0){
+            return true;
+        }else {
+            return false;
+        }
     }
 }

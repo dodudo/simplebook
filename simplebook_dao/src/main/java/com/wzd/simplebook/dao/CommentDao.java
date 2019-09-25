@@ -1,6 +1,7 @@
 package com.wzd.simplebook.dao;
 
 import com.wzd.simplebook.domain.Comment;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -41,5 +42,11 @@ public interface CommentDao {
             "value(#{commentid},#{articleid},#{uid},#{parentid},#{floor},#{commentdate},#{content})")
     Comment addComment(Comment comment) throws Exception;
 
-
+    /**
+     * 根据评论id删除评论
+     * @param commentId
+     * @return
+     */
+    @Delete("delete from comment where commentid = #{commentId}")
+    int deleteCommentById(@Param("commentId") String commentId) throws Exception;
 }

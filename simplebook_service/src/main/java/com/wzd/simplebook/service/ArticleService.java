@@ -35,4 +35,19 @@ public interface ArticleService {
      */
     int findUserArticleFavor(String uid) throws Exception;
 
+    /**
+     * “删除”用户文章
+     * @param articleId
+     * @return
+     * @throws Exception
+     */
+    boolean changeArticleState(String articleId) throws Exception;
+
+    /**
+     * 删除用户收藏文章
+     * @param uid
+     * @param articleId
+     * @return
+     */
+    boolean deleteFavorArticle(String uid, String articleId) throws Exception;
 }

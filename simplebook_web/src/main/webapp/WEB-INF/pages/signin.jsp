@@ -59,7 +59,7 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="signin-form">
-								<form action="/user/login" method="post" id="login_form">
+								<form action="${pageContext.request.contextPath}/user/login" method="post" id="login_form">
 									<div class="form-group">
 									    <label for="uname">邮箱/用户名 <i class="uname-warm"></i></label>
 									    <input type="email" name="uname" onblur="checkUserInput()" class="form-control" id="uname" placeholder="请输入您的邮箱/用户名">

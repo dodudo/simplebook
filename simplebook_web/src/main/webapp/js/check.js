@@ -52,8 +52,8 @@ function checkEmail(){
 
 /*验证手机号码*/
 function checkMobile(){
-    var mobile=$("#mobile").val();
-    var mobileId=$(".mobile-warm");
+    var mobile=$("#phone").val();
+    var mobileId=$(".phone-warm");
 
     var regMobile=/^1\d{10}$/;
     if(regMobile.test(mobile)==false){

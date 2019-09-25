@@ -1,6 +1,8 @@
 package com.wzd.simplebook.dao;
 
 import com.wzd.simplebook.domain.Article;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -23,4 +25,15 @@ public interface FavorDao {
      */
     @Select("select articleid from favor where uid = #{uid}")
     List<Integer> findFavorArticleId(String uid);
+
+    /**
+     * 删除用户收藏
+     * @param articleId
+     * @return
+     * @throws Exception
+     */
+    @Delete("delete from favor where uid = #{uid} and articleid = #{articleId} ")
+    int deleteFavorArticle(@Param("uid") String uid, @Param("articleId") String articleId);
+
+
 }

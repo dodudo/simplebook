@@ -1,6 +1,7 @@
 package com.wzd.simplebook.service;
 
 import com.wzd.simplebook.domain.User;
+import org.springframework.cache.annotation.CachePut;
 
 import java.util.List;
 
@@ -44,4 +45,20 @@ public interface UserService {
      * @return
      */
     User findUserByUid(String uid) throws Exception;
+
+    /**
+     * 修改用户头像
+     * @param uid
+     * @param virtualPath
+     * @return
+     * @throws Exception
+     */
+    boolean changeUserHeadImg(String uid, String virtualPath) throws Exception;
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    boolean changeUserInfo(User user) throws Exception;
 }

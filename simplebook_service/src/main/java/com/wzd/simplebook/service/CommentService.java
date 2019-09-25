@@ -20,4 +20,11 @@ public interface CommentService {
      * @return
      */
     PageInfo<Comment> findCommentsByUid(String uid,int pageNum) throws Exception;
+
+    /**
+     * 根据评论id删除评论
+     * @param commentId
+     * @return
+     */
+    boolean deleteCommentById(String commentId) throws Exception;
 }

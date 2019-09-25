@@ -79,4 +79,22 @@ public interface UserDao {
             @Result(column = "userstate",property = "userState"),
     })
     User findUserByUid(@Param("uid") String uid) throws Exception;
+
+    /**
+     * 根据用户名修改用户头像
+     * @param uid
+     * @param virtualPath
+     * @return
+     */
+    @Update("update user set headimgs = #{virtualPath} where uid = #{uid}")
+    int chanteUserHeadImg(@Param("uid") String uid,@Param("virtualPath")String virtualPath)throws Exception;
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     * @throws Exception
+     */
+    @Update("update user set uname = #{uname},phone = #{phone},sex = #{sex},about = #{about} where uid = #{uid}")
+    int changeUserInfo(User user)throws Exception;
 }

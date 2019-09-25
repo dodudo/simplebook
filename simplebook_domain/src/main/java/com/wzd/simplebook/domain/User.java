@@ -148,4 +148,29 @@ public class User implements Serializable {
                 ", comments=" + comments +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(uid, user.uid) &&
+                Objects.equals(uname, user.uname) &&
+                Objects.equals(phone, user.phone) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(sex, user.sex) &&
+                Objects.equals(about, user.about) &&
+                Objects.equals(headImgs, user.headImgs) &&
+                Objects.equals(userState, user.userState) &&
+                Objects.equals(userStateStr, user.userStateStr) &&
+                Objects.equals(upassword, user.upassword) &&
+                Objects.equals(articles, user.articles) &&
+                Objects.equals(favorArticles, user.favorArticles) &&
+                Objects.equals(comments, user.comments);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uid, uname, phone, email, sex, about, headImgs, userState, userStateStr, upassword, articles, favorArticles, comments);
+    }
 }
