@@ -12,14 +12,7 @@ public class PageController {
     public String showWelcome(){
         return "welcome";
     }
-    @RequestMapping("/index")
-    public String showIndex(){
-        return "index";
-    }
-    @RequestMapping("/gms")
-    public String showGms(){
-        return "admin";
-    }
+
     @RequestMapping("/memberList")
     public String showMemberList(){
         return "member-list";
@@ -72,6 +65,7 @@ public class PageController {
     public String showError(){
         return "error";
     }
+
     @RequestMapping("/adminlogin")
     public String showLogin(){
         return "adminlogin";
@@ -92,5 +86,12 @@ public class PageController {
         public String target(){
             return "target";
         }
-
+    @RequestMapping("/index")
+    public String showIndex(){
+        return "index";
+    }
+    @RequestMapping("/admin")
+    public String showGms(){
+        return "admin";
+    }
 }

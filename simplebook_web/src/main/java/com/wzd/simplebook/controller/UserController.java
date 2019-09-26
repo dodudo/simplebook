@@ -63,7 +63,7 @@ public class UserController {
      */
     @RequestMapping("/addUser")
    public String addUser(User user,String checkCode) throws Exception {
-        String uid = UUID.randomUUID().toString();
+        String uid = UUID.randomUUID().toString().replace("-","");
         user.setUid(uid);
        if (userService.addUser(user)){
            System.out.println("添加成功");

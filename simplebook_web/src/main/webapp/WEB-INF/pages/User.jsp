@@ -55,7 +55,7 @@
 </head>
 
 <body>
-<i id="uid">${sessionScope.user.uid}</i>
+<i style="display: none" id="uid">${sessionScope.user.uid}</i>
 <!-- 导航 -->
 <header class="navigation">
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -250,7 +250,7 @@
                                 <div class="col-md-12">
                                     <label  title="上传图片" for="chooseImg" class="btn btn-warning ">
                                         <input type="file" accept="image/jpg,image/jpeg,image/png" name="file" id="chooseImg" class="hidden" onchange="selectImg(this)">
-                                        选择图片
+                                        修改头像
                                     </label>
                                     <img id="finalImg"  src="" style="width: 80px;margin-left: 20px">
                                     <label class="btn btn-info" style="margin-left: 20px" onclick="upload()" >上传</label>

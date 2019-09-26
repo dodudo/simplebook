@@ -100,8 +100,12 @@
 								登录
 								</button>
 								<p>
-									没有账号？
-									<a href="register">注册</a>
+
+									<a href="register">没有账号？注册</a>
+									<a href="adminlogin" style="margin-left: 40px">管理员登录</a>
+								</p>
+								<p>
+
 								</p>
 							</div><!--/.signin-footer -->
 						</div><!--/.col -->

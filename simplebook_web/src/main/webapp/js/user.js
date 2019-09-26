@@ -244,16 +244,21 @@ function sendFindCommentsByUid(pageNum) {
  */
 function deleteArticle(e) {
     // console.log($(e).attr("value"))
-    var id = $(e).attr("value");
-    var num = $(e).attr("pageNum");
-    $.ajax({
-        url:"/article/deleteArticle",
-        data:{"articleId":id},
-        type:"get",
-        success:function () {
-            sendFindCommentsByUid(num);
-        }
-    });
+    if(confirm("您确定要删除吗？")){
+        var id = $(e).attr("value");
+        var num = $(e).attr("pageNum");
+        $.ajax({
+            url:"/article/deleteArticle",
+            data:{"articleId":id},
+            type:"get",
+            success:function () {
+                sendFindCommentsByUid(num);
+            }
+        });
+    }else {
+
+    }
+
 }
 
 /**
@@ -262,18 +267,23 @@ function deleteArticle(e) {
  */
 function deleteFavorArticle(e) {
     // console.log($(e).attr("value"));
-    var id = $(e).attr("value");
-    var num = $(e).attr("pageNum");
-    var uid = $(e).attr("uid");
-    console.log($("#uid").html());
-    $.ajax({
-        url:"/article/deleteFavorArticle",
-        data:{"uid":$("#uid").html(),"articleId":id},
-        type:"get",
-        success:function () {
-            sendFindFavorArticlesByUid(num);
-        }
-    });
+    if (confirm("您确定要删除吗？")){
+        var id = $(e).attr("value");
+        var num = $(e).attr("pageNum");
+        var uid = $(e).attr("uid");
+        console.log($("#uid").html());
+        $.ajax({
+            url:"/article/deleteFavorArticle",
+            data:{"uid":$("#uid").html(),"articleId":id},
+            type:"get",
+            success:function () {
+                sendFindFavorArticlesByUid(num);
+            }
+        });
+    } else {
+
+    }
+
 }
 
 /**
@@ -282,14 +292,16 @@ function deleteFavorArticle(e) {
  */
 function deleteComment(e) {
     console.log($(e).attr("value"));
-    var id = $(e).attr("value");
-    var num = $(e).attr("pageNum");
-    $.ajax({
-        url:"/comment/deleteComment",
-        data:{"commentId":id},
-        type:"get",
-        success:function () {
-            sendFindCommentsByUid(num);
-        }
-    });
+    if (confirm("您确定要删除吗？")){
+        var id = $(e).attr("value");
+        var num = $(e).attr("pageNum");
+        $.ajax({
+            url:"/comment/deleteComment",
+            data:{"commentId":id},
+            type:"get",
+            success:function () {
+                sendFindCommentsByUid(num);
+            }
+        });
+    }
 }
