@@ -119,6 +119,13 @@ public class Article implements Serializable {
     }
 
     public String getArticleStateStr() {
+        if(articleState==0){
+            articleStateStr = "已删除";
+        }else if (articleState == 1){
+            articleStateStr = "已启用";
+        }else if (articleState == 2){
+            articleStateStr = "未启用";
+        }
         return articleStateStr;
     }
 

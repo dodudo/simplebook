@@ -36,7 +36,6 @@ public class ArticleController {
     public @ResponseBody Map<String ,Object> findArticlesByUid(ModelMap modelMap, int pageNum) throws Exception {
         Map<String,Object> map = new HashMap<>();
         User user = (User) modelMap.get("user");
-        PageHelper.startPage(pageNum,3);
         PageInfo<Article> articlePageInfo = articleService.findArticlesByUid(user.getUid(),pageNum);
         map.put("articlePageInfo",articlePageInfo);
         return map;
@@ -53,7 +52,6 @@ public class ArticleController {
         User user = (User) modelMap.get("user");
         System.out.println(user);
         System.out.println(pageNum);
-        PageHelper.startPage(pageNum,3);
         PageInfo<Article> favorArticlePageInfo = articleService.findFavorArticlesByUid(user.getUid(),pageNum);
         map.put("favorArticlePageInfo",favorArticlePageInfo);
         return map;
@@ -66,13 +64,32 @@ public class ArticleController {
      * @throws Exception
      */
     @RequestMapping("/deleteArticle")
-    public @ResponseBody Map<String,Object> deleteArtile(@RequestParam("articleId") String articleId) throws Exception {
+    public @ResponseBody Map<String,Object> deleteArtile(@RequestParam("articleId") String[] articleId) throws Exception {
         Map<String,Object> map = new HashMap<>();
-        if (articleService.changeArticleState(articleId)){
-            map.put("delArticleMsg",true);
-        }else {
-            map.put("delArticleMsg",false);
+        String id = null;
+        if (articleId.length>0&&articleId != null){
+            if (articleId.length == 1){
+                id = articleId[0];
+                if (articleService.changeArticleState(id,0)){
+                    map.put("delArticleMsg",true);
+                }else {
+                    map.put("delArticleMsg",false);
+                }
+            }else {
+                StringBuffer sb = new StringBuffer();
+                for (int i = 0;i<articleId.length;i++) {
+                    if (i==0){
+                        sb.append(articleId[i]);
+                    }else {
+                        sb.append(","+articleId[i]);
+                    }
+                }
+                id = sb.toString();
+                articleService.changeManyArticleState(id,0);
+            }
         }
+
+
         return map;
     }
 
@@ -91,6 +108,142 @@ public class ArticleController {
         }else {
             map.put("delFavorArticleMsg",false);
         }
+        return map;
+    }
+
+    /**
+     * 查询所有文章
+     * @param modelMap
+     * @param pageNum
+     * @return
+     */
+    @RequestMapping("/findAll")
+    public @ResponseBody Map<String,Object> findAllArticle(ModelMap modelMap,int pageNum) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+        PageInfo<Article> articlesPageInfo = articleService.findAllArticle(pageNum);
+        map.put("articlesPageInfo",articlesPageInfo);
+        return map;
+    }
+
+    /**
+     * 更改文章状态
+     * @param state
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/changeArticleState")
+    public @ResponseBody Map<String,Object> changeArticleState(String articleId,int state) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+        if (articleService.changeArticleState(articleId,state)){
+            map.put("changeMsg",true);
+        }else {
+            map.put("changeMsg",false);
+        }
+        return map;
+    }
+    /**
+     * 根据关键字查找文章
+     * @param pageNum
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/findArticleByKey")
+    public @ResponseBody Map<String,Object> findArticleByKey(int pageNum,String articleKey) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+        PageInfo articlesPageInfo = articleService.findArticlesByKey(pageNum,articleKey);
+        System.out.println(articlesPageInfo);
+        map.put("articlesPageInfo",articlesPageInfo);
+        return map;
+    }
+    /**
+     * 查找风险文章（字数少于50，被举报量大于50）
+     * @param pageNum
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/findRiskArticles")
+    public @ResponseBody Map<String,Object> findRiskArticles(int pageNum) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+        PageInfo articlesPageInfo = articleService.findRiskArticles(pageNum);
+        System.out.println(articlesPageInfo);
+        map.put("articlesPageInfo",articlesPageInfo);
+        return map;
+    }
+    /**
+     * 根据关键字查找敏感文章（字数少于50，被举报量大于50）
+     * @param pageNum
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/findRiskArticleByKey")
+    public @ResponseBody Map<String,Object> findRiskArticleByKey(int pageNum,String articleKey) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+        PageInfo articlesPageInfo = articleService.findRiskArticlesByKey(pageNum,articleKey);
+        System.out.println(articlesPageInfo);
+        map.put("articlesPageInfo",articlesPageInfo);
+        return map;
+    }
+    /**
+     * 查找所有”被删除“文章
+     * @param pageNum
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/findAllHadDelArticle")
+    public @ResponseBody Map<String,Object> findAllHadDelArticle(int pageNum) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+        PageInfo articlesPageInfo = articleService.findAllHadDelArticle(pageNum);
+        map.put("articlesPageInfo",articlesPageInfo);
+        return map;
+    }
+
+    /**
+     * 批量修改用户文章
+     * @param articleId
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/changeManyArticlesState")
+    public @ResponseBody Map<String,Object> changeManyArticlesState(@RequestParam("articleId") String[] articleId) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+        String id = null;
+        if (articleId.length>0&&articleId != null){
+            if (articleId.length == 1){
+                id = articleId[0];
+                if (articleService.changeArticleState(id,1)){
+                    map.put("delArticleMsg",true);
+                }else {
+                    map.put("delArticleMsg",false);
+                }
+            }else {
+                StringBuffer sb = new StringBuffer();
+                for (int i = 0;i<articleId.length;i++) {
+                    if (i==0){
+                        sb.append(articleId[i]);
+                    }else {
+                        sb.append(","+articleId[i]);
+                    }
+                }
+                id = sb.toString();
+                articleService.changeManyArticleState(id,1);
+            }
+        }
+
+
+        return map;
+    }
+    /**
+     * 根据关键字查找敏感文章（字数少于50，被举报量大于50）
+     * @param pageNum
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/findHadDelArticleByKey")
+    public @ResponseBody Map<String,Object> findHadDelArticleByKey(int pageNum,String articleKey) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+        PageInfo articlesPageInfo = articleService.findHadDelArticleByKey(pageNum,articleKey);
+        System.out.println(articlesPageInfo);
+        map.put("articlesPageInfo",articlesPageInfo);
         return map;
     }
 }

@@ -52,7 +52,7 @@
                     <a onclick="xadmin.open('弹出指定宽高','http://www.baidu.com',500,300)">
                         <i class="iconfont">&#xe6a8;</i>弹出指定宽高</a></dd>
                 <dd>
-                    <a onclick="xadmin.add_tab('在tab打开','memberList')">
+                    <a onclick="xadmin.add_tab('在tab打开','memberList',true)">
                         <i class="iconfont">&#xe6b8;</i>在tab打开</a></dd>
                 <dd>
                     <a onclick="xadmin.add_tab('在tab打开刷新','memberDel',true)">
@@ -90,12 +90,12 @@
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('统计页面','statistics')">
+                        <a onclick="xadmin.add_tab('统计页面','statistics',true)">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>统计页面</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('会员列表(静态表格)','${pageContext.request.contextPath}/user/findAll')">
+                        <a onclick="xadmin.add_tab('会员列表(静态表格)','${pageContext.request.contextPath}/user/findAll',true)">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员列表(静态表格)</cite></a>
                     </li>
@@ -105,7 +105,7 @@
                             <cite>会员列表(动态表格)</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('会员删除','memberDel')">
+                        <a onclick="xadmin.add_tab('会员删除','memberDel',true)">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员删除</cite></a>
                     </li>
@@ -116,12 +116,12 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('会员删除','memberDel')">
+                                <a onclick="xadmin.add_tab('会员删除','memberDel',true)">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>会员删除</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('等级管理','memberList1')">
+                                <a onclick="xadmin.add_tab('等级管理','memberList1',true)">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>等级管理</cite></a>
                             </li>
@@ -136,14 +136,19 @@
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('文章列表','essayList')">
+                        <a onclick="xadmin.add_tab('文章列表','essayList',true)">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>文章列表</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('文章列表1','essayList1')">
+                        <a onclick="xadmin.add_tab('敏感文章列表','essayList1',true)">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>文章列表1</cite></a>
+                            <cite>敏感文章列表</cite></a>
+                    </li>
+                    <li>
+                        <a onclick="xadmin.add_tab('文章删除','article-delete',true)">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>文章删除</cite></a>
                     </li>
                 </ul>
             </li>

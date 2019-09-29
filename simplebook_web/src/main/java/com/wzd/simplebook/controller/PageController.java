@@ -94,4 +94,8 @@ public class PageController {
     public String showGms(){
         return "admin";
     }
+    @RequestMapping("/article-delete")
+    public String showarticledelete(){
+        return "article-delete";
+    }
 }

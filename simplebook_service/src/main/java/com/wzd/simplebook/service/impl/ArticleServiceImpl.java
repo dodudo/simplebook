@@ -69,9 +69,11 @@ public class ArticleServiceImpl implements ArticleService {
      * @throws Exception
      */
     @Override
-    @CachePut(value = "favorArticleCache")
-    public boolean changeArticleState(String articleId) throws Exception {
-        if (articleDao.changeArticleState(articleId)>0){
+    @CacheEvict(value = {"allArticleCache","articleCache","riskArticlesCache",
+            "searcherArticleKeyCache","searRiskcherArticleKeyCache","searchHadDelArticleKeyCache",
+            "hadDelArticleCache"},allEntries = true)
+    public boolean changeArticleState(String articleId,int state) throws Exception {
+        if (articleDao.changeArticleState(articleId,state)>0){
             return true;
         }else {
             return false;
@@ -86,5 +88,113 @@ public class ArticleServiceImpl implements ArticleService {
         }else {
             return false;
         }
+    }
+
+    @Override
+    @Cacheable(value = "allArticleCache")
+    public PageInfo<Article> findAllArticle(int pageNum) throws Exception {
+        PageHelper.startPage(pageNum,10);
+        List<Article> articles = articleDao.findAll();
+        PageInfo pageInfo = new PageInfo(articles);
+        return pageInfo;
+    }
+
+    /**
+     * 修改多个文章状态
+     * @param id
+     * @param state
+     * @return
+     */
+    @Override
+    @CacheEvict(value = {"allArticleCache","articleCache","riskArticlesCache",
+            "searcherArticleKeyCache","searRiskcherArticleKeyCache",
+            "hadDelArticleCache","searchHadDelArticleKeyCache"},allEntries = true)
+    public boolean changeManyArticleState(String id, int state) {
+        if (articleDao.changeManyArticleState(id,state)>0){
+          return true;
+        }else {
+            return false;
+        }
+    }
+
+    /**
+     * 根据文章关键字查找文章
+     *
+     * @param pageNum
+     * @param articleKey
+     * @return
+     */
+    @Override
+    @Cacheable(value = "searcherArticleKeyCache")
+    public PageInfo findArticlesByKey(int pageNum, String articleKey) throws Exception {
+        PageHelper.startPage(pageNum,10);
+        articleKey = "%"+articleKey+"%";
+        List<Article> articles = articleDao.findArticlesByKey(articleKey);
+        PageInfo pageInfo = new PageInfo(articles);
+        return pageInfo;
+    }
+
+    /**
+     * 查询所有敏感风险文章
+     *
+     * @param pageNum
+     * @return
+     */
+    @Override
+    @Cacheable(value = "riskArticlesCache")
+    public PageInfo findRiskArticles(int pageNum) {
+        PageHelper.startPage(pageNum,10);
+        List<Article> articles = articleDao.findRiskArticles();
+        PageInfo pageInfo = new PageInfo(articles);
+        return pageInfo;
+    }
+
+    /**
+     * 根据关键字查询所有敏感风险文章
+     *
+     * @param pageNum
+     * @param articleKey
+     * @return
+     */
+    @Override
+    @Cacheable(value = "searRiskcherArticleKeyCache")
+    public PageInfo findRiskArticlesByKey(int pageNum, String articleKey) {
+        PageHelper.startPage(pageNum,10);
+        articleKey = "%"+articleKey+"%";
+        List<Article> articles = articleDao.findRiskArticlesByKey(articleKey);
+        PageInfo pageInfo = new PageInfo(articles);
+        return pageInfo;
+    }
+
+    /**
+     * 查找所有被”删除“文章
+     *
+     * @param pageNum
+     * @return
+     */
+    @Override
+    @Cacheable("hadDelArticleCache")
+    public PageInfo findAllHadDelArticle(int pageNum) {
+        PageHelper.startPage(pageNum,10);
+        List<Article> articles = articleDao.findAllHadDelArticle();
+        PageInfo pageInfo = new PageInfo(articles);
+        return pageInfo;
+    }
+
+    /**
+     * 根据关键字查找被删除文章
+     *
+     * @param pageNum
+     * @param articleKey
+     * @return
+     */
+    @Override
+    @Cacheable(value = "searchHadDelArticleKeyCache")
+    public PageInfo findHadDelArticleByKey(int pageNum, String articleKey) {
+        PageHelper.startPage(pageNum,10);
+        articleKey = "%"+articleKey+"%";
+        List<Article> articles = articleDao.findHadDelArticleByKey(articleKey);
+        PageInfo pageInfo = new PageInfo(articles);
+        return pageInfo;
     }
 }

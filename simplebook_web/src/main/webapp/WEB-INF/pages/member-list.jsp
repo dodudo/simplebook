@@ -16,6 +16,8 @@
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.sPage.green.css">
+
     <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
     <!--[if lt IE 9]>
@@ -73,8 +75,7 @@
                             <th>状态</th>
                             <th>操作</th></tr>
                         </thead>
-                        <tbody>
-                        <c:forEach var="user" items="${users}">
+                        <tbody >
                             <tr>
                                 <td>
                                     <input type="checkbox" name="id" value="1"   lay-skin="primary">
@@ -101,20 +102,12 @@
                                     </a>
                                 </td>
                             </tr>
-                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
                 <div class="layui-card-body ">
-                    <div class="page">
-                        <div>
-                            <a class="prev" href="">&lt;&lt;</a>
-                            <a class="num" href="">1</a>
-                            <span class="current">2</span>
-                            <a class="num" href="">3</a>
-                            <a class="num" href="">489</a>
-                            <a class="next" href="">&gt;&gt;</a>
-                        </div>
+                    <div class="articlePage">
+
                     </div>
                 </div>
             </div>
@@ -122,7 +115,10 @@
     </div>
 </div>
 </body>
+<script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.sPage.js"></script>
 <script>
+
     layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
         var  form = layui.form;

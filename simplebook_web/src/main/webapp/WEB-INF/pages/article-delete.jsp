@@ -49,7 +49,7 @@
                     </form>
                 </div>
                 <div class="layui-card-header">
-                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量恢复</button>
                 </div>
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
@@ -90,11 +90,11 @@
 <script>
 
     $(function () {
-        sendFindAllArticle(1);
+        sendFindAllHadDelArticle(1);
     });
-    function sendFindAllArticle(pageNum){
+    function sendFindAllHadDelArticle(pageNum){
         $.ajax({
-            url:"/article/findRiskArticles",
+            url:"/article/findAllHadDelArticle",
             type:"get",
             data:{"pageNum":pageNum},
             success:function (data) {
@@ -121,11 +121,11 @@
                         "                                    <span class=\"layui-btn layui-btn-normal layui-btn-mini\">"+articlesPageInfo.list[index].articleStateStr+"</span></td>\n" +
                         "                                <td class=\"td-manage\">\n" +
                         "                                    <a onclick=\"member_stop(this,'"+articlesPageInfo.list[index].articleId+"')\" href=\"javascript:;\"  title='"+articlesPageInfo.list[index].articleState+"'>\n" +
-                        "                                        <i class=\"layui-icon\">&#xe601;</i>\n" +
+                        "                                        <i class=\"layui-icon\">&#xe669;</i>\n" +
                         "                                    </a>\n" +
-                        "                                    <a title=\"删除\" onclick=\"member_del(this,'"+articlesPageInfo.list[index].articleId+"')\" href=\"javascript:;\">\n" +
-                        "                                        <i class=\"layui-icon\">&#xe640;</i>\n" +
-                        "                                    </a>\n" +
+                        // "                                    <a title=\"删除\" onclick=\"member_del(this,'"+articlesPageInfo.list[index].articleId+"')\" href=\"javascript:;\">\n" +
+                        // "                                        <i class=\"layui-icon\">&#xe640;</i>\n" +
+                        // "                                    </a>\n" +
                         "                                </td>\n" +
                         "                            </tr>");
                 }
@@ -142,7 +142,7 @@
                     nextPage:"下一页",//下翻页文字描述，默认“下一页”
                     backFun:function(page){
                         //点击分页按钮回调函数，返回当前页码
-                        sendFindAllArticle(page);
+                        sendFindAllHadDelArticle(page);
                     }
                 });
             }
@@ -179,25 +179,25 @@
 
     /*用户-停用*/
     function member_stop(obj,id){
-        layer.confirm('确认要停用吗？',function(index){
+        layer.confirm('确认要恢复吗？',function(index){
             var flag = 1;
             if($(obj).attr('title')=='1'){
 
                 //发异步把用户状态进行更改
-                $(obj).attr('title','2')
+                $(obj).attr('title','0')
                 $(obj).find('i').html('&#xe62f;');
-                var flag = 2;
+                var flag = 0;
 
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!',{icon: 5,time:1000});
+                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已删除');
+                layer.msg('已删除!',{icon: 5,time:1000});
 
             }else{
                 $(obj).attr('title','1')
                 $(obj).find('i').html('&#xe601;');
                 flag = 1;
 
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!',{icon: 5,time:1000});
+                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已恢复');
+                layer.msg('已恢复!',{icon: 5,time:1000});
             }
             $.ajax({
                 url:"/article/changeArticleState",
@@ -217,7 +217,7 @@
             $.ajax({
                 url:"/article/deleteArticle",
                 type: "get",
-                data: {"articleId":id,"state":0},
+                data: {"articleId":id,"state":1},
                 success:function () {
 
                 }
@@ -239,28 +239,28 @@
             }
         });
 
-        layer.confirm('确认要删除吗？'+ids.toString(),function(index){
+        layer.confirm('确认要恢复吗？',function(index){
             //捉到所有被选中的，发异步进行删除
             $.ajax({
-                url:"/article/deleteArticle",
+                url:"/article/changeManyArticlesState",
                 type: "get",
                 data: {"articleId":ids.toString(),"state":0},
                 success:function () {
                 }
             });
-            layer.msg('删除成功', {icon: 1});
+            layer.msg('恢复成功', {icon: 1});
             $(".layui-form-checked").not('.header').parents('tr').remove();
         });
     }
     function findArticleByKey() {
         var articleKey = $("#article_key").val();
         if (articleKey!=""){
-            sendFindRiskArticleByKey(1,articleKey)
+            sendFindHadDelArticleByKey(1,articleKey)
         }
     }
-    function sendFindRiskArticleByKey(pageNum,key){
+    function sendFindHadDelArticleByKey(pageNum,key){
         $.ajax({
-            url:"/article/findRiskArticleByKey",
+            url:"/article/findHadDelArticleByKey",
             type:"get",
             data:{"pageNum":pageNum,"articleKey":key},
             success:function (data) {
@@ -308,7 +308,7 @@
                     nextPage:"下一页",//下翻页文字描述，默认“下一页”
                     backFun:function(page){
                         //点击分页按钮回调函数，返回当前页码
-                        sendFindRiskArticleByKey(page,key);
+                        sendFindHadDelArticleByKey(page,key);
                     }
                 });
             }

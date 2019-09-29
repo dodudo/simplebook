@@ -115,6 +115,13 @@ public class User implements Serializable {
     }
 
     public String getUserStateStr() {
+        if (userState == 0){
+            userStateStr = "已冻结";
+        }else if (userState == 1){
+            userStateStr = "可用";
+        }else if (userState == 2){
+            userStateStr = "不可用";
+        }
         return userStateStr;
     }
 

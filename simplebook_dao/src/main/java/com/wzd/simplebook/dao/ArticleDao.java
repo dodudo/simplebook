@@ -51,7 +51,8 @@ public interface ArticleDao {
      * 查询所有文章信息
      * @return
      */
-    List<Article> findAll();
+    @Select("select * from article where articlestate != 0 ")
+    List<Article> findAll() throws Exception;
 
     /**
      * 统计用户文章数
@@ -89,8 +90,55 @@ public interface ArticleDao {
      * @return
      * @throws Exception
      */
-    @Update("update article set articlestate = 2 where articleid = #{articleId}")
-    int changeArticleState(@Param("articleId") String articleId) throws Exception;
+    @Update("update article set articlestate = #{articlestate} where articleid = #{articleId}")
+    int changeArticleState(@Param("articleId") String articleId,@Param("articlestate") int state) throws Exception;
 
+    /**
+     * 更改多个文章状态
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @Update("update article set articlestate = #{articlestate} where articleid in (#{articleid})")
+    int changeManyArticleState(@Param("articleid") String id, @Param("articlestate") int state);
 
+    /**
+     * 根据文章关键字查找文章
+     * @param articleKey
+     * @return
+     */
+    @Select("select * from article where articlestate != 0 and head like #{articleKey}")
+    List<Article> findArticlesByKey(@Param("articleKey") String articleKey);
+
+    /**
+     * 查询所有敏感风险文章
+     *
+     * @return
+     */
+    @Select("select * from article where articlestate != 0 and fontcount<50 and report>50")
+    List<Article> findRiskArticles();
+
+    /**
+     * 根据文章关键字查找文章
+     * @param articleKey
+     * @return
+     */
+    @Select("select * from article where articlestate != 0 and fontcount<50 and report>50 and head like #{articleKey}")
+    List<Article> findRiskArticlesByKey(String articleKey);
+
+    /**
+     * 查询所有被"删除"文章
+     *
+     * @return
+     */
+    @Select("select * from article where articlestate = 0")
+    List<Article> findAllHadDelArticle();
+
+    /**
+     * 根据文章关键字查找被删除文章
+     * @param articleKey
+     * @return
+     */
+    @Select("select * from article where articlestate = 0 and head like #{articleKey}")
+    List<Article> findHadDelArticleByKey(String articleKey);
 }

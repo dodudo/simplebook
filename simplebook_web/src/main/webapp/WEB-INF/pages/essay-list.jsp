@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.sPage.green.css">
     <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
 </head>
@@ -38,12 +39,12 @@
         <div class="layui-col-md12">
             <div class="layui-card">
                 <div class="layui-card-body ">
-                    <form class="layui-form layui-col-space5">
+                    <form class="layui-form layui-col-space5" id="search_form">
                         <div class="layui-inline layui-show-xs-block">
-                            <input type="text" name="username"  placeholder="请输入文章关键字" autocomplete="off" class="layui-input">
+                            <input type="text" name="username" id="article_key"  placeholder="请输入文章关键字" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-inline layui-show-xs-block">
-                            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                            <label id="search_btn" onclick="findArticleByKey()" class="layui-btn" ><i class="layui-icon">&#xe615;</i></label>
                         </div>
                     </form>
                 </div>
@@ -70,51 +71,13 @@
                             <%--<th>文章分类</th>--%>
                             <%--<th>文章</th>--%></tr>
                         </thead>
-                        <tbody>
-                        <c:forEach var="user" items="${users}">
-                            <tr>
-                                <td>
-                                    <input type="checkbox" name="id" value="1"   lay-skin="primary">
-                                </td>
-                                <td>${user.uid}</td>
-                                <td>${user.uname}</td>
-                                <td>${user.sex}</td>
-                                <td>${user.phone}</td>
-                                <td>${user.email}</td>
-                                <td>${user.email}</td>
-                                <td>${user.email}</td>
-                                <td>${user.email}</td>
-                                <td class="td-status">
-                                    <span class="layui-btn layui-btn-normal layui-btn-mini">${user.userStateStr}</span></td>
-                                <td class="td-manage">
-                                    <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
-                                        <i class="layui-icon">&#xe601;</i>
-                                    </a>
-                                    <a title="编辑"  onclick="xadmin.open('编辑','member-edit.jsp',600,400)" href="javascript:;">
-                                        <i class="layui-icon">&#xe642;</i>
-                                    </a>
-                                    <a onclick="xadmin.open('修改密码','member-password.jsp',600,400)" title="修改密码" href="javascript:;">
-                                        <i class="layui-icon">&#xe631;</i>
-                                    </a>
-                                    <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
-                                        <i class="layui-icon">&#xe640;</i>
-                                    </a>
-                                </td>
-                            </tr>
-                        </c:forEach>
+                        <tbody class="article-tbody">
+
                         </tbody>
                     </table>
                 </div>
                 <div class="layui-card-body ">
-                    <div class="page">
-                        <div>
-                            <a class="prev" href="">&lt;&lt;</a>
-                            <a class="num" href="">1</a>
-                            <span class="current">2</span>
-                            <a class="num" href="">3</a>
-                            <a class="num" href="">489</a>
-                            <a class="next" href="">&gt;&gt;</a>
-                        </div>
+                    <div id="articlePage">
                     </div>
                 </div>
             </div>
@@ -122,7 +85,68 @@
     </div>
 </div>
 </body>
+<script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.sPage.js"></script>
 <script>
+    $(function () {
+        sendFindAllArticle(1);
+    });
+    function sendFindAllArticle(pageNum){
+        $.ajax({
+            url:"/article/findAll",
+            type:"get",
+            data:{"pageNum":pageNum},
+            success:function (data) {
+                var articlesPageInfo = data.articlesPageInfo;
+                var showList = "";
+                var index;
+                for (index in articlesPageInfo.list){
+                    var releaseDate = articlesPageInfo.list[index].releaseDate;
+                    var releaseFormat = new Date(releaseDate);
+                    releaseFormat = releaseFormat.getFullYear()+"-"+(releaseFormat.getMonth()+1)+"-"+releaseFormat.getDate()
+                    showList += ("<tr>\n" +
+                        "                                <td>\n" +
+                        "                                    <input type=\"checkbox\" name=\"id\" value="+articlesPageInfo.list[index].articleId+"   lay-skin=\"primary\">\n" +
+                        "                                </td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].articleId+"</td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].head+"</td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].describe+"</td>\n" +
+                        "                                <td>"+releaseFormat+"</td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].fontCount+"</td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].view+"</td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].good+"</td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].report+"</td>\n" +
+                        "                                <td class=\"td-status\">\n" +
+                        "                                    <span class=\"layui-btn layui-btn-normal layui-btn-mini\">"+articlesPageInfo.list[index].articleStateStr+"</span></td>\n" +
+                        "                                <td class=\"td-manage\">\n" +
+                        "                                    <a onclick=\"member_stop(this,'"+articlesPageInfo.list[index].articleId+"')\" href=\"javascript:;\"  title='"+articlesPageInfo.list[index].articleState+"'>\n" +
+                        "                                        <i class=\"layui-icon\">&#xe601;</i>\n" +
+                        "                                    </a>\n" +
+                        "                                    <a title=\"删除\" onclick=\"member_del(this,'"+articlesPageInfo.list[index].articleId+"')\" href=\"javascript:;\">\n" +
+                        "                                        <i class=\"layui-icon\">&#xe640;</i>\n" +
+                        "                                    </a>\n" +
+                        "                                </td>\n" +
+                        "                            </tr>");
+                }
+                $(".article-tbody").html(showList);
+                $("#articlePage").sPage({
+                    page:articlesPageInfo.pageNum,//当前页码，必填
+                    total:articlesPageInfo.total,//数据总条数，必填
+                    pageSize:10,//每页显示多少条数据，默认10条
+                    totalTxt:"共"+articlesPageInfo.total+"条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+                    showTotal:true,//是否显示总条数，默认关闭：false
+                    showSkip:false,//是否显示跳页，默认关闭：false
+                    showPN:true,//是否显示上下翻页，默认开启：true
+                    prevPage:"上一页",//上翻页文字描述，默认“上一页”
+                    nextPage:"下一页",//下翻页文字描述，默认“下一页”
+                    backFun:function(page){
+                        //点击分页按钮回调函数，返回当前页码
+                        sendFindAllArticle(page);
+                    }
+                });
+            }
+        });
+    }
     layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
         var  form = layui.form;
@@ -155,24 +179,33 @@
     /*用户-停用*/
     function member_stop(obj,id){
         layer.confirm('确认要停用吗？',function(index){
-
-            if($(obj).attr('title')=='启用'){
+            var flag = 1;
+            if($(obj).attr('title')=='1'){
 
                 //发异步把用户状态进行更改
-                $(obj).attr('title','停用')
+                $(obj).attr('title','2')
                 $(obj).find('i').html('&#xe62f;');
+                var flag = 2;
 
                 $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
                 layer.msg('已停用!',{icon: 5,time:1000});
 
             }else{
-                $(obj).attr('title','启用')
+                $(obj).attr('title','1')
                 $(obj).find('i').html('&#xe601;');
-
+                flag = 1;
+                
                 $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
                 layer.msg('已启用!',{icon: 5,time:1000});
             }
-
+            $.ajax({
+                url:"/article/changeArticleState",
+                type: "get",
+                data: {"articleId":id,"state":flag},
+                success:function () {
+                    
+                }
+            });
         });
     }
 
@@ -180,6 +213,14 @@
     function member_del(obj,id){
         layer.confirm('确认要删除吗？',function(index){
             //发异步删除数据
+            $.ajax({
+                url:"/article/deleteArticle",
+                type: "get",
+                data: {"articleId":id,"state":0},
+                success:function () {
+
+                }
+            });
             $(obj).parents("tr").remove();
             layer.msg('已删除!',{icon:1,time:1000});
         });
@@ -199,8 +240,77 @@
 
         layer.confirm('确认要删除吗？'+ids.toString(),function(index){
             //捉到所有被选中的，发异步进行删除
+            $.ajax({
+                url:"/article/deleteArticle",
+                type: "get",
+                data: {"articleId":ids.toString(),"state":0},
+                success:function () {
+                }
+            });
             layer.msg('删除成功', {icon: 1});
             $(".layui-form-checked").not('.header').parents('tr').remove();
+        });
+    }
+    function findArticleByKey() {
+        var articleKey = $("#article_key").val();
+        if (articleKey!=""){
+            sendFindArticleByKey(1,articleKey)
+        }
+    }
+    function sendFindArticleByKey(pageNum,key){
+        $.ajax({
+            url:"/article/findArticleByKey",
+            type:"get",
+            data:{"pageNum":pageNum,"articleKey":key},
+            success:function (data) {
+                var articlesPageInfo = data.articlesPageInfo;
+                var showList = "";
+                var index;
+                for (index in articlesPageInfo.list){
+                    var releaseDate = articlesPageInfo.list[index].releaseDate;
+                    var releaseFormat = new Date(releaseDate);
+                    releaseFormat = releaseFormat.getFullYear()+"-"+(releaseFormat.getMonth()+1)+"-"+releaseFormat.getDate()
+                    showList += ("<tr>\n" +
+                        "                                <td>\n" +
+                        "                                    <input type=\"checkbox\" name=\"id\" value="+articlesPageInfo.list[index].articleId+"   lay-skin=\"primary\">\n" +
+                        "                                </td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].articleId+"</td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].head+"</td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].describe+"</td>\n" +
+                        "                                <td>"+releaseFormat+"</td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].fontCount+"</td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].view+"</td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].good+"</td>\n" +
+                        "                                <td>"+articlesPageInfo.list[index].report+"</td>\n" +
+                        "                                <td class=\"td-status\">\n" +
+                        "                                    <span class=\"layui-btn layui-btn-normal layui-btn-mini\">"+articlesPageInfo.list[index].articleStateStr+"</span></td>\n" +
+                        "                                <td class=\"td-manage\">\n" +
+                        "                                    <a onclick=\"member_stop(this,'"+articlesPageInfo.list[index].articleId+"')\" href=\"javascript:;\"  title='"+articlesPageInfo.list[index].articleState+"'>\n" +
+                        "                                        <i class=\"layui-icon\">&#xe601;</i>\n" +
+                        "                                    </a>\n" +
+                        "                                    <a title=\"删除\" onclick=\"member_del(this,'"+articlesPageInfo.list[index].articleId+"')\" href=\"javascript:;\">\n" +
+                        "                                        <i class=\"layui-icon\">&#xe640;</i>\n" +
+                        "                                    </a>\n" +
+                        "                                </td>\n" +
+                        "                            </tr>");
+                }
+                $(".article-tbody").html(showList);
+                $("#articlePage").sPage({
+                    page:articlesPageInfo.pageNum,//当前页码，必填
+                    total:articlesPageInfo.total,//数据总条数，必填
+                    pageSize:10,//每页显示多少条数据，默认10条
+                    totalTxt:"共"+articlesPageInfo.total+"条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+                    showTotal:true,//是否显示总条数，默认关闭：false
+                    showSkip:false,//是否显示跳页，默认关闭：false
+                    showPN:true,//是否显示上下翻页，默认开启：true
+                    prevPage:"上一页",//上翻页文字描述，默认“上一页”
+                    nextPage:"下一页",//下翻页文字描述，默认“下一页”
+                    backFun:function(page){
+                        //点击分页按钮回调函数，返回当前页码
+                        sendFindArticleByKey(page,key);
+                    }
+                });
+            }
         });
     }
 </script>
