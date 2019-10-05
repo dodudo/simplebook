@@ -28,6 +28,23 @@ public class ArticleServiceImpl implements ArticleService {
     FavorDao favorDao;
 
     @Override
+    public List<Article> findAll(int page, int size) throws Exception {
+
+        PageHelper.startPage(page, size);
+        return articleDao.findAll();
+    }
+
+    @Override
+    public List<Article> findAllList() throws Exception {
+        return articleDao.findAll();
+    }
+
+    @Override
+    public Article findArticleByAId(String articleId) throws Exception {
+        return articleDao.findArticleByAId(articleId);
+    }
+
+    @Override
     @Cacheable(value = "articleCache")
     public PageInfo<Article> findArticlesByUid(String uid,int pageNum) throws Exception {
         PageHelper.startPage(pageNum,3);

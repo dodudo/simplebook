@@ -12,7 +12,7 @@ public interface CommentService {
      * @param comment
      * @return
      */
-    Comment addComment(Comment comment);
+    void addComment(Comment comment) throws Exception;
 
     /**
      * 根据用户id查询该用户所有评论
@@ -27,4 +27,9 @@ public interface CommentService {
      * @return
      */
     boolean deleteCommentById(String commentId) throws Exception;
+
+    /**
+     * 根据文章id查找评论
+     */
+    public Comment findCommentsByArticleId(String articleId) throws Exception;
 }

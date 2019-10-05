@@ -24,6 +24,8 @@ public class Article implements Serializable {
     private Integer report;
     private Integer classId;
     private List<Comment> comments;
+    private User user;
+    //    private ArticleContent articleImgUrl;
     private ArticleContent articleContent;
 
     public String getHeadurl() {
@@ -44,22 +46,6 @@ public class Article implements Serializable {
 
     public void setDescribe(String describe) {
         this.describe = describe;
-    }
-
-    public ArticleContent getArticleContent() {
-        return articleContent;
-    }
-
-    public void setArticleContent(ArticleContent articleContent) {
-        this.articleContent = articleContent;
-    }
-
-    public String getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(String articleId) {
-        this.articleId = articleId;
     }
 
     public String getUid() {
@@ -157,6 +143,30 @@ public class Article implements Serializable {
         this.comments = comments;
     }
 
+    public String getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(String articleId) {
+        this.articleId = articleId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public ArticleContent getArticleContent() {
+        return articleContent;
+    }
+
+    public void setArticleContent(ArticleContent articleContent) {
+        this.articleContent = articleContent;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -174,6 +184,7 @@ public class Article implements Serializable {
                 ", report=" + report +
                 ", classId=" + classId +
                 ", comments=" + comments +
+                ", user=" + user +
                 ", articleContent=" + articleContent +
                 '}';
     }

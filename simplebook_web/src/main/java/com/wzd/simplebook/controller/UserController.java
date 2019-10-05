@@ -124,7 +124,7 @@ public class UserController {
             user.setUpassword("");
             int userState = user.getUserState();
             if (userState==1){
-                mv.setViewName("redirect:/index");
+                mv.setViewName("redirect:/article/findAll?page=1&size=5");
                 //将user存入session
                 map.addAttribute("user",user);
                 return mv;

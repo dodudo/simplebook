@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -99,7 +101,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h4>As a Designer, I Refuse to Call People ‘Users’</h4>
+                <h4>${articleDetail.head}</h4>
             </div>
         </div>
     </div>
@@ -114,50 +116,22 @@
             <div class="col-lg-8">
                 <ul class="list-inline d-flex justify-content-between py-3">
                     <!-- 作者 -->
-                    <li class="list-inline-item"><i class="ti-user mr-2"></i>Post by Jhon Abraham</li>
+                    <li class="list-inline-item"><i class="ti-user mr-2"></i>${articleDetail.user.uname}</li>
                     <!-- 日期 -->
-                    <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
+                    <li class="list-inline-item"><i class="ti-calendar mr-2"></i>${articleDetail.releaseDate}</li>
                 </ul>
-                <img src="${pageContext.request.contextPath}/images/post-single.jpg" alt="post-thumb" class="w-100 img-fluid mb-4">
+                <img src="${pageContext.request.contextPath}/images/${articleDetail.articleContent.articleImgUrl}"
+                     alt="post-thumb" class="w-100 img-fluid mb-4">
                 <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                        nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                        dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-                        ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut
-                        labore et dolore magnam aliquam quaerat voluptatem.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                        nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                        dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-                        ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut
-                        labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>${articleDetail.articleContent.articleContent}</p>
 
-                    <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore
-                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    <blockquote>
+                        ${articleDetail.describe}
                     </blockquote>
 
-                    <img src="${pageContext.request.contextPath}/images/post-img.jpg" alt="image" class="img-fluid">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                        nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                        dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
-                        ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut
-                        labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <img src="${pageContext.request.contextPath}/images/${articleDetail.articleContent.articleImgUrl}"
+                         alt="image" class="img-fluid">
+                    <p>${articleDetail.articleContent.articleContent}</p>
                 </div>
             </div>
             <!-- /文章详情内容 -->
@@ -252,41 +226,108 @@
     </div>
 </section>
 <!-- /文章主体 -->
+<%--点赞，收藏--%>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+                <ul class="list-unstyled">
+                    <li class="font-secondary text-dark">
+                        <img style="width: 30px;height: 30px;text-align:center;margin-left:5px;cursor: pointer;"
+                             src="${pageContext.request.contextPath}/images/yizan.png"/>
+                        <p class="likes" style="margin-left: 15px;">&nbsp;</p>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+                <ul class="list-unstyled">
+                    <li class="font-secondary text-dark">
+                        <h6><a class="text-dark" href="essay-detail.jsp">收藏</a></h6>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<%--评论--%>
+<section class="sec_review">
+    <div style="width: 1106px;height: 20px;margin: 0px auto;">
+        <div style="float: left; font-family: '幼圆'; font-size: 19px;">
+            <a class="a" href="#write_rew"><h6>评论</h6></a>
+        </div>
+
+    </div>
+    <%--第一个评论--%>
+    <C:forEach var="comment" items="${articleDetail.comments}">
+        <div style=" width: 74%;height: 41%;margin: 12px auto;padding-top: 1px;">
+            <div style="margin-left: 10px; margin-top: 5px;border-radius: 57%;float: left;width: 11%;height: 93%;">
+                <img src="${pageContext.request.contextPath}/images/${comment.user.headImgs}"
+                     style="border-radius: 57%;width: 126px;height: 121px;"/>
+            </div>
+            <div style="font-size: 15px;  margin-top: 8px;margin-left: 20px">${comment.user.uname}</div>
+            <div style="margin-top: 8px;text-indent: 2em;font-size: 14px;line-height: 23px;height: 66%;overflow: hidden;;margin-left: 20px">
+                <p>
+                        ${comment.content}
+                </p>
+            </div>
+            <div style="float: right;width: 144px;" onclick="">
+                <form action="" method="post">
+                    <input style="float: right;border: 0px;border-radius: 15%;width: 74px;height: 21px;background-color: #ddd4c459;margin-top:8px;cursor: pointer;"
+                           type="submit" value="删除" name="btndelete"/>
+                    <div style="float: right;margin-right: 20px;">
+                        <img style="width: 30px;height: 30px;text-align:center;margin-left:5px;cursor: pointer;"
+                             src="${pageContext.request.contextPath}/images/yizan.png"/>
+                        <p class="likes" style="margin-left: 15px;">&nbsp;</p>
+                    </div>
+                </form>
+            </div>
+            <div class="review_time"
+                 style="width: 178px; height: 26px; float: right; margin-right: 85px; margin-top: 3px;">
+                    ${comment.commentDate}
+            </div>
+        </div>
+        <hr>
+    </C:forEach>
+
+    <!--输入评论-->
+    <div id="write_rew" style="width: 75%;height: 39%;margin: 0 auto;">
+        <form action="${pageContext.request.contextPath}/comment/insertComment" method="post">
+            <input style="display: none;" name="uId" value="${articleDetail.uid}"/>
+            <input style="display: none;" name="articleId" value="${articleDetail.articleId}"/>
+            <%--<input style="display: none;" name="commentDate" value="${articleDetail.uid}"/>--%>
+            <textarea rows="3" cols="20" class="text-content" name="content"
+                      style="height: 95%;width: 100%;display: block;float: left;font-family: 骞煎渾;line-height: 30px;margin: 20px;text-indent: 2em;border: 1px solid #cccccc;">
+                请输入评论
+            </textarea>
+
+
+            <input type="submit" name="" value="提交" class="btn"
+                   style=" border: 0px;margin-left: 451px;width: 271px;margin-top: 8px;border-radius: 6%;"/>
+        </form>
+    </div>
+</section>
 
 <footer>
     <div class="section">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" alt="persa" class="img-fluid"></a>
+                    <a href="index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" alt="persa"
+                                             class="img-fluid"></a>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                    <ul class="list-unstyled">
-                        <li class="font-secondary text-dark">Sydney</li>
-                        <li class="font-secondary text-dark">6 rip carl Avenue CA 90733</li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                    <ul class="list-unstyled">
-                        <li class="font-secondary text-dark">Tel: +90 000 333 22</li>
-                        <li class="font-secondary text-dark">Mail: exmaple@ymail.com</li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                    <ul class="list-unstyled">
-                        <li class="font-secondary text-dark">
-                            <h6><a class="text-dark" href="${pageContext.request.contextPath}/essay-detail.jsp">关注</a></h6>
-                        </li>
-
-                    </ul>
-                </div>
-
             </div>
         </div>
     </div>
     <div class="text-center">
-        <p>Copyright ©<script>var CurrentYear = new Date().getFullYear()
-        document.write(CurrentYear)</script> a theme by themefisher / More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+        <p>简书
+            <script>var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)</script>
+            a theme by themefisher / More Templates <a href="" target="_blank" title="简书">简书</a> - Collect from <a
+                    href="" title="简书" target="_blank">简书</a></p>
     </div>
 </footer>
 
@@ -309,6 +350,20 @@
 
 <!-- Main Script -->
 <script src="${pageContext.request.contextPath}/js/script.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}js/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        for (var i = 0; i < $('.likes').length; i++) {
+            var ran = Math.floor(0)
+            $('.likes').eq(i).text(ran)
+        }
+        $("img").click(function () {
+            var num = $(this).next().text()
+            num++;
+            $(this).next().text(num);
+        });
+    });
+</script>
 
 <script>
     $(function () {

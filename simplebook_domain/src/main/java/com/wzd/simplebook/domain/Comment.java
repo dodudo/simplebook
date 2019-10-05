@@ -1,6 +1,7 @@
 package com.wzd.simplebook.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -13,8 +14,10 @@ public class Comment implements Serializable {
     private String uId;
     private String parentId;
     private Integer floor;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date commentDate;
     private String content;
+    private User user;
 
 
     public String getCommentId() {
@@ -73,6 +76,14 @@ public class Comment implements Serializable {
         this.content = content;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
@@ -82,6 +93,7 @@ public class Comment implements Serializable {
                 ", parentId='" + parentId + '\'' +
                 ", floor=" + floor +
                 ", commentDate=" + commentDate +
+                ", user=" + user +
                 ", content='" + content + '\'' +
                 '}';
     }

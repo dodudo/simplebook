@@ -102,4 +102,19 @@ public interface ArticleService {
      * @return
      */
     PageInfo findHadDelArticleByKey(int pageNum, String articleKey);
+
+    /**
+     * 查找所有文章--分页
+     */
+    public List<Article> findAll(int page, int size) throws Exception;
+
+    /**
+     * 查找所有文章--未分页
+     */
+    public List<Article> findAllList() throws Exception;
+
+    /**
+     * 根据文章id进入文章详情页面
+     */
+    public Article findArticleByAId(String articleId) throws Exception;
 }

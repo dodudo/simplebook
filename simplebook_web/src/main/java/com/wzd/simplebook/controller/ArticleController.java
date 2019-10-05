@@ -1,21 +1,18 @@
 package com.wzd.simplebook.controller;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.wzd.simplebook.domain.Article;
 import com.wzd.simplebook.domain.User;
 import com.wzd.simplebook.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.jws.WebParam;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +23,59 @@ import java.util.Map;
 public class ArticleController {
     @Autowired
     ArticleService articleService;
+
+    /**
+     * 查询所有文章信息--分页
+     */
+    @RequestMapping("/findAll")
+    public ModelAndView findAll(@RequestParam(name = "page", required = true, defaultValue = "1") int page, @RequestParam(name = "size", required = true, defaultValue = "5") int size) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        List<Article> articleList = articleService.findAll(page, size);
+        PageInfo pageInfo = new PageInfo(articleList);
+        mv.addObject("pageInfo", pageInfo);
+        mv.setViewName("index");
+        return mv;
+    }
+
+    /**
+     * 查询所有文章--未分页
+     */
+    @RequestMapping("/findAllList")
+    public ModelAndView findAllList() throws Exception {
+        ModelAndView mv = new ModelAndView();
+        List<Article> articleList = articleService.findAllList();
+        mv.addObject("articleList", articleList);
+        mv.setViewName("index");
+        return mv;
+    }
+
+    /**
+     * 根据文章id进入详情查看
+     */
+    @RequestMapping("/findArticleByAId")
+    public ModelAndView findArticleByAId(@RequestParam(name = "articleId") String articleId) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        Article article = articleService.findArticleByAId(articleId);
+        mv.addObject("articleDetail", article);
+        mv.setViewName("essay-detail");
+        return mv;
+    }
+
+    /**
+     * 查询所有文章
+     *
+     * @param modelMap
+     * @param pageNum
+     * @return
+     */
+    @RequestMapping("/findAllArticle")
+    public @ResponseBody
+    Map<String, Object> findAllArticle(ModelMap modelMap, int pageNum) throws Exception {
+        Map<String, Object> map = new HashMap<>();
+        PageInfo<Article> articlesPageInfo = articleService.findAllArticle(pageNum);
+        map.put("articlesPageInfo", articlesPageInfo);
+        return map;
+    }
 
     /**
      * 查询用户所有文章
@@ -111,19 +161,6 @@ public class ArticleController {
         return map;
     }
 
-    /**
-     * 查询所有文章
-     * @param modelMap
-     * @param pageNum
-     * @return
-     */
-    @RequestMapping("/findAll")
-    public @ResponseBody Map<String,Object> findAllArticle(ModelMap modelMap,int pageNum) throws Exception {
-        Map<String,Object> map = new HashMap<>();
-        PageInfo<Article> articlesPageInfo = articleService.findAllArticle(pageNum);
-        map.put("articlesPageInfo",articlesPageInfo);
-        return map;
-    }
 
     /**
      * 更改文章状态

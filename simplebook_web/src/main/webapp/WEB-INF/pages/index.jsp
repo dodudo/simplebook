@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
   <meta charset="utf-8">
@@ -93,71 +94,82 @@
 <section>
   <div class="container-fluid p-sm-0">
     <div class="row featured-post-slider">
+
+      <%--    <c:forEach var="top" items="${articleList}">
+             <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
+               <article class="card bg-dark text-center text-white border-0 rounded-0">
+                 <img class="card-img rounded-0 img-fluid w-100" src="${pageContext.request.contextPath}/images/featured-post/${top.headurl}" alt="post-thumb">
+                 <div class="card-img-overlay">
+                   <div class="card-content">
+                     <p class="text-uppercase">${top.head}</p>
+                     <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">${top.describe}</a></h4>
+                     <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
+                   </div>
+                 </div>
+               </article>
+             </div>
+           </c:forEach>--%>
+
       <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
         <article class="card bg-dark text-center text-white border-0 rounded-0">
-          <img class="card-img rounded-0 img-fluid w-100" src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
+          <img class="card-img rounded-0 img-fluid w-100"
+               src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="essay-detail">Organize Your Life With 10
+              <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">Organize Your Life With 10
                 Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="essay-detail">read more</a>
+              <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
             </div>
           </div>
         </article>
       </div>
+
       <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
         <article class="card bg-dark text-center text-white border-0 rounded-0">
-          <img class="card-img rounded-0 img-fluid w-100" src="${pageContext.request.contextPath}/images/featured-post/post-2.jpg" alt="post-thumb">
+          <img class="card-img rounded-0 img-fluid w-100"
+               src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="essay-detail">Organize Your Life With 10
+              <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">Organize Your Life With 10
                 Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="essay-detail">read more</a>
+              <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
             </div>
           </div>
         </article>
       </div>
+
       <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
         <article class="card bg-dark text-center text-white border-0 rounded-0">
-          <img class="card-img rounded-0 img-fluid w-100" src="${pageContext.request.contextPath}/images/featured-post/post-3.jpg" alt="post-thumb">
+          <img class="card-img rounded-0 img-fluid w-100"
+               src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="essay-detail">Organize Your Life With 10
+              <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">Organize Your Life With 10
                 Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="essay-detail">read more</a>
+              <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
             </div>
           </div>
         </article>
       </div>
+
       <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
         <article class="card bg-dark text-center text-white border-0 rounded-0">
-          <img class="card-img rounded-0 img-fluid w-100" src="${pageContext.request.contextPath}/images/featured-post/post-4.jpg" alt="post-thumb">
+          <img class="card-img rounded-0 img-fluid w-100"
+               src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="essay-detail">Organize Your Life With 10
+              <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">Organize Your Life With 10
                 Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="essay-detail">read more</a>
+              <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
             </div>
           </div>
         </article>
       </div>
-      <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
-        <article class="card bg-dark text-center text-white border-0 rounded-0">
-          <img class="card-img rounded-0 img-fluid w-100" src="${pageContext.request.contextPath}/images/featured-post/post-5.jpg" alt="post-thumb">
-          <div class="card-img-overlay">
-            <div class="card-content">
-              <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="essay-detail">Organize Your Life With 10
-                Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="essay-detail">read more</a>
-            </div>
-          </div>
-        </article>
-      </div>
+
     </div>
   </div>
 </section>
@@ -166,151 +178,23 @@
 <!-- 文章列表 -->
 <section class="section">
   <div class="container">
+
     <div class="row masonry-container">
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-1.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-2.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-3.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-4.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-5.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-6.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-7.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-8.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-9.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-10.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-11.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-13.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/post-12.jpg" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">Charming Evening Field</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-          <a href="essay-detail.jsp" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
+      <c:forEach var="alist" items="${pageInfo.list}">
+        <div class="col-lg-4 col-sm-6 mb-5">
+          <article class="text-center">
+            <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/${alist.headurl}"
+                 alt="post-thumb">
+            <p class="text-uppercase mb-2">TRAVEL</p>
+            <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">${alist.head}</a></h4>
+            <p>${alist.describe}</p>
+            <a href="${pageContext.request.contextPath}/article/findArticleByAId?articleId=${alist.articleId}"
+               class="btn btn-transparent">read more</a>
+          </article>
+        </div>
+      </c:forEach>
     </div>
+
     <div class="row">
       <div class="col-12">
         <nav>
@@ -318,16 +202,24 @@
             <li class="page-item">
               <span class="page-link">&laquo; Previous</span>
             </li>
-            <li class="page-item"><a class="page-link" href="#">01</a></li>
-            <li class="page-item active">
-              <span class="page-link">02</span>
+            <li class="page-item"><a class="page-link"
+                                     href="${pageContext.request.contextPath}/article/findAll?page=1&size=${pageInfo.pageSize}">首页</a>
             </li>
-            <li class="page-item"><a class="page-link" href="#">03</a></li>
-            <li class="page-item"><a class="page-link" href="#">04</a></li>
-            <li class="page-item"><a class="page-link" href="#">05</a></li>
-            <li class="page-item"><a class="page-link" href="#">06</a></li>
+            <%--<li class="page-item active">
+              <a class="page-link" href="${pageContext.request.contextPath}/article/findAll?page=1&size=${pageInfo.pageSize}">
+              <span class="page-link">02</span>
+              </a>
+            </li>--%>
+            <c:forEach begin="1" end="${pageInfo.pages}" var="pageNum">
+              <li class="page-item">
+                <a class="page-link"
+                   href="${pageContext.request.contextPath}/article/findAll?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+              </li>
+            </c:forEach>
             <li class="page-item">
-              <a class="page-link" href="#">Next &raquo;</a>
+              <a class="page-link"
+                 href="${pageContext.request.contextPath}/article/findAll?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">Next
+                &raquo;</a>
             </li>
           </ul>
         </nav>
@@ -403,7 +295,5 @@
 <!-- Main Script -->
 <script src="${pageContext.request.contextPath}/js/script.js"></script>
 
-<script>
-</script>
 </body>
 </html>

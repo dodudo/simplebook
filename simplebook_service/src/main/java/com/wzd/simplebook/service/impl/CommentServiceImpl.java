@@ -19,8 +19,8 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     CommentDao commentDao;
     @Override
-    public Comment addComment(Comment comment) {
-        return null;
+    public void addComment(Comment comment) throws Exception {
+        commentDao.addComment(comment);
     }
 
     @Override
@@ -40,5 +40,10 @@ public class CommentServiceImpl implements CommentService {
         }else {
             return false;
         }
+    }
+
+    @Override
+    public Comment findCommentsByArticleId(String articleId) throws Exception {
+        return commentDao.findCommentsByArticleId(articleId);
     }
 }

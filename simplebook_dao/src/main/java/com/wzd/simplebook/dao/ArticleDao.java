@@ -1,6 +1,8 @@
 package com.wzd.simplebook.dao;
 
 import com.wzd.simplebook.domain.Article;
+import com.wzd.simplebook.domain.ArticleContent;
+import com.wzd.simplebook.domain.User;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,7 @@ public interface ArticleDao {
      */
     @Select("select * from article where uid = #{uid} and articlestate = 1")
     List<Article> findByUid(@Param("uid") String uid) throws Exception;
+
 
     /**
      * 根据文章id查询文章所有内容
@@ -141,4 +144,29 @@ public interface ArticleDao {
      */
     @Select("select * from article where articlestate = 0 and head like #{articleKey}")
     List<Article> findHadDelArticleByKey(String articleKey);
+
+    /**
+     * 查询文章详情
+     * 涉及多表操作
+     */
+    @Select("select * from article where articleid=#{articleid}")
+    @Results({
+            @Result(id = true, property = "articleId", column = "articleid"),
+            @Result(column = "uid", property = "uid"),
+            @Result(column = "head", property = "head"),
+            @Result(column = "headurl", property = "headurl"),
+            @Result(column = "describe", property = "describe"),
+            @Result(column = "releasedate", property = "releaseDate"),
+            @Result(column = "fontcount", property = "fontCount"),
+            @Result(column = "view", property = "view"),
+            @Result(column = "good", property = "good"),
+            @Result(column = "articlestate", property = "articleState"),
+            @Result(column = "report", property = "report"),
+            @Result(column = "articlecontentid", property = "articleContentId"),
+            @Result(column = "classid", property = "classId"),
+            @Result(column = "uid", property = "user", javaType = User.class, one = @One(select = "com.wzd.simplebook.dao.UserDao.findUserByUid")),
+            @Result(column = "articleid", property = "articleContent", javaType = ArticleContent.class, one = @One(select = "com.wzd.simplebook.dao.ArticleContentDao.findByArticleId")),
+            @Result(column = "articleid", property = "comments", javaType = java.util.List.class, many = @Many(select = "com.wzd.simplebook.dao.CommentDao.findCommentsByArticleId"))
+    })
+    public Article findArticleByAId(String articleId) throws Exception;
 }

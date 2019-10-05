@@ -1,10 +1,8 @@
 package com.wzd.simplebook.dao;
 
 import com.wzd.simplebook.domain.Comment;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import com.wzd.simplebook.domain.User;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.awt.*;
@@ -24,7 +22,17 @@ public interface CommentDao {
      * @return
      */
     @Select("select * from comment where articleid = #{articleId}")
-    List<Comment> findCommentsByArticleId(@Param("articleId") String articleId) throws Exception;
+    @Results({
+            @Result(id = true, property = "articleId", column = "articleid"),
+            @Result(column = "commentid", property = "commentId"),
+            @Result(column = "uid", property = "uId"),
+            @Result(column = "parentid", property = "parentId"),
+            @Result(column = "floor", property = "floor"),
+            @Result(column = "commentdate", property = "commentDate"),
+            @Result(column = "content", property = "content"),
+            @Result(column = "uid", property = "user", javaType = User.class, one = @One(select = "com.wzd.simplebook.dao.UserDao.findUserByUid"))
+    })
+    public Comment findCommentsByArticleId(String articleId) throws Exception;
 
     /**
      * 根据用户id查询该用户的所有评论
@@ -39,8 +47,8 @@ public interface CommentDao {
      * @return
      */
     @Insert("insert into comment(commentid,articleid,uid,parentid,floor,commentdate,content) " +
-            "value(#{commentid},#{articleid},#{uid},#{parentid},#{floor},#{commentdate},#{content})")
-    Comment addComment(Comment comment) throws Exception;
+            "value(#{commentId},#{articleId},#{uId},#{parentId},#{floor},#{commentDate},#{content})")
+    void addComment(Comment comment) throws Exception;
 
     /**
      * 根据评论id删除评论
