@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd ">
+    <!--扫描controller注解，别的不扫描-->
+    <context:component-scan base-package="com.wzd.simplebook.controller"></context:component-scan>
+    <!--配置视图解析器-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--jsp文件所在目录-->
+        <property name="prefix" value="/WEB-INF/pages/" />
+        <!--文件后缀-->
+        <property name="suffix" value=".jsp" />
+    </bean>
+    <!--设置静态资源不过滤-->
+    <mvc:resources location="/assets/" mapping="/assets/**"  />
+    <mvc:resources location="/css/" mapping="/css/**" />
+    <mvc:resources location="/fonts/" mapping="/fonts/**" />
+    <mvc:resources location="/images/" mapping="/images/**" />
+    <mvc:resources location="/js/" mapping="/js/**" />
+    <mvc:resources location="/lib/" mapping="/lib/**" />
+    <mvc:resources location="/plugins/" mapping="/plugins/**" />
+    <mvc:resources location="/scss/" mapping="/scss/**" />
+    <mvc:resources location="/vendor/" mapping="/vendor/**" />
+    <mvc:resources location="/json/" mapping="/json/**" />
+
+    <!--开启对springmvc注解支持-->
+    <mvc:annotation-driven />
+
+    <mvc:default-servlet-handler />
+    <!--
+        支持aop的注解支持，aop底层使用代理技术
+        jdk动态代理，要求必须要有接口
+        cglib代理，生成子类对象，proxy-target-class="true" 默认使用cglib的方式
+    -->
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+</beans>
