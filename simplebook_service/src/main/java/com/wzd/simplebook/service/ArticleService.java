@@ -2,6 +2,7 @@ package com.wzd.simplebook.service;
 
 import com.github.pagehelper.PageInfo;
 import com.wzd.simplebook.domain.Article;
+import com.wzd.simplebook.domain.ArticleContent;
 
 import java.util.List;
 
@@ -117,4 +118,12 @@ public interface ArticleService {
      * 根据文章id进入文章详情页面
      */
     public Article findArticleByAId(String articleId) throws Exception;
+
+    /**
+     * 添加文章
+     *
+     * @param article
+     */
+    void addArticle(Article article) throws Exception;
+
 }

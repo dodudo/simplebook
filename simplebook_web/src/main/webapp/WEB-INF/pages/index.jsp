@@ -69,10 +69,10 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-uppercase text-dark" href="editor">写文章</a>
+          <a class="nav-link text-uppercase text-dark" href="/editor">写文章</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link text-uppercase text-dark dropdown-toggle" href="user" id="navbarDropdown1"
+          <a class="nav-link text-uppercase text-dark dropdown-toggle" href="/user" id="navbarDropdown1"
              role="button" aria-haspopup="true" aria-expanded="false">
             <img style="width: 51px;margin-top:-20px;" src='${sessionScope.user.headImgs}' alt="parsa">
           </a>

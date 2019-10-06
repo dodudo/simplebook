@@ -120,16 +120,18 @@
                     <!-- 日期 -->
                     <li class="list-inline-item"><i class="ti-calendar mr-2"></i>${articleDetail.releaseDate}</li>
                 </ul>
-                <img src="${pageContext.request.contextPath}/images/${articleDetail.articleContent.articleImgUrl}" alt="post-thumb" class="w-100 img-fluid mb-4">
+                <%-- <img src="${pageContext.request.contextPath}/images/${articleDetail.articleContent.articleImgUrl}"
+                      alt="post-thumb" class="w-100 img-fluid mb-4">--%>
                 <div class="content">
                     <p>${articleDetail.articleContent.articleContent}</p>
 
-                    <blockquote>
+                    <%--<blockquote>
                         ${articleDetail.describe}
                     </blockquote>
 
-                    <img src="${pageContext.request.contextPath}/images/${articleDetail.articleContent.articleImgUrl}" alt="image" class="img-fluid">
-                    <p>${articleDetail.articleContent.articleContent}</p>
+                    <img src="${pageContext.request.contextPath}/images/${articleDetail.articleContent.articleImgUrl}"
+                         alt="image" class="img-fluid">
+                    <p>${articleDetail.articleContent.articleContent}</p>--%>
                 </div>
             </div>
             <!-- /文章详情内容 -->
@@ -230,8 +232,9 @@
         <div class="row">
             <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
                 <ul class="list-unstyled">
-                    <li  class="font-secondary text-dark">
-                        <img  style="width: 30px;height: 30px;text-align:center;margin-left:5px;cursor: pointer;" src="${pageContext.request.contextPath}/images/yizan.png" />
+                    <li class="font-secondary text-dark">
+                        <img style="width: 30px;height: 30px;text-align:center;margin-left:5px;cursor: pointer;"
+                             src="${pageContext.request.contextPath}/images/yizan.png"/>
                         <p class="likes" style="margin-left: 15px;">&nbsp;</p>
                     </li>
                 </ul>
@@ -260,30 +263,34 @@
     </div>
     <%--第一个评论--%>
     <C:forEach var="comment" items="${articleDetail.comments}">
-    <div style=" width: 74%;height: 41%;margin: 12px auto;padding-top: 1px;">
-        <div style="margin-left: 10px; margin-top: 5px;border-radius: 57%;float: left;width: 11%;height: 93%;">
-            <img src="${pageContext.request.contextPath}/images/${comment.user.headImgs}" style="border-radius: 57%;width: 126px;height: 121px;"/>
+        <div style=" width: 74%;height: 41%;margin: 12px auto;padding-top: 1px;">
+            <div style="margin-left: 10px; margin-top: 5px;border-radius: 57%;float: left;width: 11%;height: 93%;">
+                <img src="${pageContext.request.contextPath}/images/${comment.user.headImgs}"
+                     style="border-radius: 57%;width: 126px;height: 121px;"/>
+            </div>
+            <div style="font-size: 15px;  margin-top: 8px;margin-left: 20px">${comment.user.uname}</div>
+            <div style="margin-top: 8px;text-indent: 2em;font-size: 14px;line-height: 23px;height: 66%;overflow: hidden;;margin-left: 20px">
+                <p>
+                        ${comment.content}
+                </p>
+            </div>
+            <div style="float: right;width: 144px;" onclick="">
+                <form action="" method="post">
+                    <input style="float: right;border: 0px;border-radius: 15%;width: 74px;height: 21px;background-color: #ddd4c459;margin-top:8px;cursor: pointer;"
+                           type="submit" value="删除" name="btndelete"/>
+                    <div style="float: right;margin-right: 20px;">
+                        <img style="width: 30px;height: 30px;text-align:center;margin-left:5px;cursor: pointer;"
+                             src="${pageContext.request.contextPath}/images/yizan.png"/>
+                        <p class="likes" style="margin-left: 15px;">&nbsp;</p>
+                    </div>
+                </form>
+            </div>
+            <div class="review_time"
+                 style="width: 178px; height: 26px; float: right; margin-right: 85px; margin-top: 3px;">
+                    ${comment.commentDate}
+            </div>
         </div>
-        <div style="font-size: 15px;  margin-top: 8px;margin-left: 20px">${comment.user.uname}</div>
-        <div style="margin-top: 8px;text-indent: 2em;font-size: 14px;line-height: 23px;height: 66%;overflow: hidden;;margin-left: 20px">
-            <p>
-                ${comment.content}
-            </p>
-        </div>
-        <div style="float: right;width: 144px;" onclick="">
-            <form action="" method="post" >
-                <input style="float: right;border: 0px;border-radius: 15%;width: 74px;height: 21px;background-color: #ddd4c459;margin-top:8px;cursor: pointer;" type="submit" value="删除" name="btndelete" />
-                <div style="float: right;margin-right: 20px;">
-                    <img  style="width: 30px;height: 30px;text-align:center;margin-left:5px;cursor: pointer;" src="${pageContext.request.contextPath}/images/yizan.png" />
-                    <p class="likes" style="margin-left: 15px;">&nbsp;</p>
-                </div>
-            </form>
-        </div>
-        <div class="review_time" style="width: 178px; height: 26px; float: right; margin-right: 85px; margin-top: 3px;">
-            ${comment.commentDate}
-        </div>
-    </div>
-    <hr>
+        <hr>
     </C:forEach>
 
     <!--输入评论-->
@@ -292,12 +299,14 @@
             <input style="display: none;" name="uId" value="${articleDetail.uid}"/>
             <input style="display: none;" name="articleId" value="${articleDetail.articleId}"/>
             <%--<input style="display: none;" name="commentDate" value="${articleDetail.uid}"/>--%>
-            <textarea rows="3" cols="20" class="text-content" name="content" style="height: 95%;width: 100%;display: block;float: left;font-family: 骞煎渾;line-height: 30px;margin: 20px;text-indent: 2em;border: 1px solid #cccccc;">
+            <textarea rows="3" cols="20" class="text-content" name="content"
+                      style="height: 95%;width: 100%;display: block;float: left;font-family: 骞煎渾;line-height: 30px;margin: 20px;text-indent: 2em;border: 1px solid #cccccc;">
                 请输入评论
             </textarea>
 
 
-            <input type="submit" name="" value="提交" class="btn" style=" border: 0px;margin-left: 451px;width: 271px;margin-top: 8px;border-radius: 6%;" />
+            <input type="submit" name="" value="提交" class="btn"
+                   style=" border: 0px;margin-left: 451px;width: 271px;margin-top: 8px;border-radius: 6%;"/>
         </form>
     </div>
 </section>
@@ -307,14 +316,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                    <a href="index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" alt="persa" class="img-fluid"></a>
+                    <a href="index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" alt="persa"
+                                             class="img-fluid"></a>
                 </div>
             </div>
         </div>
     </div>
     <div class="text-center">
-        <p>简书<script>var CurrentYear = new Date().getFullYear()
-        document.write(CurrentYear)</script> a theme by themefisher / More Templates <a href="" target="_blank" title="简书">简书</a> - Collect from <a href="" title="简书" target="_blank">简书</a></p>
+        <p>简书
+            <script>var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)</script>
+            a theme by themefisher / More Templates <a href="" target="_blank" title="简书">简书</a> - Collect from <a
+                    href="" title="简书" target="_blank">简书</a></p>
     </div>
 </footer>
 

@@ -18,4 +18,9 @@ public class ArticleContentServiceImpl implements ArticleContentService {
     public ArticleContent findByArticleId(String articleId) throws Exception {
         return articleContentDao.findByArticleId(articleId);
     }
+
+    @Override
+    public void addArticleContent(ArticleContent articleContent) throws Exception {
+        articleContentDao.addArticleContent(articleContent);
+    }
 }

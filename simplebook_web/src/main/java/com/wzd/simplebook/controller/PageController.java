@@ -66,6 +66,15 @@ public class PageController {
         return "error";
     }
 
+    @RequestMapping("/editor-sccuss")
+    public String showEditorsccuss() {
+        return "editor-sccuss";
+    }
+
+    @RequestMapping("/editor")
+    public String showEditor() {
+        return "editor";
+    }
     @RequestMapping("/adminlogin")
     public String showLogin(){
         return "adminlogin";

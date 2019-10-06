@@ -2,8 +2,11 @@ package com.wzd.simplebook.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.wzd.simplebook.domain.Article;
+import com.wzd.simplebook.domain.ArticleContent;
 import com.wzd.simplebook.domain.User;
+import com.wzd.simplebook.service.ArticleContentService;
 import com.wzd.simplebook.service.ArticleService;
+import com.wzd.simplebook.utils.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +27,12 @@ import java.util.Map;
 public class ArticleController {
     @Autowired
     ArticleService articleService;
+
+    @Autowired
+    ArticleContentService articleContentService;
+
+    /*@Autowired
+    UUIDUtils uuidUtils;*/
 
     /**
      * 查询所有文章信息--分页
@@ -282,5 +292,24 @@ public class ArticleController {
         System.out.println(articlesPageInfo);
         map.put("articlesPageInfo",articlesPageInfo);
         return map;
+    }
+
+    /**
+     * 添加文章
+     */
+    @RequestMapping("/addArticle")
+    public String addArticle(Article article) throws Exception {
+        articleService.addArticle(article);
+        return "redirect:/editor-sccuss";
+    }
+
+    /***
+     *
+     * 添加文章内容
+     */
+    @RequestMapping("/addArticleContent")
+    public String addArticleContent(ArticleContent articleContent) throws Exception {
+        articleContentService.addArticleContent(articleContent);
+        return "redirect:/editor-sccuss";
     }
 }

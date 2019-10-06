@@ -33,6 +33,7 @@
     <mvc:resources location="/scss/" mapping="/scss/**" />
     <mvc:resources location="/vendor/" mapping="/vendor/**" />
     <mvc:resources location="/json/" mapping="/json/**" />
+    <mvc:resources location="/upload/" mapping="/upload/**"/>
 
     <!--开启对springmvc注解支持-->
     <mvc:annotation-driven />
@@ -44,4 +45,19 @@
         cglib代理，生成子类对象，proxy-target-class="true" 默认使用cglib的方式
     -->
     <aop:aspectj-autoproxy proxy-target-class="true" />
+
+
+    <!-- 配置视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 前缀 -->
+        <property name="prefix" value="/UIpage/"/>
+        <!-- 后缀 -->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 设置上传文件最大值   1M=1*1024*1024(B)=1048576 bytes -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10485760"/>
+    </bean>
+
 </beans>

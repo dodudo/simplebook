@@ -120,18 +120,18 @@
                     <!-- 日期 -->
                     <li class="list-inline-item"><i class="ti-calendar mr-2"></i>${articleDetail.releaseDate}</li>
                 </ul>
-                <img src="${pageContext.request.contextPath}/images/${articleDetail.articleContent.articleImgUrl}"
-                     alt="post-thumb" class="w-100 img-fluid mb-4">
+                <%-- <img src="${pageContext.request.contextPath}/images/${articleDetail.articleContent.articleImgUrl}"
+                      alt="post-thumb" class="w-100 img-fluid mb-4">--%>
                 <div class="content">
                     <p>${articleDetail.articleContent.articleContent}</p>
 
-                    <blockquote>
+                    <%--<blockquote>
                         ${articleDetail.describe}
                     </blockquote>
 
                     <img src="${pageContext.request.contextPath}/images/${articleDetail.articleContent.articleImgUrl}"
                          alt="image" class="img-fluid">
-                    <p>${articleDetail.articleContent.articleContent}</p>
+                    <p>${articleDetail.articleContent.articleContent}</p>--%>
                 </div>
             </div>
             <!-- /文章详情内容 -->

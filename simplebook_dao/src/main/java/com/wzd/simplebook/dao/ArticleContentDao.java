@@ -19,4 +19,13 @@ public interface ArticleContentDao {
             @Result(column = "articlecontent", property = "articleContent")
     })
     public ArticleContent findByArticleId(String articleId) throws Exception;
+
+    /**
+     * 添加文章内容
+     *
+     * @param articleContent
+     * @throws Exception
+     */
+    @Insert("insert into articlecontent(articleid,articleContent)value(#{articleId},#{articleContent})")
+    void addArticleContent(ArticleContent articleContent) throws Exception;
 }

@@ -45,6 +45,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public void addArticle(Article article) throws Exception {
+        articleDao.addArticle(article);
+    }
+
+    @Override
     @Cacheable(value = "articleCache")
     public PageInfo<Article> findArticlesByUid(String uid,int pageNum) throws Exception {
         PageHelper.startPage(pageNum,3);

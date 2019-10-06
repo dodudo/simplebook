@@ -1,5 +1,3 @@
-
-
 <%--
   Created by IntelliJ IDEA.
   User: Administream
@@ -71,10 +69,10 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-uppercase text-dark" href="editor">写文章</a>
+          <a class="nav-link text-uppercase text-dark" href="/editor">写文章</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link text-uppercase text-dark dropdown-toggle" href="user" id="navbarDropdown1"
+          <a class="nav-link text-uppercase text-dark dropdown-toggle" href="/user" id="navbarDropdown1"
              role="button" aria-haspopup="true" aria-expanded="false">
             <img style="width: 51px;margin-top:-20px;" src='${sessionScope.user.headImgs}' alt="parsa">
           </a>
@@ -97,24 +95,25 @@
   <div class="container-fluid p-sm-0">
     <div class="row featured-post-slider">
 
-<%--    <c:forEach var="top" items="${articleList}">
-       <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
-         <article class="card bg-dark text-center text-white border-0 rounded-0">
-           <img class="card-img rounded-0 img-fluid w-100" src="${pageContext.request.contextPath}/images/featured-post/${top.headurl}" alt="post-thumb">
-           <div class="card-img-overlay">
-             <div class="card-content">
-               <p class="text-uppercase">${top.head}</p>
-               <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">${top.describe}</a></h4>
-               <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
+      <%--    <c:forEach var="top" items="${articleList}">
+             <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
+               <article class="card bg-dark text-center text-white border-0 rounded-0">
+                 <img class="card-img rounded-0 img-fluid w-100" src="${pageContext.request.contextPath}/images/featured-post/${top.headurl}" alt="post-thumb">
+                 <div class="card-img-overlay">
+                   <div class="card-content">
+                     <p class="text-uppercase">${top.head}</p>
+                     <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">${top.describe}</a></h4>
+                     <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
+                   </div>
+                 </div>
+               </article>
              </div>
-           </div>
-         </article>
-       </div>
-     </c:forEach>--%>
+           </c:forEach>--%>
 
       <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
         <article class="card bg-dark text-center text-white border-0 rounded-0">
-          <img class="card-img rounded-0 img-fluid w-100" src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
+          <img class="card-img rounded-0 img-fluid w-100"
+               src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
@@ -126,47 +125,50 @@
         </article>
       </div>
 
-       <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
-         <article class="card bg-dark text-center text-white border-0 rounded-0">
-           <img class="card-img rounded-0 img-fluid w-100" src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
-           <div class="card-img-overlay">
-             <div class="card-content">
-               <p class="text-uppercase">LifeStyle</p>
-               <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">Organize Your Life With 10
-                 Simple rule</a></h4>
-               <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
-             </div>
-           </div>
-         </article>
-       </div>
+      <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
+        <article class="card bg-dark text-center text-white border-0 rounded-0">
+          <img class="card-img rounded-0 img-fluid w-100"
+               src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
+          <div class="card-img-overlay">
+            <div class="card-content">
+              <p class="text-uppercase">LifeStyle</p>
+              <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">Organize Your Life With 10
+                Simple rule</a></h4>
+              <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
+            </div>
+          </div>
+        </article>
+      </div>
 
-       <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
-         <article class="card bg-dark text-center text-white border-0 rounded-0">
-           <img class="card-img rounded-0 img-fluid w-100" src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
-           <div class="card-img-overlay">
-             <div class="card-content">
-               <p class="text-uppercase">LifeStyle</p>
-               <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">Organize Your Life With 10
-                 Simple rule</a></h4>
-               <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
-             </div>
-           </div>
-         </article>
-       </div>
+      <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
+        <article class="card bg-dark text-center text-white border-0 rounded-0">
+          <img class="card-img rounded-0 img-fluid w-100"
+               src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
+          <div class="card-img-overlay">
+            <div class="card-content">
+              <p class="text-uppercase">LifeStyle</p>
+              <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">Organize Your Life With 10
+                Simple rule</a></h4>
+              <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
+            </div>
+          </div>
+        </article>
+      </div>
 
-       <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
-         <article class="card bg-dark text-center text-white border-0 rounded-0">
-           <img class="card-img rounded-0 img-fluid w-100" src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
-           <div class="card-img-overlay">
-             <div class="card-content">
-               <p class="text-uppercase">LifeStyle</p>
-               <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">Organize Your Life With 10
-                 Simple rule</a></h4>
-               <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
-             </div>
-           </div>
-         </article>
-       </div>
+      <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
+        <article class="card bg-dark text-center text-white border-0 rounded-0">
+          <img class="card-img rounded-0 img-fluid w-100"
+               src="${pageContext.request.contextPath}/images/featured-post/post-1.jpg" alt="post-thumb">
+          <div class="card-img-overlay">
+            <div class="card-content">
+              <p class="text-uppercase">LifeStyle</p>
+              <h4 class="card-title mb-4"><a class="text-white" href="essay-detail.jsp">Organize Your Life With 10
+                Simple rule</a></h4>
+              <a class="btn btn-outline-light" href="essay-detail.jsp">read more</a>
+            </div>
+          </div>
+        </article>
+      </div>
 
     </div>
   </div>
@@ -178,17 +180,19 @@
   <div class="container">
 
     <div class="row masonry-container">
-    <c:forEach var="alist" items="${pageInfo.list}">
-      <div class="col-lg-4 col-sm-6 mb-5">
-        <article class="text-center">
-          <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/${alist.headurl}" alt="post-thumb">
-          <p class="text-uppercase mb-2">TRAVEL</p>
-          <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">${alist.head}</a></h4>
-          <p>${alist.describe}</p>
-          <a href="${pageContext.request.contextPath}/article/findArticleByAId?articleId=${alist.articleId}" class="btn btn-transparent">read more</a>
-        </article>
-      </div>
-    </c:forEach>
+      <c:forEach var="alist" items="${pageInfo.list}">
+        <div class="col-lg-4 col-sm-6 mb-5">
+          <article class="text-center">
+            <img class="img-fluid mb-4" src="${pageContext.request.contextPath}/images/masonary-post/${alist.headurl}"
+                 alt="post-thumb">
+            <p class="text-uppercase mb-2">TRAVEL</p>
+            <h4 class="title-border"><a class="text-dark" href="essay-detail.jsp">${alist.head}</a></h4>
+            <p>${alist.describe}</p>
+            <a href="${pageContext.request.contextPath}/article/findArticleByAId?articleId=${alist.articleId}"
+               class="btn btn-transparent">read more</a>
+          </article>
+        </div>
+      </c:forEach>
     </div>
 
     <div class="row">
@@ -198,7 +202,9 @@
             <li class="page-item">
               <span class="page-link">&laquo; Previous</span>
             </li>
-            <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/article/findAll?page=1&size=${pageInfo.pageSize}">首页</a></li>
+            <li class="page-item"><a class="page-link"
+                                     href="${pageContext.request.contextPath}/article/findAll?page=1&size=${pageInfo.pageSize}">首页</a>
+            </li>
             <%--<li class="page-item active">
               <a class="page-link" href="${pageContext.request.contextPath}/article/findAll?page=1&size=${pageInfo.pageSize}">
               <span class="page-link">02</span>
@@ -206,11 +212,14 @@
             </li>--%>
             <c:forEach begin="1" end="${pageInfo.pages}" var="pageNum">
               <li class="page-item">
-                <a class="page-link" href="${pageContext.request.contextPath}/article/findAll?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+                <a class="page-link"
+                   href="${pageContext.request.contextPath}/article/findAll?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
               </li>
             </c:forEach>
             <li class="page-item">
-              <a class="page-link" href="${pageContext.request.contextPath}/article/findAll?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">Next &raquo;</a>
+              <a class="page-link"
+                 href="${pageContext.request.contextPath}/article/findAll?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">Next
+                &raquo;</a>
             </li>
           </ul>
         </nav>

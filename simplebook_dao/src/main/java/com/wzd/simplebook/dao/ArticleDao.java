@@ -169,4 +169,13 @@ public interface ArticleDao {
             @Result(column = "articleid", property = "comments", javaType = java.util.List.class, many = @Many(select = "com.wzd.simplebook.dao.CommentDao.findCommentsByArticleId"))
     })
     public Article findArticleByAId(String articleId) throws Exception;
+
+    /**
+     * 添加文章
+     *
+     * @param article
+     * @throws Exception
+     */
+    @Insert("insert into article(uid,headurl,head,articleid,`describe`,articleState)value(#{uid},#{headurl},#{head},#{articleId},#{describe},#{articleState})")
+    void addArticle(Article article) throws Exception;
 }

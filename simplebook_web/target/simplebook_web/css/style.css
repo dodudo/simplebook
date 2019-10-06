@@ -842,6 +842,7 @@ blockquote {
   margin-top: -34px;
   margin-left:209px;
 }
+
 /*# sourceMappingURL=maps/style.css.map *//*------------------------------------------------------------------
 [TABLE OF CONTENTS]
 -------------------------------------------------------------------*/
@@ -911,7 +912,15 @@ h5, .h5 {
 h6, .h6 {
   font-size: 16px;
 }
-.tlinks{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
+
+.tlinks {
+  text-indent: -9999px;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  overflow: hidden;
+}
+
 /* Button style */
 .btn {
   font-size: 15px;
@@ -1412,6 +1421,7 @@ textarea.form-control {
     overflow: auto;
     white-space: nowrap;
   }
+
   .pagination::-webkit-scrollbar {
     width: 0px;
     background: transparent;
@@ -1682,90 +1692,94 @@ blockquote {
 .tag-list li a:hover {
   color: #ff6f00;
 }
-.attention{
+
+.attention {
   margin-top: -34px;
-  margin-left:209px;
+  margin-left: 209px;
 }
+
 /*评论区*/
-.sec_review hr{
+.sec_review hr {
   width: 74%;
 }
+
 /*.review_title {*/
-  /*!*background-color: #c7bbb482;*!*/
-  /*width: 1106px;*/
-  /*height: 20px;*/
-  /*margin: 0px auto;*/
+/*!*background-color: #c7bbb482;*!*/
+/*width: 1106px;*/
+/*height: 20px;*/
+/*margin: 0px auto;*/
 /*}*/
 /*.reviewitem {*/
 
-  /*width: 74%;*/
-  /*height: 41%;*/
-  /*margin: 12px auto;*/
-  /*padding-top: 1px;*/
+/*width: 74%;*/
+/*height: 41%;*/
+/*margin: 12px auto;*/
+/*padding-top: 1px;*/
 /*}*/
 
 /*.review_text {*/
-  /*margin-top: 8px;*/
-  /*text-indent: 2em;*/
-  /*font-size: 14px;*/
-  /*line-height: 23px;*/
+/*margin-top: 8px;*/
+/*text-indent: 2em;*/
+/*font-size: 14px;*/
+/*line-height: 23px;*/
 
-  /*height: 66%;*/
-  /*overflow: hidden;*/
+/*height: 66%;*/
+/*overflow: hidden;*/
 /*}*/
 
 /*.delete{*/
-  /*float: right;*/
-  /*width: 144px;*/
+/*float: right;*/
+/*width: 144px;*/
 /*}*/
 /*.deletetext {*/
-  /*float: right;*/
+/*float: right;*/
 
-  /*border: 0px;*/
-  /*border-radius: 15%;*/
-  /*width: 74px;*/
-  /*height: 21px;*/
-  /*background-color: #ddd4c459;*/
-  /*margin-top:8px;*/
+/*border: 0px;*/
+/*border-radius: 15%;*/
+/*width: 74px;*/
+/*height: 21px;*/
+/*background-color: #ddd4c459;*/
+/*margin-top:8px;*/
 
-  /*cursor: pointer;*/
+/*cursor: pointer;*/
 /*}*/
 
 /*.user_img {*/
-  /*margin-left: 10px;*/
-  /*margin-top: 5px;*/
-  /*border-radius: 57%;*/
-  /*float: left;*/
-  /*width: 11%;*/
-  /*height: 93%;*/
+/*margin-left: 10px;*/
+/*margin-top: 5px;*/
+/*border-radius: 57%;*/
+/*float: left;*/
+/*width: 11%;*/
+/*height: 93%;*/
 /*}*/
 /*.user_img_img{*/
-  /*border-radius: 57%;*/
-  /*width: 126px;*/
-  /*height: 121px;*/
+/*border-radius: 57%;*/
+/*width: 126px;*/
+/*height: 121px;*/
 /*}*/
-#write_rew{
+#write_rew {
   width: 75%;
   height: 39%;
   margin: 0 auto;
 }
+
 /*#write_rew textarea{*/
-  /*height: 95%;*/
-  /*width: 100%;*/
-  /*display: block;*/
-  /*float: left;*/
-  /*font-family: 骞煎渾;*/
-  /*line-height: 30px;*/
-  /*margin: 20px;*/
-  /*text-indent: 2em;*/
-  /*border: 1px solid #cccccc;*/
+/*height: 95%;*/
+/*width: 100%;*/
+/*display: block;*/
+/*float: left;*/
+/*font-family: 骞煎渾;*/
+/*line-height: 30px;*/
+/*margin: 20px;*/
+/*text-indent: 2em;*/
+/*border: 1px solid #cccccc;*/
 /*}*/
 /*#write_rew input{*/
-  /*border: 0px;*/
-  /*margin-left: 451px;*/
-  /*width: 271px;*/
-  /*margin-top: 8px;*/
-  /*border-radius: 6%;*/
+/*border: 0px;*/
+/*margin-left: 451px;*/
+/*width: 271px;*/
+/*margin-top: 8px;*/
+/*border-radius: 6%;*/
 /*}*/
 
 /*# sourceMappingURL=maps/style.css.map */
