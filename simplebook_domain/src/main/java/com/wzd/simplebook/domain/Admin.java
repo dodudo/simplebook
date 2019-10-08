@@ -10,9 +10,33 @@ public class Admin implements Serializable {
     private String adminId;
     private String aname;
     private String apassword;
-    private Integer power;
-    private String powerStr;
+    private String email;
+    private String phone;
+    private Integer state;
+    private String stateStr;
+    private Integer role;
+    private String roleStr;
 
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getAdminId() {
         return adminId;
@@ -38,31 +62,61 @@ public class Admin implements Serializable {
         this.apassword = apassword;
     }
 
-    public Integer getPower() {
-        return power;
+    public Integer getState() {
+        return state;
     }
 
-    public void setPower(Integer power) {
-        this.power = power;
+    public void setState(Integer state) {
+        this.state = state;
     }
 
-    public String getPowerStr() {
-        return powerStr;
+    public String getStateStr() {
+        if (state == 0){
+            stateStr = "已删除";
+        }else if (state == 1){
+            stateStr = "已启用";
+        }else if (state == 2){
+            stateStr = "已停用";
+        }
+        return stateStr;
     }
 
-    public void setPowerStr(String powerStr) {
-        this.powerStr = powerStr;
+    public void setStateStr(String stateStr) {
+        this.stateStr = stateStr;
+    }
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
+
+    public String getRoleStr() {
+        if (role==0){
+            roleStr = "普通管理员";
+        }else if (role == 1){
+            roleStr = "超级管理员";
+        }
+        return roleStr;
+    }
+
+    public void setRoleStr(String roleStr) {
+        this.roleStr = roleStr;
     }
 
     @Override
     public String toString() {
         return "Admin{" +
-                "adminId=" + adminId +
+                "adminId='" + adminId + '\'' +
                 ", aname='" + aname + '\'' +
                 ", apassword='" + apassword + '\'' +
-                ", power=" + power +
-                ", powerStr='" + powerStr + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", state=" + state +
+                ", stateStr='" + stateStr + '\'' +
+                ", role=" + role +
+                ", roleStr='" + roleStr + '\'' +
                 '}';
     }
-
 }

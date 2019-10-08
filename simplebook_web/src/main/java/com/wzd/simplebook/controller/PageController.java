@@ -2,6 +2,7 @@ package com.wzd.simplebook.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 页面管理
@@ -57,10 +58,7 @@ public class PageController {
     public String showAdminRule(){
         return "admin-rule";
     }
-    @RequestMapping("/adminEdit")
-    public String showAdminEdit(){
-        return "admin-edit";
-    }
+
     @RequestMapping("/error")
     public String showError(){
         return "error";
@@ -98,4 +96,17 @@ public class PageController {
     public String showarticledelete(){
         return "article-delete";
     }
+
+    @RequestMapping("/admin-add")
+    public String showAdminAdd(){
+        return "admin-add";
+    }
+    @RequestMapping("/adminEdit")
+    public ModelAndView showAdminEdit(String aid){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("adminId",aid);
+        mv.setViewName("admin-add");
+        return mv;
+    }
+
 }
