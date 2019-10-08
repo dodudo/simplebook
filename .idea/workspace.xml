@@ -7,8 +7,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bb8aeb8-885c-46a3-92e3-db7be2474119" name="Default Changelist" comment="-完成文章编辑以及图片上传，未解决自动生成的articleid同时插入多表">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/editor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/editor.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_dao/target/classes/com/wzd/simplebook/dao/AdminDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_dao/target/classes/com/wzd/simplebook/dao/AdminDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_domain/target/classes/com/wzd/simplebook/domain/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_domain/target/classes/com/wzd/simplebook/domain/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_service/target/classes/com/wzd/simplebook/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_service/target/classes/com/wzd/simplebook/service/AdminService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_service/target/classes/com/wzd/simplebook/service/impl/AdminServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_service/target/classes/com/wzd/simplebook/service/impl/AdminServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/src/main/resources/druid.properties" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/src/main/resources/druid.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/PageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/classes/druid.properties" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/classes/druid.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/PageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/druid.properties" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/druid.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/cache-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/cache-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_dao-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_dao-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_domain-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_domain-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_service-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_service-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_utils-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_utils-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/admin-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/admin-list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/admin.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cache/target/" />
     <ignored path="$PROJECT_DIR$/simplebook_service/target/" />
@@ -23,77 +42,31 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="1218878998">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.95" value="1" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="css" value="3" />
-          <entry key="java" value="99" />
-          <entry key="jpg" value="25" />
-          <entry key="js" value="11" />
-          <entry key="jsp" value="49" />
-          <entry key="png" value="3" />
-          <entry key="properties" value="4" />
-          <entry key="xml" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CSS" value="3" />
-          <entry key="Image" value="28" />
-          <entry key="JAVA" value="99" />
-          <entry key="JSP" value="49" />
-          <entry key="JavaScript" value="11" />
-          <entry key="Properties" value="4" />
-          <entry key="XML" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="css" value="8" />
-          <entry key="dummy" value="4" />
-          <entry key="java" value="2566" />
-          <entry key="jsp" value="1780" />
-          <entry key="properties" value="8" />
-          <entry key="txt" value="94" />
-          <entry key="xml" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="CSS" value="8" />
-          <entry key="JAVA" value="2566" />
-          <entry key="JSP" value="1780" />
-          <entry key="PLAIN_TEXT" value="98" />
-          <entry key="Properties" value="8" />
-          <entry key="XML" value="5" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1748">
+            <state relative-caret-position="2300">
               <caret line="119" column="42" selection-start-line="119" selection-start-column="42" selection-end-line="119" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/editor.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
+            <state relative-caret-position="371">
               <caret line="88" column="14" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/resources/druid.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -101,7 +74,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/editor-sccuss.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
+            <state relative-caret-position="150">
               <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
             </state>
           </provider>
@@ -110,7 +83,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/UtilController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
+            <state relative-caret-position="775">
               <caret line="47" selection-start-line="47" selection-end-line="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -122,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/ArticleDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3230">
+            <state relative-caret-position="4250">
               <caret line="178" column="62" selection-start-line="178" selection-start-column="62" selection-end-line="178" selection-end-column="62" />
             </state>
           </provider>
@@ -131,7 +104,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/ArticleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1026">
+            <state relative-caret-position="1350">
               <caret line="73" column="7" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
             </state>
           </provider>
@@ -140,7 +113,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1349">
+            <state relative-caret-position="1775">
               <caret line="71" column="61" selection-start-line="71" selection-start-column="61" selection-end-line="71" selection-end-column="61" />
             </state>
           </provider>
@@ -163,7 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/simplebook_web/src/main/resources/druid.properties" />
         <option value="$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/UserController.java" />
         <option value="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/User.jsp" />
         <option value="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/index2.jsp" />
@@ -192,14 +164,9 @@
         <option value="$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/UtilController.java" />
         <option value="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/editor-sccuss.jsp" />
         <option value="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/editor.jsp" />
+        <option value="$PROJECT_DIR$/simplebook_web/src/main/resources/druid.properties" />
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -221,7 +188,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="895" />
     <option name="y" value="135" />
     <option name="width" value="1940" />
@@ -252,6 +219,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -433,6 +402,14 @@
               <item name="simplebook_web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="simplebook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simplebook" type="462c0819:PsiDirectoryNode" />
+              <item name="simplebook_web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -454,12 +431,23 @@
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="simplebook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simplebook" type="462c0819:PsiDirectoryNode" />
+              <item name="simplebook_web" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="simplebook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simplebook" type="462c0819:PsiDirectoryNode" />
+              <item name="simplebook_web" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="simplebook_web" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -467,6 +455,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570537583539" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/simplebook_web/target/simplebook_web/userImg" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -490,23 +479,29 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat8.5" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.34" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="UPDATING_POLICY" value="restart-server" />
+    <configuration name="Tomcat8.5" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.11" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/login" />
+      <option name="UPDATING_POLICY" value="update-resources" />
       <deployment>
         <artifact name="simplebook_web:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
+        <file path="$PROJECT_DIR$/simplebook_web/target/simplebook_web/userImg">
+          <settings>
+            <option name="CONTEXT_PATH" value="/userHeadImg" />
+          </settings>
+        </file>
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Unnamed_simplebook_4" />
       </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="54971" />
       </RunnerSettings>
@@ -574,6 +569,7 @@
       <updated>1570209743218</updated>
       <workItem from="1570209746168" duration="63387000" />
       <workItem from="1570536361604" duration="1645000" />
+      <workItem from="1570544655548" duration="924000" />
     </task>
     <task id="LOCAL-00001" summary="-完成主页文章展示（分页区）-完成文章详情页-完成评论的展示与发表">
       <created>1570289361280</created>
@@ -607,13 +603,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65032000" />
+    <option name="totallyTimeSpent" value="65956000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21447721" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21715818" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -621,9 +616,10 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.48368794" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.39093485" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4609929" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -631,11 +627,12 @@
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32907802" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.27659574" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.50067025" side_tool="true" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067025" side_tool="true" weight="0.48300284" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32907802" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="14" show_stripe_button="false" sideWeight="0.49932975" weight="0.49361703" />
+      <window_info anchor="right" id="Maven" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -678,9 +675,20 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="-完成主页文章展示（分页区）-完成文章详情页-完成评论的展示与发表" />
@@ -711,13 +719,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/js/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="63" lean-forward="true" selection-start-line="2" selection-start-column="63" selection-end-line="2" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/test.jsp" />
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/essay-detail2.jsp" />
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/essay-detail2.jsp" />
@@ -944,21 +945,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1748">
+        <state relative-caret-position="2300">
           <caret line="119" column="42" selection-start-line="119" selection-start-column="42" selection-end-line="119" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/editor-sccuss.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
+        <state relative-caret-position="150">
           <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/UtilController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
+        <state relative-caret-position="775">
           <caret line="47" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -968,29 +969,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/ArticleDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3230">
+        <state relative-caret-position="4250">
           <caret line="178" column="62" selection-start-line="178" selection-start-column="62" selection-end-line="178" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/ArticleController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
+        <state relative-caret-position="1350">
           <caret line="73" column="7" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1349">
+        <state relative-caret-position="1775">
           <caret line="71" column="61" selection-start-line="71" selection-start-column="61" selection-end-line="71" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/editor.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
+        <state relative-caret-position="371">
           <caret line="88" column="14" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/resources/druid.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
         </state>
       </provider>
     </entry>
