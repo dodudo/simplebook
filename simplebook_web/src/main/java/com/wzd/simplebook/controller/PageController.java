@@ -1,14 +1,26 @@
 package com.wzd.simplebook.controller;
 
+import com.wzd.simplebook.dao.AdminDao;
+import com.wzd.simplebook.domain.Admin;
+import com.wzd.simplebook.service.AdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 页面管理
  */
 @Controller
+@SessionAttributes({"admin"})
 public class PageController {
+    @Autowired
+    AdminService adminService;
+
     @RequestMapping("/welcome")
     public String showWelcome(){
         return "welcome";
@@ -107,14 +119,31 @@ public class PageController {
     }
 
     @RequestMapping("/admin-add")
-    public String showAdminAdd(){
-        return "admin-add";
+    public ModelAndView showAdminAdd(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView();
+        Admin admin = (Admin) request.getSession().getAttribute("admin");
+        if (admin.getRole() == 1) {
+            mv.setViewName("admin-edit");
+        } else {
+            mv.setViewName("roleError");
+        }
+        return mv;
     }
     @RequestMapping("/adminEdit")
-    public ModelAndView showAdminEdit(String aid){
+    public ModelAndView showAdminEdit(HttpServletRequest request, String aid) throws Exception {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("adminId",aid);
-        mv.setViewName("admin-add");
+        Admin admin = (Admin) request.getSession().getAttribute("admin");
+        if (aid != null && aid.length() != 0) {
+            if (admin.getAdminId().equals(aid) || admin.getRole() == 1) {
+                Admin beChangeAdmin = adminService.findById(aid);
+                if (beChangeAdmin != null) {
+                    mv.addObject("beChangeAdmin", beChangeAdmin);
+                }
+                mv.setViewName("admin-edit");
+            } else {
+                mv.setViewName("roleError");
+            }
+        }
         return mv;
     }
 

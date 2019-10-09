@@ -97,6 +97,8 @@ public class Admin implements Serializable {
             roleStr = "普通管理员";
         }else if (role == 1){
             roleStr = "超级管理员";
+        } else if (role == null) {
+            roleStr = "普通管理员";
         }
         return roleStr;
     }

@@ -198,7 +198,7 @@ public class ArticleController {
     public @ResponseBody Map<String,Object> findArticleByKey(int pageNum,String articleKey) throws Exception {
         Map<String,Object> map = new HashMap<>();
         PageInfo articlesPageInfo = articleService.findArticlesByKey(pageNum,articleKey);
-        System.out.println(articlesPageInfo);
+//        System.out.println(articlesPageInfo);
         map.put("articlesPageInfo",articlesPageInfo);
         return map;
     }

@@ -93,11 +93,12 @@
     });
     function sendFindAllArticle(pageNum){
         $.ajax({
-            url:"/article/findAll",
+            url: "/article/findAllArticle",
             type:"get",
             data:{"pageNum":pageNum},
             success:function (data) {
                 var articlesPageInfo = data.articlesPageInfo;
+                // console.log(articlesPageInfo);
                 var showList = "";
                 var index;
                 for (index in articlesPageInfo.list){
