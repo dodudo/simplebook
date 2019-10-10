@@ -6,40 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1bb8aeb8-885c-46a3-92e3-db7be2474119" name="Default Changelist" comment="-完成文章编辑以及图片上传，未解决自动生成的articleid同时插入多表">
-      <change afterPath="$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/FollowDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simplebook_domain/src/main/java/com/wzd/simplebook/domain/Follow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/FavorService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/FollowService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/impl/FavorServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/impl/FollowServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="1bb8aeb8-885c-46a3-92e3-db7be2474119" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/ArticleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/ArticleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/FavorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/FavorDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_dao/target/classes/com/wzd/simplebook/dao/AdminDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_dao/target/classes/com/wzd/simplebook/dao/AdminDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_dao/target/classes/com/wzd/simplebook/dao/FavorDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_dao/target/classes/com/wzd/simplebook/dao/FavorDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_domain/src/main/java/com/wzd/simplebook/domain/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_domain/src/main/java/com/wzd/simplebook/domain/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_domain/target/classes/com/wzd/simplebook/domain/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_domain/target/classes/com/wzd/simplebook/domain/Admin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/impl/ArticleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_service/target/classes/com/wzd/simplebook/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_service/target/classes/com/wzd/simplebook/service/AdminService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_service/target/classes/com/wzd/simplebook/service/impl/AdminServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_service/target/classes/com/wzd/simplebook/service/impl/AdminServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/editor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/editor.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/essay-detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/essay-detail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/ArticleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/PageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/ArticleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/PageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_dao-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_dao-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_domain-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_domain-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_service-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_service-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/admin-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/admin-list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/essay-detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/essay-detail.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cache/target/" />
     <ignored path="$PROJECT_DIR$/simplebook_service/target/" />
@@ -96,7 +64,7 @@
           <entry key="java" value="4042" />
           <entry key="jsp" value="2330" />
           <entry key="properties" value="8" />
-          <entry key="txt" value="94" />
+          <entry key="txt" value="115" />
           <entry key="xml" value="5" />
         </counts>
       </usages-collector>
@@ -105,7 +73,7 @@
           <entry key="CSS" value="8" />
           <entry key="JAVA" value="4042" />
           <entry key="JSP" value="2330" />
-          <entry key="PLAIN_TEXT" value="99" />
+          <entry key="PLAIN_TEXT" value="120" />
           <entry key="Properties" value="8" />
           <entry key="XML" value="5" />
         </counts>
@@ -127,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/ArticleController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="401">
-              <caret line="356" column="53" lean-forward="true" selection-start-line="356" selection-start-column="53" selection-end-line="356" selection-end-column="53" />
+              <caret line="354" column="53" lean-forward="true" selection-start-line="354" selection-start-column="53" selection-end-line="354" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -150,10 +118,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/essay-detail.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
+            <state relative-caret-position="-4180">
               <caret line="17" column="74" lean-forward="true" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -179,11 +147,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-418">
-              <caret line="71" column="61" selection-start-line="71" selection-start-column="61" selection-end-line="71" selection-end-column="61" />
+            <state relative-caret-position="-114">
+              <caret line="102" column="45" lean-forward="true" selection-start-line="102" selection-start-column="45" selection-end-line="102" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -201,7 +169,7 @@
         <entry file="file://$PROJECT_DIR$/simplebook_domain/src/main/java/com/wzd/simplebook/domain/Article.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-626">
-              <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
             </state>
           </provider>
         </entry>
@@ -210,7 +178,7 @@
         <entry file="file://$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/FollowDao.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="152">
-              <caret line="8" column="51" lean-forward="true" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
+              <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -562,7 +530,7 @@
     <property name="SearchEverywhereHistoryKey" value="Email&#9;PSI&#9;JAVA://com.wzd.simplebook.controller.EmailController&#10;commentid&#9;PSI&#9;JAVA://com.wzd.simplebook.domain.Comment#commentId" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570699972220" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570700535309" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -671,7 +639,7 @@
       <workItem from="1570209746168" duration="63387000" />
       <workItem from="1570536361604" duration="2291000" />
       <workItem from="1570538671004" duration="69000" />
-      <workItem from="1570689562272" duration="10090000" />
+      <workItem from="1570689562272" duration="10654000" />
     </task>
     <task id="LOCAL-00001" summary="-完成主页文章展示（分页区）-完成文章详情页-完成评论的展示与发表">
       <created>1570289361280</created>
@@ -701,17 +669,30 @@
       <option name="project" value="LOCAL" />
       <updated>1570380995334</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="-完成点赞、关注、收藏，优化文章编辑页面">
+      <created>1570700039690</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1570700039691</updated>
+    </task>
+    <task id="LOCAL-00006" summary="-完成点赞、关注、收藏，优化文章编辑页面">
+      <created>1570700249525</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1570700249525</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75837000" />
+    <option name="totallyTimeSpent" value="76401000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21715818" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21715818" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -721,7 +702,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.10638298" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.40567377" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4609929" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -729,7 +710,7 @@
       <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.49932975" weight="0.50070924" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49932975" weight="0.27620396" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067025" side_tool="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067025" side_tool="true" visible="true" weight="0.40567377" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32907802" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
@@ -784,7 +765,8 @@
     <MESSAGE value="-完成主页文章展示（分页区）-完成文章详情页-完成评论的展示与发表" />
     <MESSAGE value="-完成文章编辑，图片上传、articleid自动生成未解决" />
     <MESSAGE value="-完成文章编辑以及图片上传，未解决自动生成的articleid同时插入多表" />
-    <option name="LAST_COMMIT_MESSAGE" value="-完成文章编辑以及图片上传，未解决自动生成的articleid同时插入多表" />
+    <MESSAGE value="-完成点赞、关注、收藏，优化文章编辑页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="-完成点赞、关注、收藏，优化文章编辑页面" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1069,7 +1051,7 @@
     <entry file="file://$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/FollowDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
-          <caret line="8" column="51" lean-forward="true" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
+          <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1107,14 +1089,14 @@
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/ArticleController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="401">
-          <caret line="356" column="53" lean-forward="true" selection-start-line="356" selection-start-column="53" selection-end-line="356" selection-end-column="53" />
+          <caret line="354" column="53" lean-forward="true" selection-start-line="354" selection-start-column="53" selection-end-line="354" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/simplebook_domain/src/main/java/com/wzd/simplebook/domain/Article.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-626">
-          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
         </state>
       </provider>
     </entry>
@@ -1122,24 +1104,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="186" column="1" lean-forward="true" selection-start-line="186" selection-start-column="1" selection-end-line="186" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/essay-detail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="17" column="74" lean-forward="true" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#2;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#form#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#form#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#form#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#form#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#form#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1152,8 +1116,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-418">
-          <caret line="71" column="61" selection-start-line="71" selection-start-column="61" selection-end-line="71" selection-end-column="61" />
+        <state relative-caret-position="-114">
+          <caret line="102" column="45" lean-forward="true" selection-start-line="102" selection-start-column="45" selection-end-line="102" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/essay-detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4180">
+          <caret line="17" column="74" lean-forward="true" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#2;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#form#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#form#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#form#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#form#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#form#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
