@@ -178,4 +178,10 @@ public interface ArticleDao {
      */
     @Insert("insert into article(uid,headurl,head,articleid,`describe`,articleState)value(#{uid},#{headurl},#{head},#{articleId},#{describe},#{articleState})")
     void addArticle(Article article) throws Exception;
+
+    /**
+     * 点赞文章
+     */
+    @Update("update article set good = #{good} where articleid = #{articleId}")
+    void updateGoodforArticle(Article article) throws Exception;
 }

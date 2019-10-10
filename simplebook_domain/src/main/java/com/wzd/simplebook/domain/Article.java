@@ -18,7 +18,7 @@ public class Article implements Serializable {
     private Date releaseDate;
     private Integer fontCount;
     private Integer view;
-    private Integer good;
+    private String good;
     private Integer articleState;
     private String articleStateStr;
     private Integer report;
@@ -27,6 +27,10 @@ public class Article implements Serializable {
     private User user;
     //    private ArticleContent articleImgUrl;
     private ArticleContent articleContent;
+
+    public Article() {
+    }
+
 
     public String getHeadurl() {
         return headurl;
@@ -88,11 +92,11 @@ public class Article implements Serializable {
         this.view = view;
     }
 
-    public Integer getGood() {
+    public String getGood() {
         return good;
     }
 
-    public void setGood(Integer good) {
+    public void setGood(String good) {
         this.good = good;
     }
 

@@ -1,7 +1,9 @@
 package com.wzd.simplebook.dao;
 
 import com.wzd.simplebook.domain.Article;
+import com.wzd.simplebook.domain.Favor;
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -36,4 +38,11 @@ public interface FavorDao {
     int deleteFavorArticle(@Param("uid") String uid, @Param("articleId") String articleId);
 
 
+    /**
+     * 收藏文章
+     *
+     * @param favor
+     */
+    @Insert("insert into favor(uid,articleid)value(#{uid},#{articleId})")
+    void addFavor(Favor favor) throws Exception;
 }

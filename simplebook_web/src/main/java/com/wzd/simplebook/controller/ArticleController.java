@@ -1,11 +1,12 @@
 package com.wzd.simplebook.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.wzd.simplebook.domain.Article;
-import com.wzd.simplebook.domain.ArticleContent;
-import com.wzd.simplebook.domain.User;
+import com.sun.tools.doclets.internal.toolkit.Content;
+import com.wzd.simplebook.domain.*;
 import com.wzd.simplebook.service.ArticleContentService;
 import com.wzd.simplebook.service.ArticleService;
+import com.wzd.simplebook.service.FavorService;
+import com.wzd.simplebook.service.FollowService;
 import com.wzd.simplebook.utils.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.AbstractDocument;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +34,12 @@ public class ArticleController {
 
     @Autowired
     ArticleContentService articleContentService;
+
+    @Autowired
+    FavorService favorService;
+
+    @Autowired
+    FollowService followService;
 
     /*@Autowired
     UUIDUtils uuidUtils;*/
@@ -311,5 +321,39 @@ public class ArticleController {
     public String addArticleContent(ArticleContent articleContent) throws Exception {
         articleContentService.addArticleContent(articleContent);
         return "redirect:/editor-sccuss";
+    }
+
+    /**
+     * 收藏文章
+     */
+    @RequestMapping("/addFavor")
+    public String addFavor(Favor favor, HttpServletResponse response, RedirectAttributes attr) throws Exception {
+        favorService.addFavor(favor);
+        PrintWriter out = response.getWriter();
+        out.print("<script language=\"javascript\">alert('收藏成功！');</script>");
+        attr.addAttribute("articleId", favor.getArticleId());
+        return "redirect:/article/findArticleByAId";
+    }
+
+    /**
+     * 关注作者
+     */
+    @RequestMapping("/addFollow")
+    public String addFollow(Follow follow, HttpServletResponse response, RedirectAttributes attr) throws Exception {
+        followService.addFollow(follow);
+        PrintWriter out = response.getWriter();
+        out.print("<script language=\"javascript\">alert('收藏成功！');</script>");
+        attr.addAttribute("articleId", follow.getArticleId());
+        return "redirect:/article/findArticleByAId";
+    }
+
+    /**
+     * 点赞文章
+     */
+    @RequestMapping("/updateGoodforArticle")
+    public String updateGoodforArticle(Article article, RedirectAttributes attr) throws Exception {
+        articleService.updateGoodforArticle(article);
+        attr.addAttribute("articleId", article.getArticleId());
+        return "redirect:/article/findArticleByAId";
     }
 }

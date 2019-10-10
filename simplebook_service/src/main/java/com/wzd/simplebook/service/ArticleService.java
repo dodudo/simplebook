@@ -126,4 +126,9 @@ public interface ArticleService {
      */
     void addArticle(Article article) throws Exception;
 
+    /**
+     * 点赞文章
+     */
+    void updateGoodforArticle(Article article) throws Exception;
+
 }

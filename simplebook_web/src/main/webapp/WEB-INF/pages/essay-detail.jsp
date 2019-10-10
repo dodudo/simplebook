@@ -147,21 +147,29 @@
 
                 <!-- 本作者最新文章 -->
                 <div class="widget">
-                    <h6 class="mb-4">LATEST POST</h6>
+                    <h6 class="mb-4">AUTHOR POST</h6>
                     <div class="media mb-4">
                         <div class="post-thumb-sm mr-3">
-                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/masonary-post/post-1.jpg" alt="post-thumb">
+                            <img class="img-fluid"
+                                 src="${pageContext.request.contextPath}/images/${articleDetail.user.headImgs}"
+                                 alt="post-thumb">
                         </div>
                         <div class="media-body">
                             <ul class="list-inline d-flex justify-content-between mb-2">
                                 <li class="list-inline-item">Post By Jhon</li>
                                 <li class="list-inline-item">June 2, 2018</li>
                             </ul>
-                            <h6><a class="text-dark" href="${pageContext.request.contextPath}/essay-detail">Lorem ipsum dolor sit amet, consectetur</a></h6>
-                            <h6 class="attention"><a class="text-dark" href="${pageContext.request.contextPath}/essay-detail.jsp">关注</a></h6>
+                            <%--自我简介--%>
+                            <h6>Lorem ipsum dolor sit amet, consectetur</h6>
+                            <form action="${pageContext.request.contextPath}/article/addFollow" method="post">
+                                <input name="followId" value="${articleDetail.uid}" style="display: none;">
+                                <input name="uid" value="${sessionScope.user.uid}" style="display: none;">
+                                <input name="articleId" value="${articleDetail.articleId}" style="display: none;">
+                                <input type="submit" value="关注">
+                            </form>
                         </div>
                     </div>
-                    <div class="media mb-4">
+                    <%--<div class="media mb-4">
                         <div class="post-thumb-sm mr-3">
                             <img class="img-fluid" src="${pageContext.request.contextPath}/images/masonary-post/post-6.jpg" alt="post-thumb">
                         </div>
@@ -186,7 +194,7 @@
                             <h6><a class="text-dark" href="${pageContext.request.contextPath}/essay-detail.jsp">Lorem ipsum dolor sit amet, consectetur</a></h6>
                             <h6 class="attention"><a class="text-dark" href="${pageContext.request.contextPath}/essay-detail.jsp">关注</a></h6>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <!-- 本作者最新文章 -->
 
@@ -233,9 +241,17 @@
             <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
                 <ul class="list-unstyled">
                     <li class="font-secondary text-dark">
-                        <img style="width: 30px;height: 30px;text-align:center;margin-left:5px;cursor: pointer;"
-                             src="${pageContext.request.contextPath}/images/yizan.png"/>
-                        <p class="likes" style="margin-left: 15px;">&nbsp;</p>
+                        <form action="${pageContext.request.contextPath}/article/updateGoodforArticle" method="post">
+                            <input name="good" style="display: none" value="${articleDetail.good+1}">
+                            <input name="articleId" style="display: none" value="${articleDetail.articleId}">
+                            <input type="image"
+                                   style="width: 30px;height: 30px;text-align:center;margin-left:5px;cursor: pointer;"
+                                   src="${pageContext.request.contextPath}/images/yizan.png"
+                                   onclick="document.formName.submit()">
+                            <%--<img style="width: 30px;height: 30px;text-align:center;margin-left:5px;cursor: pointer;"
+                                 src="${pageContext.request.contextPath}/images/yizan.png"/>--%>
+                        </form>
+                        <p style="margin-left: 15px;">${articleDetail.good}</p>
                     </li>
                 </ul>
             </div>
@@ -244,7 +260,12 @@
             <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
                 <ul class="list-unstyled">
                     <li class="font-secondary text-dark">
-                        <h6><a class="text-dark" href="essay-detail.jsp">收藏</a></h6>
+                        <form action="${pageContext.request.contextPath}/article/addFavor" method="post">
+                            <input name="uid" style="display: none" value="${articleDetail.uid}"/>
+                            <input name="articleId" style="display: none;" value="${articleDetail.articleId}"/>
+                            <%--<a class="text-dark" href="${pageContext.request.contextPath}/article/addFavor">收藏</a>--%>
+                            <h6><input type="submit" value="收藏"></h6>
+                        </form>
                     </li>
 
                 </ul>
@@ -296,7 +317,7 @@
     <!--输入评论-->
     <div id="write_rew" style="width: 75%;height: 39%;margin: 0 auto;">
         <form action="${pageContext.request.contextPath}/comment/insertComment" method="post">
-            <input style="display: none;" name="uId" value="${articleDetail.uid}"/>
+            <input style="display: none;" name="uId" value="${sessionScope.user.uid}"/>
             <input style="display: none;" name="articleId" value="${articleDetail.articleId}"/>
             <%--<input style="display: none;" name="commentDate" value="${articleDetail.uid}"/>--%>
             <textarea rows="3" cols="20" class="text-content" name="content"
@@ -351,7 +372,7 @@
 <!-- Main Script -->
 <script src="${pageContext.request.contextPath}/js/script.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}js/jquery.js"></script>
-<script type="text/javascript">
+<%--<script type="text/javascript">
     $(function () {
         for (var i = 0; i < $('.likes').length; i++) {
             var ran = Math.floor(0)
@@ -363,9 +384,9 @@
             $(this).next().text(num);
         });
     });
-</script>
+</script>--%>
 
-<script>
+<%--<script>
     $(function () {
         //当前发起请求路径
         var wsUrl = "ws://"+window.location.host+"/ws";
@@ -381,6 +402,6 @@
 
 
     });
-</script>
+</script>--%>
 </body>
 </html>
