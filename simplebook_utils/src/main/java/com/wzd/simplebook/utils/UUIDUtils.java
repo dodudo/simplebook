@@ -8,10 +8,9 @@ import java.util.UUID;
 @Component
 public class UUIDUtils {
 
-    public static String getUUID() {
+    public String getUUID() {
         String articleId = UUID.randomUUID().toString().replace("-", "");
         return articleId;
-
     }
 
 

@@ -62,15 +62,11 @@
     </ul>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
-            <a href="javascript:;">admin</a>
+            <a href="javascript:;">${sessionScope.admin.aname}</a>
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
                 <dd>
-                    <a onclick="xadmin.open('个人信息','http://www.baidu.com')">个人信息</a></dd>
-                <dd>
-                    <a onclick="xadmin.open('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
-                <dd>
-                    <a href="login">退出</a></dd>
+                    <a href="adminlogin">退出</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item to-index">
@@ -100,32 +96,9 @@
                             <cite>会员列表(静态表格)</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('会员列表(动态表格)','memberList1',true)">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>会员列表(动态表格)</cite></a>
-                    </li>
-                    <li>
                         <a onclick="xadmin.add_tab('会员删除','memberDel',true)">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员删除</cite></a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont">&#xe70b;</i>
-                            <cite>会员管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i></a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a onclick="xadmin.add_tab('会员删除','memberDel',true)">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>会员删除</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('等级管理','memberList1',true)">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>等级管理</cite></a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </li>
@@ -154,19 +127,6 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont left-nav-li" lay-tips="分类管理">&#xe723;</i>
-                    <cite>分类管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i></a>
-                <ul class="sub-menu">
-                    <li>
-                        <a onclick="xadmin.add_tab('多级分类','cate')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>多级分类</cite></a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
                     <i class="iconfont left-nav-li" lay-tips="管理员管理">&#xe726;</i>
                     <cite>管理员管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
@@ -177,7 +137,11 @@
                             <cite>管理员列表</cite></a>
                     </li>
                     <li>
+<<<<<<< HEAD
                         <a onclick="xadmin.add_tab('角色管理','adminRole')">
+=======
+                        <a onclick="xadmin.add_tab('管理员删除','adminDelList')">
+>>>>>>> 3d5c420f63b7f48659c4062d61c21a6922b61b85
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>管理员删除</cite></a>
                     </li>
@@ -194,7 +158,7 @@
                 </ul>
             </li>
 
-            <li>
+           <%-- <li>
                 <a href="javascript:;">
                     <i class="iconfont left-nav-li" lay-tips="其它页面">&#xe6b4;</i>
                     <cite>其它页面</cite>
@@ -211,7 +175,7 @@
                             <cite>错误页面</cite></a>
                     </li>
                 </ul>
-            </li>
+            </li>--%>
 
         </ul>
     </div>

@@ -65,7 +65,7 @@ public interface ArticleService {
      * @param i
      * @return
      */
-    boolean changeManyArticleState(String id, int i);
+    boolean changeManyArticleState(String[] id, int i);
 
     /**
      * 根据文章关键字查找文章

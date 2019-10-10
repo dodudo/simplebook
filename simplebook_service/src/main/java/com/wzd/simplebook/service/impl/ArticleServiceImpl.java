@@ -136,7 +136,7 @@ public class ArticleServiceImpl implements ArticleService {
     @CacheEvict(value = {"allArticleCache","articleCache","riskArticlesCache",
             "searcherArticleKeyCache","searRiskcherArticleKeyCache",
             "hadDelArticleCache","searchHadDelArticleKeyCache"},allEntries = true)
-    public boolean changeManyArticleState(String id, int state) {
+    public boolean changeManyArticleState(String[] id, int state) {
         if (articleDao.changeManyArticleState(id,state)>0){
           return true;
         }else {

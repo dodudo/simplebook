@@ -45,10 +45,19 @@
                 <div class="layui-card-body ">
                     <form class="layui-form layui-col-space5">
                         <div class="layui-inline layui-show-xs-block">
+<<<<<<< HEAD
                             <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-inline layui-show-xs-block">
                             <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+=======
+                            <input type="text" name="aname" id="search_input" placeholder="请输入关键字" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <div class="layui-inline layui-show-xs-block">
+                            <label class="layui-btn" onclick="findAdminByKey()" lay-submit="" lay-filter="sreach"><i
+                                    class="layui-icon">&#xe615;</i></label>
+>>>>>>> 3d5c420f63b7f48659c4062d61c21a6922b61b85
                         </div>
                     </form>
                 </div>
@@ -137,7 +146,11 @@
                 for (index in adminsPageInfo.list){
                     showList += ("<tr>\n" +
                         "                            <td>\n" +
+<<<<<<< HEAD
                         "                                <input class='row-check' type=\"checkbox\" name='' value = '"+adminsPageInfo.list[index].adminid+"' lay-skin=\"primary\">\n" +
+=======
+                        "                                <input class='row-check' type=\"checkbox\" name='id' value = '" + adminsPageInfo.list[index].adminId + "' lay-skin=\"primary\">\n" +
+>>>>>>> 3d5c420f63b7f48659c4062d61c21a6922b61b85
                         "                            </td>\n" +
                         "                            <td>"+adminsPageInfo.list[index].adminId+"</td>\n" +
                         "                            <td>"+adminsPageInfo.list[index].aname+"</td>\n" +
@@ -187,6 +200,7 @@
         var form = layui.form;
         // 监听全选
         form.on('checkbox(checkall)', function(data){
+<<<<<<< HEAD
 
             if(data.elem.checked){
                 $('tbody .row-check').prop('checked',true);
@@ -224,6 +238,45 @@
                         success:function (data) {
                             if (data.role_msg == true){
 
+=======
+
+            if(data.elem.checked){
+                $('tbody .row-check').prop('checked',true);
+            }else{
+                $('tbody .row-check').prop('checked',false);
+            }
+            form.render('checkbox');
+        });
+        form.on('switch(state)',function (data) {
+            if ('${sessionScope.get("admin").role}'!=1){
+                layer.msg('权限不足!',{icon: 5,time:1000});
+                console.log(flag);
+                var flag=data.elem.checked;
+                data.elem.checked = !flag;
+                form.render("checkbox");
+            }else {
+                layer.confirm('确认要停用/启用吗？',function(index){
+                    var flag = 1;
+                    console.log(data);
+                    if(data.value=='1'){
+                        //发异步把用户状态进行更改
+                        var flag = 2;
+                        data.elem.attributes['value'].nodeValue=2;
+                        layer.msg('已停用!',{icon: 5,time:1000});
+                    }else{
+                        flag = 1;
+                        data.elem.attributes['value'].nodeValue=1;
+                        layer.msg('已启用!',{icon: 6,time:1000});
+                    }
+                    form.render();
+                    $.ajax({
+                        url:"/admin/changeState",
+                        type: "get",
+                        data: {"aid":data.elem.attributes['id'].nodeValue,"state":flag},
+                        success:function (data) {
+                            if (data.role_msg == true){
+
+>>>>>>> 3d5c420f63b7f48659c4062d61c21a6922b61b85
                             } else {
                                 layer.msg('权限不足!',{icon: 5,time:1000});
                             }
@@ -287,23 +340,134 @@
 
     /*用户-删除*/
     function member_del(obj,id){
-        layer.confirm('确认要删除吗？',function(index){
-            //发异步删除数据
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!',{icon:1,time:1000});
-        });
+        if ('${sessionScope.admin.role}' == '1') {
+            layer.confirm('确认要删除吗？', function (index) {
+                //发异步删除数据
+                $.ajax({
+                    url: "/admin/changeState",
+                    type: "get",
+                    data: {"aid": id, "state": 0},
+                    success: function (data) {
+                        if (data.msg == true) {
+                            $(obj).parents("tr").remove();
+                            layer.msg('已删除!', {icon: 1, time: 1000});
+                        } else {
+                            layer.msg('删除失败!', {icon: 5, time: 1000});
+                        }
+                    },
+                    error: function () {
+                        layer.msg('删除失败!', {icon: 5, time: 1000});
+                    }
+                });
+
+            });
+        } else {
+            layer.msg('权限不足!', {icon: 5, time: 1000});
+        }
+
     }
 
 
 
     function delAll (argument) {
 
-        var data = tableCheck.getData();
+        if ('${sessionScope.admin.role}' == '1') {
+            var ids = [];
 
-        layer.confirm('确认要删除吗？'+data,function(index){
-            //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
-            $(".layui-form-checked").not('.header').parents('tr').remove();
+            // 获取选中的id
+            $('tbody .row-check').each(function (index, el) {
+                if ($(this).prop('checked')) {
+                    ids.push($(this).val())
+                }
+            });
+            layer.confirm('确认要删除吗？' + ids, function (index) {
+                //捉到所有被选中的，发异步进行删除
+                $.ajax({
+                    url: "/admin/changeState",
+                    type: "get",
+                    data: {"aid": ids.toString(), "state": 0},
+                    success: function (data) {
+                        if (data.msg == true) {
+                            layer.msg('删除成功', {icon: 1});
+                            $(".layui-form-checked").not('.header').parents('tr').remove();
+                        } else {
+                            layer.msg('删除失败', {icon: 5});
+                        }
+                    },
+                    error: function () {
+                        layer.msg('删除失败', {icon: 5});
+                    }
+                });
+
+            });
+        } else {
+            layer.msg('权限不足', {icon: 5});
+        }
+    }
+
+    function findAdminByKey() {
+        var key = $("#search_input").val();
+
+        if (key != '') {
+            sendFindByKey(1, key);
+        }
+    }
+
+    function sendFindByKey(pageNum, key) {
+        $.ajax({
+            url: "/admin/findByKey",
+            type: "get",
+            data: {"pageNum": pageNum, "key": key},
+            success: function (data) {
+                var adminsPageInfo = data.adminsPageInfo;
+                var showList = "";
+                var index;
+                for (index in adminsPageInfo.list) {
+                    showList += ("<tr>\n" +
+                        "                            <td>\n" +
+                        "                                <input class='row-check' type=\"checkbox\" name='id' value = '" + adminsPageInfo.list[index].adminId + "' lay-skin=\"primary\">\n" +
+                        "                            </td>\n" +
+                        "                            <td>" + adminsPageInfo.list[index].adminId + "</td>\n" +
+                        "                            <td>" + adminsPageInfo.list[index].aname + "</td>\n" +
+                        "                            <td>" + adminsPageInfo.list[index].phone + "</td>\n" +
+                        "                            <td>" + adminsPageInfo.list[index].email + "</td>\n" +
+                        "                            <td data-field=\"state\" data-key=\"1-0-4\" data-content=\"已启用\" class=\"\"><form class='layui-form'>\n" +
+                        "                                <div   class=\"layui-table-cell laytable-cell-1-0-4\"> \n" +
+                        "                                    <input type='checkbox' name='state'  lay-skin='switch' " +
+                        (adminsPageInfo.list[index].state == 1 ? 'checked' : '') + " id='" + adminsPageInfo.list[index].adminId + "'  value = '" + adminsPageInfo.list[index].state + "' lay-text=\"已启用|已停用\" lay-filter=\"state\">\n" +
+                        "                                </div></form>\n" +
+                        "                            </td>" +
+                        "                            <td class=\"td-status\">\n" +
+                        "                                <span class=\"layui-btn layui-btn-normal layui-btn-mini\">" + adminsPageInfo.list[index].roleStr + "</span>" +
+                        "                            </td>\n" +
+                        "                            <td class=\"td-manage\">\n" +
+                        "                                <a title=\"编辑\"  onclick=\"xadmin.open('编辑','adminEdit?aid=" + adminsPageInfo.list[index].adminId + "')\" href=\"javascript:;\">\n" +
+                        "                                    <i class=\"layui-icon\">&#xe642;</i>\n" +
+                        "                                </a>\n" +
+                        "                                <a title=\"删除\" onclick=\"member_del(this,'" + adminsPageInfo.list[index].adminId + "')\" href=\"javascript:;\">\n" +
+                        "                                    <i class=\"layui-icon\">&#xe640;</i>\n" +
+                        "                                </a>\n" +
+                        "                            </td>\n" +
+                        "                        </tr>");
+
+                }
+                $(".admin-tbody").html(showList);
+                $("#adminPage").sPage({
+                    page: adminsPageInfo.pageNum,//当前页码，必填
+                    total: adminsPageInfo.total,//数据总条数，必填
+                    pageSize: 10,//每页显示多少条数据，默认10条
+                    totalTxt: "共" + adminsPageInfo.total + "条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+                    showTotal: true,//是否显示总条数，默认关闭：false
+                    showSkip: false,//是否显示跳页，默认关闭：false
+                    showPN: true,//是否显示上下翻页，默认开启：true
+                    prevPage: "上一页",//上翻页文字描述，默认“上一页”
+                    nextPage: "下一页",//下翻页文字描述，默认“下一页”
+                    backFun: function (page) {
+                        //点击分页按钮回调函数，返回当前页码
+                        sendFindAllAdmin(page, key);
+                    }
+                });
+            }
         });
     }
 </script>

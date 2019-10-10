@@ -97,4 +97,13 @@ public interface UserDao {
      */
     @Update("update user set uname = #{uname},phone = #{phone},sex = #{sex},about = #{about} where uid = #{uid}")
     int changeUserInfo(User user)throws Exception;
+
+    /**
+     * 修改用户密码
+     *
+     * @param user
+     * @return
+     */
+    @Update("update user set upassword = #{upassword} where email = #{email}")
+    int changePwd(User user) throws Exception;
 }

@@ -146,16 +146,11 @@ public class ArticleController {
                     map.put("delArticleMsg",false);
                 }
             }else {
-                StringBuffer sb = new StringBuffer();
-                for (int i = 0;i<articleId.length;i++) {
-                    if (i==0){
-                        sb.append(articleId[i]);
-                    }else {
-                        sb.append(","+articleId[i]);
-                    }
+                if (articleService.changeManyArticleState(articleId, 0)) {
+                    map.put("delArticleMsg", true);
+                } else {
+                    map.put("delArticleMsg", false);
                 }
-                id = sb.toString();
-                articleService.changeManyArticleState(id,0);
             }
         }
 
@@ -208,7 +203,7 @@ public class ArticleController {
     public @ResponseBody Map<String,Object> findArticleByKey(int pageNum,String articleKey) throws Exception {
         Map<String,Object> map = new HashMap<>();
         PageInfo articlesPageInfo = articleService.findArticlesByKey(pageNum,articleKey);
-        System.out.println(articlesPageInfo);
+//        System.out.println(articlesPageInfo);
         map.put("articlesPageInfo",articlesPageInfo);
         return map;
     }
@@ -273,16 +268,11 @@ public class ArticleController {
                     map.put("delArticleMsg",false);
                 }
             }else {
-                StringBuffer sb = new StringBuffer();
-                for (int i = 0;i<articleId.length;i++) {
-                    if (i==0){
-                        sb.append(articleId[i]);
-                    }else {
-                        sb.append(","+articleId[i]);
-                    }
+                if (articleService.changeManyArticleState(articleId, 1)) {
+                    map.put("delArticleMsg", true);
+                } else {
+                    map.put("delArticleMsg", false);
                 }
-                id = sb.toString();
-                articleService.changeManyArticleState(id,1);
             }
         }
 
