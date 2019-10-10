@@ -275,4 +275,13 @@
             }
         });
     })
-    if ('${sessionScope.a
+    if ('${sessionScope.admin.role}' != '1') {
+        $("#role").attr("disabled", "disabled");
+        form.render('select');
+    }
+</script>
+</body>
+
+</html>
+
+

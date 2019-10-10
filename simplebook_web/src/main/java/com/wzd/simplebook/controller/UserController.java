@@ -223,5 +223,24 @@ public class UserController {
         return map;
     }
 
-
+    /**
+     * 修改用户密码
+     *
+     * @param user
+     * @return
+     */
+    @RequestMapping("/backupPwd")
+    public @ResponseBody
+    Map<String, Object> backupPwd(ModelMap modelMap, User user) throws Exception {
+        User sessionUser = (User) modelMap.get("user");
+        Map<String, Object> map = new HashMap<>();
+        System.out.println(user);
+        //判断密码是否被修改
+        if (userService.changePwd(user)) {
+            map.put("change_msg", true);
+        } else {
+            map.put("change_msg", false);
+        }
+        return map;
+    }
 }

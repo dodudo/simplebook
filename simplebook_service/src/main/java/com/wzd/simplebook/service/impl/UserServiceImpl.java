@@ -93,4 +93,19 @@ public class UserServiceImpl implements UserService {
             return false;
         }
     }
+
+    /**
+     * 修改用户密码
+     *
+     * @param user
+     * @return
+     */
+    @Override
+    public boolean changePwd(User user) throws Exception {
+        if (userDao.changePwd(user) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

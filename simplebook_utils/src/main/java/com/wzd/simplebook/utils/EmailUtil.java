@@ -27,7 +27,7 @@ public class EmailUtil {
         //设置邮箱地址和授权码
         email.setAuthentication("18384354901@163.com","201304wy");
         //设置发送主题
-        email.setSubject("【simplebook】尊敬的”"+username+"“感谢您注册本网站");
+        email.setSubject("【simplebook】尊敬的”" + username + "“，您好！");
 
         for (int i = 0 ; i<4 ;i++){
             checkCode.append(new Random().nextInt(10));

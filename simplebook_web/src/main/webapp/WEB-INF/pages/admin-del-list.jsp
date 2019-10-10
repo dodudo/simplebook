@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getRequestURI();
-    String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ path;
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 <html class="x-admin-sm">
 <head>
@@ -55,21 +55,20 @@
                     </form>
                 </div>
                 <div class="layui-card-header">
-                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                    <button class="layui-btn" onclick="xadmin.open('添加用户','${pageContext.request.contextPath}/admin-add',600,400)"><i class="layui-icon"></i>添加</button>
+                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量恢复
+                    </button>
                 </div>
                 <div class="layui-card-body ">
                     <table class="layui-table layui-form">
                         <thead>
                         <tr>
                             <th>
-                                <input type="checkbox" lay-filter="checkall" name=""  lay-skin="primary">
+                                <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
                             </th>
                             <th>ID</th>
                             <th>登录名</th>
                             <th>手机</th>
                             <th>邮箱</th>
-                            <th>状态</th>
                             <th>身份</th>
                             <th>操作</th>
                         </thead>
@@ -85,7 +84,8 @@
                             <td data-field="sex" data-key="1-0-4" data-content="女" class="">
                                 <div class="layui-table-cell laytable-cell-1-0-4">
                                     <!-- 这里的checked的状态只是演示 -->
-                                    <input type="checkbox" name="sex" value="10004" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo">
+                                    <input type="checkbox" name="sex" value="10004" lay-skin="switch" lay-text="女|男"
+                                           lay-filter="sexDemo">
                                     <div class="layui-unselect layui-form-switch" lay-skin="_switch">
                                         <em>男</em><i></i>
                                     </div>
@@ -97,12 +97,6 @@
                             <td class="td-status">
                                 <span class="layui-btn layui-btn-normal layui-btn-mini">hhh</span></td>
                             <td class="td-manage">
-                                <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
-                                    <i class="layui-icon">&#xe601;</i>
-                                </a>
-                                <a title="编辑"  onclick="xadmin.open('编辑','adminEdit')" href="javascript:;">
-                                    <i class="layui-icon">&#xe642;</i>
-                                </a>
                                 <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
                                     <i class="layui-icon">&#xe640;</i>
                                 </a>
@@ -127,39 +121,31 @@
     $(function () {
         sendFindAllAdmin(1);
     });
-    function sendFindAllAdmin(pageNum){
+
+    function sendFindAllAdmin(pageNum) {
         $.ajax({
-            url:"/admin/findAll",
-            type:"get",
-            data:{"pageNum":pageNum},
-            success:function (data) {
+            url: "/admin/findAllDel",
+            type: "get",
+            data: {"pageNum": pageNum},
+            success: function (data) {
                 var adminsPageInfo = data.adminsPageInfo;
                 var showList = "";
                 var index;
-                for (index in adminsPageInfo.list){
+                for (index in adminsPageInfo.list) {
                     showList += ("<tr>\n" +
                         "                            <td>\n" +
                         "                                <input class='row-check' type=\"checkbox\" name='id' value = '" + adminsPageInfo.list[index].adminId + "' lay-skin=\"primary\">\n" +
                         "                            </td>\n" +
-                        "                            <td>"+adminsPageInfo.list[index].adminId+"</td>\n" +
-                        "                            <td>"+adminsPageInfo.list[index].aname+"</td>\n" +
-                        "                            <td>"+adminsPageInfo.list[index].phone+"</td>\n" +
-                        "                            <td>"+adminsPageInfo.list[index].email+"</td>\n" +
-                        "                            <td data-field=\"state\" data-key=\"1-0-4\" data-content=\"已启用\" class=\"\"><form class='layui-form'>\n" +
-                        "                                <div   class=\"layui-table-cell laytable-cell-1-0-4\"> \n" +
-                        "                                    <input type='checkbox' name='state'  lay-skin='switch' " +
-                        (adminsPageInfo.list[index].state==1 ? 'checked' : '') + " id='"+adminsPageInfo.list[index].adminId+"'  value = '"+adminsPageInfo.list[index].state+"' lay-text=\"已启用|已停用\" lay-filter=\"state\">\n" +
-                        "                                </div></form>\n" +
-                        "                            </td>" +
+                        "                            <td>" + adminsPageInfo.list[index].adminId + "</td>\n" +
+                        "                            <td>" + adminsPageInfo.list[index].aname + "</td>\n" +
+                        "                            <td>" + adminsPageInfo.list[index].phone + "</td>\n" +
+                        "                            <td>" + adminsPageInfo.list[index].email + "</td>\n" +
                         "                            <td class=\"td-status\">\n" +
-                        "                                <span class=\"layui-btn layui-btn-normal layui-btn-mini\">"+adminsPageInfo.list[index].roleStr+"</span>" +
+                        "                                <span class=\"layui-btn layui-btn-normal layui-btn-mini\">" + adminsPageInfo.list[index].roleStr + "</span>" +
                         "                            </td>\n" +
                         "                            <td class=\"td-manage\">\n" +
-                        "                                <a title=\"编辑\"  onclick=\"xadmin.open('编辑','adminEdit?aid="+adminsPageInfo.list[index].adminId+"')\" href=\"javascript:;\">\n" +
-                        "                                    <i class=\"layui-icon\">&#xe642;</i>\n" +
-                        "                                </a>\n" +
-                        "                                <a title=\"删除\" onclick=\"member_del(this,'"+adminsPageInfo.list[index].adminId+"')\" href=\"javascript:;\">\n" +
-                        "                                    <i class=\"layui-icon\">&#xe640;</i>\n" +
+                        "                                <a title=\"恢复\" onclick=\"member_del(this,'" + adminsPageInfo.list[index].adminId + "')\" href=\"javascript:;\">\n" +
+                        "                                    <i class=\"layui-icon\">&#xe669;</i>\n" +
                         "                                </a>\n" +
                         "                            </td>\n" +
                         "                        </tr>");
@@ -167,16 +153,16 @@
                 }
                 $(".admin-tbody").html(showList);
                 $("#adminPage").sPage({
-                    page:adminsPageInfo.pageNum,//当前页码，必填
-                    total:adminsPageInfo.total,//数据总条数，必填
-                    pageSize:10,//每页显示多少条数据，默认10条
-                    totalTxt:"共"+adminsPageInfo.total+"条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-                    showTotal:true,//是否显示总条数，默认关闭：false
-                    showSkip:false,//是否显示跳页，默认关闭：false
-                    showPN:true,//是否显示上下翻页，默认开启：true
-                    prevPage:"上一页",//上翻页文字描述，默认“上一页”
-                    nextPage:"下一页",//下翻页文字描述，默认“下一页”
-                    backFun:function(page){
+                    page: adminsPageInfo.pageNum,//当前页码，必填
+                    total: adminsPageInfo.total,//数据总条数，必填
+                    pageSize: 10,//每页显示多少条数据，默认10条
+                    totalTxt: "共" + adminsPageInfo.total + "条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+                    showTotal: true,//是否显示总条数，默认关闭：false
+                    showSkip: false,//是否显示跳页，默认关闭：false
+                    showPN: true,//是否显示上下翻页，默认开启：true
+                    prevPage: "上一页",//上翻页文字描述，默认“上一页”
+                    nextPage: "下一页",//下翻页文字描述，默认“下一页”
+                    backFun: function (page) {
                         //点击分页按钮回调函数，返回当前页码
                         sendFindAllAdmin(page);
                     }
@@ -188,52 +174,52 @@
         var laydate = layui.laydate;
         var form = layui.form;
         // 监听全选
-        form.on('checkbox(checkall)', function(data){
+        form.on('checkbox(checkall)', function (data) {
 
-            if(data.elem.checked){
-                $('tbody .row-check').prop('checked',true);
-            }else{
-                $('tbody .row-check').prop('checked',false);
+            if (data.elem.checked) {
+                $('tbody .row-check').prop('checked', true);
+            } else {
+                $('tbody .row-check').prop('checked', false);
             }
             form.render('checkbox');
         });
-        form.on('switch(state)',function (data) {
-            if ('${sessionScope.get("admin").role}'!=1){
-                layer.msg('权限不足!',{icon: 5,time:1000});
+        form.on('switch(state)', function (data) {
+            if ('${sessionScope.get("admin").role}' != 1) {
+                layer.msg('权限不足!', {icon: 5, time: 1000});
                 console.log(flag);
-                var flag=data.elem.checked;
+                var flag = data.elem.checked;
                 data.elem.checked = !flag;
                 form.render("checkbox");
-            }else {
-                layer.confirm('确认要停用/启用吗？',function(index){
+            } else {
+                layer.confirm('确认要停用/启用吗？', function (index) {
                     var flag = 1;
                     console.log(data);
-                    if(data.value=='1'){
+                    if (data.value == '1') {
                         //发异步把用户状态进行更改
                         var flag = 2;
-                        data.elem.attributes['value'].nodeValue=2;
-                        layer.msg('已停用!',{icon: 5,time:1000});
-                    }else{
+                        data.elem.attributes['value'].nodeValue = 2;
+                        layer.msg('已停用!', {icon: 5, time: 1000});
+                    } else {
                         flag = 1;
-                        data.elem.attributes['value'].nodeValue=1;
-                        layer.msg('已启用!',{icon: 6,time:1000});
+                        data.elem.attributes['value'].nodeValue = 1;
+                        layer.msg('已启用!', {icon: 6, time: 1000});
                     }
                     form.render();
                     $.ajax({
-                        url:"/admin/changeState",
+                        url: "/admin/changeState",
                         type: "get",
-                        data: {"aid":data.elem.attributes['id'].nodeValue,"state":flag},
-                        success:function (data) {
-                            if (data.role_msg == true){
+                        data: {"aid": data.elem.attributes['id'].nodeValue, "state": flag},
+                        success: function (data) {
+                            if (data.role_msg == true) {
 
                             } else {
-                                layer.msg('权限不足!',{icon: 5,time:1000});
+                                layer.msg('权限不足!', {icon: 5, time: 1000});
                             }
                         }
                     });
                     return;
-                },function () {
-                    var flag=data.elem.checked;
+                }, function () {
+                    var flag = data.elem.checked;
                     data.elem.checked = !flag;
                     form.render("checkbox");
                 });
@@ -254,58 +240,58 @@
 
     /*用户-停用*/
     function member_stop(obj,id){
-        layer.confirm('确认要停用/启用吗？',function(index){
+        layer.confirm('确认要停用/启用吗？', function (index) {
             console.log($(obj).children('input'))
             var flag = 1;
-            if($(obj).val()=='1'){
+            if ($(obj).val() == '1') {
 
                 //发异步把用户状态进行更改
                 $(obj).val('2');
                 var flag = 2;
-                $(obj).find('input').attr("checked",true)
+                $(obj).find('input').attr("checked", true)
                 layer.msg('已停用!',{icon: 5,time:1000});
 
             }else{
                 $(obj).val('1')
                 flag = 1;
-                $(obj).find('input').attr("checked",false)
-                layer.msg('已启用!',{icon: 6,time:1000});
+                $(obj).find('input').attr("checked", false)
+                layer.msg('已启用!', {icon: 6, time: 1000});
             }
-           /* $.ajax({
-                url:"/admin/changeArticleState",
-                type: "get",
-                data: {"articleId":id,"state":flag},
-                success:function (data) {
-                    if (data.msg == true){
+            /* $.ajax({
+                 url:"/admin/changeArticleState",
+                 type: "get",
+                 data: {"articleId":id,"state":flag},
+                 success:function (data) {
+                     if (data.msg == true){
 
-                    } else {
+                     } else {
 
-                    }
-                }
-            });
-*/
+                     }
+                 }
+             });
+ */
         });
     }
 
     /*用户-删除*/
     function member_del(obj,id){
         if ('${sessionScope.admin.role}' == '1') {
-            layer.confirm('确认要删除吗？', function (index) {
+            layer.confirm('确认要恢复吗？', function (index) {
                 //发异步删除数据
                 $.ajax({
                     url: "/admin/changeState",
                     type: "get",
-                    data: {"aid": id, "state": 0},
+                    data: {"aid": id, "state": 1},
                     success: function (data) {
                         if (data.msg == true) {
                             $(obj).parents("tr").remove();
-                            layer.msg('已删除!', {icon: 1, time: 1000});
+                            layer.msg('恢复成功!', {icon: 1, time: 1000});
                         } else {
-                            layer.msg('删除失败!', {icon: 5, time: 1000});
+                            layer.msg('恢复失败!', {icon: 5, time: 1000});
                         }
                     },
                     error: function () {
-                        layer.msg('删除失败!', {icon: 5, time: 1000});
+                        layer.msg('恢复失败!', {icon: 5, time: 1000});
                     }
                 });
 
@@ -329,22 +315,22 @@
                     ids.push($(this).val())
                 }
             });
-            layer.confirm('确认要删除吗？' + ids, function (index) {
+            layer.confirm('确认要恢复吗？' + ids, function (index) {
                 //捉到所有被选中的，发异步进行删除
                 $.ajax({
                     url: "/admin/changeState",
                     type: "get",
-                    data: {"aid": ids.toString(), "state": 0},
+                    data: {"aid": ids.toString(), "state": 1},
                     success: function (data) {
                         if (data.msg == true) {
-                            layer.msg('删除成功', {icon: 1});
+                            layer.msg('恢复成功', {icon: 1});
                             $(".layui-form-checked").not('.header').parents('tr').remove();
                         } else {
-                            layer.msg('删除失败', {icon: 5});
+                            layer.msg('恢复失败', {icon: 5});
                         }
                     },
                     error: function () {
-                        layer.msg('删除失败', {icon: 5});
+                        layer.msg('恢复失败', {icon: 5});
                     }
                 });
 
@@ -364,7 +350,7 @@
 
     function sendFindByKey(pageNum, key) {
         $.ajax({
-            url: "/admin/findByKey",
+            url: "/admin/findDelByKey",
             type: "get",
             data: {"pageNum": pageNum, "key": key},
             success: function (data) {
@@ -380,21 +366,12 @@
                         "                            <td>" + adminsPageInfo.list[index].aname + "</td>\n" +
                         "                            <td>" + adminsPageInfo.list[index].phone + "</td>\n" +
                         "                            <td>" + adminsPageInfo.list[index].email + "</td>\n" +
-                        "                            <td data-field=\"state\" data-key=\"1-0-4\" data-content=\"已启用\" class=\"\"><form class='layui-form'>\n" +
-                        "                                <div   class=\"layui-table-cell laytable-cell-1-0-4\"> \n" +
-                        "                                    <input type='checkbox' name='state'  lay-skin='switch' " +
-                        (adminsPageInfo.list[index].state == 1 ? 'checked' : '') + " id='" + adminsPageInfo.list[index].adminId + "'  value = '" + adminsPageInfo.list[index].state + "' lay-text=\"已启用|已停用\" lay-filter=\"state\">\n" +
-                        "                                </div></form>\n" +
-                        "                            </td>" +
                         "                            <td class=\"td-status\">\n" +
                         "                                <span class=\"layui-btn layui-btn-normal layui-btn-mini\">" + adminsPageInfo.list[index].roleStr + "</span>" +
                         "                            </td>\n" +
                         "                            <td class=\"td-manage\">\n" +
-                        "                                <a title=\"编辑\"  onclick=\"xadmin.open('编辑','adminEdit?aid=" + adminsPageInfo.list[index].adminId + "')\" href=\"javascript:;\">\n" +
-                        "                                    <i class=\"layui-icon\">&#xe642;</i>\n" +
-                        "                                </a>\n" +
-                        "                                <a title=\"删除\" onclick=\"member_del(this,'" + adminsPageInfo.list[index].adminId + "')\" href=\"javascript:;\">\n" +
-                        "                                    <i class=\"layui-icon\">&#xe640;</i>\n" +
+                        "                                <a title=\"恢复\" onclick=\"member_del(this,'" + adminsPageInfo.list[index].adminId + "')\" href=\"javascript:;\">\n" +
+                        "                                    <i class=\"layui-icon\">&#xe669;</i>\n" +
                         "                                </a>\n" +
                         "                            </td>\n" +
                         "                        </tr>");

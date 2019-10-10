@@ -61,4 +61,12 @@ public interface UserService {
      * @return
      */
     boolean changeUserInfo(User user) throws Exception;
+
+    /**
+     * 修改用户密码
+     *
+     * @param user
+     * @return
+     */
+    boolean changePwd(User user) throws Exception;
 }

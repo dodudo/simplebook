@@ -68,6 +68,22 @@ public class AdminController {
     }
 
     /**
+     * 查询所有被删除的管理员
+     *
+     * @param
+     * @param pageNum
+     * @return
+     */
+    @RequestMapping("/findAllDel")
+    public @ResponseBody
+    Map<String, Object> findAllDel(int pageNum) throws Exception {
+        Map<String, Object> map = new HashMap<>();
+        PageInfo<Admin> adminsPageInfo = adminService.findAllDel(pageNum);
+        map.put("adminsPageInfo", adminsPageInfo);
+        return map;
+    }
+
+    /**
      * 更改管理员状态
      * @param request
      * @param aid
@@ -86,34 +102,23 @@ public class AdminController {
         }else {
             String id = null;
             boolean flag = true;
-            for (String a : aid) {
-                if (a.equals(admin.getAdminId())) {
-                    flag = false;
-                }
-            }
-            if (aid.length > 0 && aid != null && flag) {
-                if (aid.length == 1) {
-                    id = aid[0];
-                } else {
-                    StringBuffer sb = new StringBuffer();
-                    for (int i = 0; i < aid.length; i++) {
-                        if (i == 0) {
-                            sb.append(aid[i]);
-                        } else {
-                            sb.append("," + aid[i]);
-                        }
+            if (aid.length > 0 && aid != null) {
+                for (String a : aid) {
+                    if (a.equals(admin.getAdminId())) {
+                        flag = false;
                     }
-                    id = sb.toString();
                 }
-                if (adminService.changeState(id, state)) {
-                    map.put("msg", true);
+                if (flag) {
+                    if (adminService.changeState(aid, state)) {
+                        map.put("msg", true);
+                    } else {
+                        map.put("msg", false);
+                    }
                 } else {
                     map.put("msg", false);
                 }
-            } else {
-                map.put("msg", false);
+                map.put("role_msg", true);
             }
-            map.put("role_msg", true);
         }
 
         return map;
@@ -191,6 +196,22 @@ public class AdminController {
     Map<String, Object> findByKey(int pageNum, String key) throws Exception {
         Map<String, Object> map = new HashMap<>();
         PageInfo<Admin> adminsPageInfo = adminService.findByKey(pageNum, key);
+        map.put("adminsPageInfo", adminsPageInfo);
+        return map;
+    }
+
+    /**
+     * 根据关键字查询被删除管理员
+     *
+     * @param
+     * @param pageNum
+     * @return
+     */
+    @RequestMapping("/findDelByKey")
+    public @ResponseBody
+    Map<String, Object> findDelByKey(int pageNum, String key) throws Exception {
+        Map<String, Object> map = new HashMap<>();
+        PageInfo<Admin> adminsPageInfo = adminService.findDelByKey(pageNum, key);
         map.put("adminsPageInfo", adminsPageInfo);
         return map;
     }

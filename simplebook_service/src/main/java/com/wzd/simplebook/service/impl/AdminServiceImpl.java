@@ -50,7 +50,7 @@ public class AdminServiceImpl implements AdminService {
      */
     @Override
     @CacheEvict(value = {"adminsCache"},allEntries = true)
-    public boolean changeState(String aid, int state) throws Exception {
+    public boolean changeState(String[] aid, int state) throws Exception {
         if(adminDao.changeState(aid,state)>0){
             return true;
         }else {
@@ -133,6 +133,36 @@ public class AdminServiceImpl implements AdminService {
         PageHelper.startPage(pageNum, 10);
         key = "%" + key + "%";
         List<Admin> admins = adminDao.findByKey(key);
+        PageInfo pageInfo = new PageInfo(admins);
+        return pageInfo;
+    }
+
+    /**
+     * 查询所有被删除的管理员
+     *
+     * @param pageNum
+     * @return
+     */
+    @Override
+    public PageInfo<Admin> findAllDel(int pageNum) throws Exception {
+        PageHelper.startPage(pageNum, 10);
+        List<Admin> admins = adminDao.findAllDel();
+        PageInfo pageInfo = new PageInfo(admins);
+        return pageInfo;
+    }
+
+    /**
+     * 根据关键字查找被删除的管理员
+     *
+     * @param pageNum
+     * @param key
+     * @return
+     */
+    @Override
+    public PageInfo<Admin> findDelByKey(int pageNum, String key) {
+        PageHelper.startPage(pageNum, 10);
+        key = "%" + key + "%";
+        List<Admin> admins = adminDao.findDelByKey(key);
         PageInfo pageInfo = new PageInfo(admins);
         return pageInfo;
     }

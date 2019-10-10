@@ -102,8 +102,15 @@ public interface ArticleDao {
      * @return
      * @throws Exception
      */
-    @Update("update article set articlestate = #{articlestate} where articleid in (#{articleid})")
-    int changeManyArticleState(@Param("articleid") String id, @Param("articlestate") int state);
+    @Update({
+            "<script>"
+                    + "update article set articlestate = #{articlestate} where articleid in "
+                    + "<foreach item='item' index = 'index' collection = 'articleid' open ='(' separator = ',' close=')'>"
+                    + "#{item}"
+                    + "</foreach>"
+                    + "</script>"
+    })
+    int changeManyArticleState(@Param("articleid") String[] id, @Param("articlestate") int state);
 
     /**
      * 根据文章关键字查找文章

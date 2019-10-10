@@ -33,8 +33,15 @@ public interface AdminDao {
      * @param state
      * @return
      */
-    @Update("update admin set state = #{state} where adminid in (#{adminid})")
-    int changeState(@Param("adminid") String aid, @Param("state") int state) throws Exception;
+    @Update({
+            "<script>"
+                    + "update admin set state = #{state} where adminid in "
+                    + "<foreach item='item' index = 'index' collection = 'adminid' open ='(' separator = ',' close=')'>"
+                    + "#{item}"
+                    + "</foreach>"
+                    + "</script>"
+    })
+    int changeState(@Param("adminid") String[] aid, @Param("state") int state) throws Exception;
 
     /**
      * 根据id查找admin
@@ -81,4 +88,20 @@ public interface AdminDao {
      */
     @Select("select * from admin where state != 0 and aname like #{key}")
     List<Admin> findByKey(@Param("key") String key) throws Exception;
+
+    /**
+     * 查询所有被删除的管理员
+     *
+     * @return
+     */
+    @Select("select * from admin where state = 0")
+    List<Admin> findAllDel() throws Exception;
+
+    /**
+     * 根据关键字查询所有被删除的管理员
+     *
+     * @return
+     */
+    @Select("select * from admin where state = 0 and aname like #{key}")
+    List<Admin> findDelByKey(String key);
 }

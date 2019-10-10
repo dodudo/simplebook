@@ -99,10 +99,10 @@
 								<button type="button" id="login_btn" onclick="login()" class="btn signin_btn signin_btn_two"  >
 								登录
 								</button>
-								<p>
-
+								<p style="max-width: none;text-align: center">
 									<a href="register">没有账号？注册</a>
 									<a href="adminlogin" style="margin-left: 40px">管理员登录</a>
+									<a href="changePwd" style="margin-left: 40px">找回密码</a>
 								</p>
 								<p>
 
