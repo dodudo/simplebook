@@ -150,7 +150,9 @@
                     <h6 class="mb-4">AUTHOR POST</h6>
                     <div class="media mb-4">
                         <div class="post-thumb-sm mr-3">
-                            <img class="img-fluid" src="${pageContext.request.contextPath}/images/${articleDetail.user.headImgs}" alt="post-thumb">
+                            <img class="img-fluid"
+                                 src="${pageContext.request.contextPath}/images/${articleDetail.user.headImgs}"
+                                 alt="post-thumb">
                         </div>
                         <div class="media-body">
                             <ul class="list-inline d-flex justify-content-between mb-2">
@@ -242,11 +244,14 @@
                         <form action="${pageContext.request.contextPath}/article/updateGoodforArticle" method="post">
                             <input name="good" style="display: none" value="${articleDetail.good+1}">
                             <input name="articleId" style="display: none" value="${articleDetail.articleId}">
-                            <input type="image" style="width: 30px;height: 30px;text-align:center;margin-left:5px;cursor: pointer;" src="${pageContext.request.contextPath}/images/yizan.png" onclick="document.formName.submit()">
+                            <input type="image"
+                                   style="width: 30px;height: 30px;text-align:center;margin-left:5px;cursor: pointer;"
+                                   src="${pageContext.request.contextPath}/images/yizan.png"
+                                   onclick="document.formName.submit()">
                             <%--<img style="width: 30px;height: 30px;text-align:center;margin-left:5px;cursor: pointer;"
                                  src="${pageContext.request.contextPath}/images/yizan.png"/>--%>
                         </form>
-                        <p  style="margin-left: 15px;">${articleDetail.good}</p>
+                        <p style="margin-left: 15px;">${articleDetail.good}</p>
                     </li>
                 </ul>
             </div>

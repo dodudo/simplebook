@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 @SessionAttributes({"admin"})
 public class PageController {
+
     @Autowired
     AdminService adminService;
 
@@ -221,7 +222,7 @@ public class PageController {
         ModelAndView mv = new ModelAndView();
         Admin admin = (Admin) request.getSession().getAttribute("admin");
         if (admin.getRole() == 1) {
-            mv.setViewName("admin-edit");
+            mv.setViewName("admin-add");
         } else {
             mv.setViewName("roleError");
         }

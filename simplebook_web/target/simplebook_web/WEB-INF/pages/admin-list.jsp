@@ -45,19 +45,12 @@
                 <div class="layui-card-body ">
                     <form class="layui-form layui-col-space5">
                         <div class="layui-inline layui-show-xs-block">
-<<<<<<< HEAD
-                            <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
-                        </div>
-                        <div class="layui-inline layui-show-xs-block">
-                            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-=======
                             <input type="text" name="aname" id="search_input" placeholder="请输入关键字" autocomplete="off"
                                    class="layui-input">
                         </div>
                         <div class="layui-inline layui-show-xs-block">
                             <label class="layui-btn" onclick="findAdminByKey()" lay-submit="" lay-filter="sreach"><i
                                     class="layui-icon">&#xe615;</i></label>
->>>>>>> 3d5c420f63b7f48659c4062d61c21a6922b61b85
                         </div>
                     </form>
                 </div>
@@ -146,11 +139,7 @@
                 for (index in adminsPageInfo.list){
                     showList += ("<tr>\n" +
                         "                            <td>\n" +
-<<<<<<< HEAD
-                        "                                <input class='row-check' type=\"checkbox\" name='' value = '"+adminsPageInfo.list[index].adminid+"' lay-skin=\"primary\">\n" +
-=======
                         "                                <input class='row-check' type=\"checkbox\" name='id' value = '" + adminsPageInfo.list[index].adminId + "' lay-skin=\"primary\">\n" +
->>>>>>> 3d5c420f63b7f48659c4062d61c21a6922b61b85
                         "                            </td>\n" +
                         "                            <td>"+adminsPageInfo.list[index].adminId+"</td>\n" +
                         "                            <td>"+adminsPageInfo.list[index].aname+"</td>\n" +
@@ -200,7 +189,6 @@
         var form = layui.form;
         // 监听全选
         form.on('checkbox(checkall)', function(data){
-<<<<<<< HEAD
 
             if(data.elem.checked){
                 $('tbody .row-check').prop('checked',true);
@@ -238,45 +226,6 @@
                         success:function (data) {
                             if (data.role_msg == true){
 
-=======
-
-            if(data.elem.checked){
-                $('tbody .row-check').prop('checked',true);
-            }else{
-                $('tbody .row-check').prop('checked',false);
-            }
-            form.render('checkbox');
-        });
-        form.on('switch(state)',function (data) {
-            if ('${sessionScope.get("admin").role}'!=1){
-                layer.msg('权限不足!',{icon: 5,time:1000});
-                console.log(flag);
-                var flag=data.elem.checked;
-                data.elem.checked = !flag;
-                form.render("checkbox");
-            }else {
-                layer.confirm('确认要停用/启用吗？',function(index){
-                    var flag = 1;
-                    console.log(data);
-                    if(data.value=='1'){
-                        //发异步把用户状态进行更改
-                        var flag = 2;
-                        data.elem.attributes['value'].nodeValue=2;
-                        layer.msg('已停用!',{icon: 5,time:1000});
-                    }else{
-                        flag = 1;
-                        data.elem.attributes['value'].nodeValue=1;
-                        layer.msg('已启用!',{icon: 6,time:1000});
-                    }
-                    form.render();
-                    $.ajax({
-                        url:"/admin/changeState",
-                        type: "get",
-                        data: {"aid":data.elem.attributes['id'].nodeValue,"state":flag},
-                        success:function (data) {
-                            if (data.role_msg == true){
-
->>>>>>> 3d5c420f63b7f48659c4062d61c21a6922b61b85
                             } else {
                                 layer.msg('权限不足!',{icon: 5,time:1000});
                             }

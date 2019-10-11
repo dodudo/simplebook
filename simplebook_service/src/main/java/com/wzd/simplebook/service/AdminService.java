@@ -2,7 +2,9 @@ package com.wzd.simplebook.service;
 
 import com.github.pagehelper.PageInfo;
 import com.wzd.simplebook.domain.Admin;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface AdminService {
     /**
      * 根据管理员账号密码查询账号是否存在

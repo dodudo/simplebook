@@ -137,11 +137,7 @@
                             <cite>管理员列表</cite></a>
                     </li>
                     <li>
-<<<<<<< HEAD
-                        <a onclick="xadmin.add_tab('角色管理','adminRole')">
-=======
                         <a onclick="xadmin.add_tab('管理员删除','adminDelList')">
->>>>>>> 3d5c420f63b7f48659c4062d61c21a6922b61b85
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>管理员删除</cite></a>
                     </li>
@@ -158,24 +154,24 @@
                 </ul>
             </li>
 
-           <%-- <li>
-                <a href="javascript:;">
-                    <i class="iconfont left-nav-li" lay-tips="其它页面">&#xe6b4;</i>
-                    <cite>其它页面</cite>
-                    <i class="iconfont nav_right">&#xe697;</i></a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="login" target="_blank">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>登录页面</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('错误页面','error')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>错误页面</cite></a>
-                    </li>
-                </ul>
-            </li>--%>
+            <%-- <li>
+                 <a href="javascript:;">
+                     <i class="iconfont left-nav-li" lay-tips="其它页面">&#xe6b4;</i>
+                     <cite>其它页面</cite>
+                     <i class="iconfont nav_right">&#xe697;</i></a>
+                 <ul class="sub-menu">
+                     <li>
+                         <a href="login" target="_blank">
+                             <i class="iconfont">&#xe6a7;</i>
+                             <cite>登录页面</cite></a>
+                     </li>
+                     <li>
+                         <a onclick="xadmin.add_tab('错误页面','error')">
+                             <i class="iconfont">&#xe6a7;</i>
+                             <cite>错误页面</cite></a>
+                     </li>
+                 </ul>
+             </li>--%>
 
         </ul>
     </div>
