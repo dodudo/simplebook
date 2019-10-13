@@ -1,6 +1,7 @@
 package com.wzd.simplebook.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import com.sun.xml.internal.rngom.parse.host.Base;
@@ -44,16 +45,19 @@ public class UserController {
     @Autowired
     private FileUtil fileUtil;
     /**
-     * 查询所有用户
+     * 根据状态，关键字条件查询所有用户
      * @return
      */
-    @RequestMapping("/findAll")
-    public ModelAndView findAll() throws Exception {
-        ModelAndView mv = new ModelAndView();
-        List<User> users = userService.findAll();
-        mv.addObject("users",users);
-        mv.setViewName("member-list");
-        return mv;
+    @RequestMapping("/findUsers")
+    public @ResponseBody Map<String,Object> findUsers(int pageNum,int state,String key) throws Exception {
+        Map<String,Object> map = new HashMap<>();
+//        System.out.println(key);
+        if ("".equals(key)||key == null){
+            key = "";
+        }
+        PageInfo<User> usersPageInfo = userService.findUsers(pageNum,state,key);
+        map.put("usersPageInfo", usersPageInfo);
+        return map;
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.wzd.simplebook.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.wzd.simplebook.dao.UserDao;
 import com.wzd.simplebook.domain.User;
 import com.wzd.simplebook.service.UserService;
@@ -18,11 +20,23 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public List<User> findAll() throws Exception {
-        return userDao.findAll();
+    @Cacheable("usersCache")
+    public PageInfo<User> findUsers(int pageNum,int state,String key) throws Exception {
+        PageHelper.startPage(pageNum,10);
+        try {
+            if (!"".equals(key)&&key != null){
+                key = "%"+key+"%";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        List<User> users = userDao.findUsers(state,key);
+        PageInfo pageInfo = new PageInfo(users);
+        return pageInfo;
     }
 
     @Override
+    @CacheEvict(value = {"userCache","usersCache"},allEntries = true)
     public boolean addUser(User user) throws Exception {
         int row = userDao.addUser(user);
         System.out.println(user.getUid());
@@ -70,12 +84,12 @@ public class UserServiceImpl implements UserService {
     @Override
     @Cacheable(value = "userCache")
     public User findUserByUid(String uid) throws Exception {
-        System.out.println("哈哈哈");
+//        System.out.println("哈哈哈");
         return userDao.findUserByUid(uid);
     }
 
     @Override
-    @CachePut(value = "userCache")
+    @CacheEvict(value = {"userCache","usersCache"},allEntries = true)
     public boolean changeUserHeadImg(String uid, String virtualPath) throws Exception {
         if (userDao.chanteUserHeadImg(uid,virtualPath)>0){
             return true;
@@ -85,7 +99,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @CachePut(value = ("userCache"))
+    @CacheEvict(value = {"userCache","usersCache"},allEntries = true)
     public boolean changeUserInfo(User user) throws Exception {
         if (userDao.changeUserInfo(user)>0){
             return true;
@@ -101,6 +115,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
+    @CacheEvict(value = {"userCache","usersCache"},allEntries = true)
     public boolean changePwd(User user) throws Exception {
         if (userDao.changePwd(user) > 0) {
             return true;

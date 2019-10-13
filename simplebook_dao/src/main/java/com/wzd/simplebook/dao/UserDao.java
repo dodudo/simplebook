@@ -106,4 +106,19 @@ public interface UserDao {
      */
     @Update("update user set upassword = #{upassword} where email = #{email}")
     int changePwd(User user) throws Exception;
+
+    /**
+     * 根据状态关键字查询用户
+     * @param state
+     * @param key
+     * @return
+     */
+    @Select("<script> SELECT * FROM USER " +
+            "<where>" +
+            "<if test='state == 1'>and userstate != 0</if>" +
+            "<if test='state == 0'>and userstate = 0</if>" +
+            "<if test='key != null'>and uname like #{key}</if>" +
+            "</where>" +
+            "</script>")
+    List<User> findUsers(@Param("state") int state, @Param("key") String key)throws Exception;
 }

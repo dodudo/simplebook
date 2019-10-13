@@ -1,5 +1,6 @@
 package com.wzd.simplebook.service;
 
+import com.github.pagehelper.PageInfo;
 import com.wzd.simplebook.domain.User;
 import org.springframework.cache.annotation.CachePut;
 
@@ -10,7 +11,7 @@ public interface UserService {
      * 查询所有用户
      * @return
      */
-    List<User> findAll() throws Exception;
+    PageInfo<User> findUsers(int pageNum,int state,String key) throws Exception;
 
     /**
      * 添加用户
