@@ -10,7 +10,7 @@
 <html class="x-admin-sm">
 <head>
     <meta charset="UTF-8">
-    <title>欢迎页面-X-admin2.2</title>
+    <title>会员列表</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -43,22 +43,15 @@
                 <div class="layui-card-body ">
                     <form class="layui-form layui-col-space5">
                         <div class="layui-inline layui-show-xs-block">
-                            <input class="layui-input"  autocomplete="off" placeholder="开始日" name="start" id="start">
+                            <input type="text" name="uname" id="member_key" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-inline layui-show-xs-block">
-                            <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
-                        </div>
-                        <div class="layui-inline layui-show-xs-block">
-                            <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
-                        </div>
-                        <div class="layui-inline layui-show-xs-block">
-                            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                            <label class="layui-btn"  lay-submit="" onclick="findArticleByKey()" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></label>
                         </div>
                     </form>
                 </div>
                 <div class="layui-card-header">
                     <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                    <button class="layui-btn" onclick="xadmin.open('添加用户','${pageContext.request.contextPath}/member-add.jsp',600,400)"><i class="layui-icon"></i>添加</button>
                 </div>
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
@@ -75,38 +68,13 @@
                             <th>状态</th>
                             <th>操作</th></tr>
                         </thead>
-                        <tbody >
-                            <tr>
-                                <td>
-                                    <input type="checkbox" name="id" value="1"   lay-skin="primary">
-                                </td>
-                                <td>${user.uid}</td>
-                                <td>${user.uname}</td>
-                                <td>${user.sex}</td>
-                                <td>${user.phone}</td>
-                                <td>${user.email}</td>
-                                <td class="td-status">
-                                    <span class="layui-btn layui-btn-normal layui-btn-mini">${user.userStateStr}</span></td>
-                                <td class="td-manage">
-                                    <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
-                                        <i class="layui-icon">&#xe601;</i>
-                                    </a>
-                                    <a title="编辑"  onclick="xadmin.open('编辑','member-edit.jsp',600,400)" href="javascript:;">
-                                        <i class="layui-icon">&#xe642;</i>
-                                    </a>
-                                    <a onclick="xadmin.open('修改密码','member-password.jsp',600,400)" title="修改密码" href="javascript:;">
-                                        <i class="layui-icon">&#xe631;</i>
-                                    </a>
-                                    <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
-                                        <i class="layui-icon">&#xe640;</i>
-                                    </a>
-                                </td>
-                            </tr>
+                        <tbody id="member-tbd">
+
                         </tbody>
                     </table>
                 </div>
                 <div class="layui-card-body ">
-                    <div class="articlePage">
+                    <div id="memberpage">
 
                     </div>
                 </div>
@@ -119,6 +87,59 @@
 <script src="${pageContext.request.contextPath}/js/jquery.sPage.js"></script>
 <script>
 
+    $(function () {
+        sendFindUsers(1,"");
+    });
+    function sendFindUsers(pageNum,key){
+        $.ajax({
+            url: "/user/findUsers",
+            type:"get",
+            data:{"pageNum":pageNum,"state":1,"key":key},
+            success:function (data) {
+                var usersPageInfo = data.usersPageInfo;
+                var showList = "";
+                var index;
+                for (index in usersPageInfo.list){
+                    showList += ("<tr>\n" +
+                        "                                <td>\n" +
+                        "                                    <input type=\"checkbox\" name=\"id\" value="+usersPageInfo.list[index].uid+"   lay-skin=\"primary\">\n" +
+                        "                                </td>\n" +
+                        "                                <td>"+usersPageInfo.list[index].uid+"</td>\n" +
+                        "                                <td>"+usersPageInfo.list[index].uname+"</td>\n" +
+                        "                                <td>"+usersPageInfo.list[index].sex+"</td>\n" +
+                        "                                <td>"+usersPageInfo.list[index].phone+"</td>\n" +
+                        "                                <td>"+usersPageInfo.list[index].email+"</td>\n" +
+                        "                                <td class=\"td-status\">\n" +
+                        "                                    <span class=\"layui-btn layui-btn-normal layui-btn-mini\">"+usersPageInfo.list[index].userStateStr+"</span></td>\n" +
+                        "                                <td class=\"td-manage\">\n" +
+                        "                                    <a onclick=\"member_stop(this,'"+usersPageInfo.list[index].uid+"')\" href=\"javascript:;\"  title='"+usersPageInfo.list[index].userState+"'>\n" +
+                        "                                        <i class=\"layui-icon\">&#xe601;</i>\n" +
+                        "                                    </a>\n" +
+                        "                                    <a title=\"删除\" onclick=\"member_del(this,'"+usersPageInfo.list[index].uid+"')\" href=\"javascript:;\">\n" +
+                        "                                        <i class=\"layui-icon\">&#xe640;</i>\n" +
+                        "                                    </a>\n" +
+                        "                                </td>\n" +
+                        "                            </tr>");
+                }
+                $("#member-tbd").html(showList);
+                $("#memberpage").sPage({
+                    page:usersPageInfo.pageNum,//当前页码，必填
+                    total:usersPageInfo.total,//数据总条数，必填
+                    pageSize:10,//每页显示多少条数据，默认10条
+                    totalTxt:"共"+usersPageInfo.total+"条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
+                    showTotal:true,//是否显示总条数，默认关闭：false
+                    showSkip:false,//是否显示跳页，默认关闭：false
+                    showPN:true,//是否显示上下翻页，默认开启：true
+                    prevPage:"上一页",//上翻页文字描述，默认“上一页”
+                    nextPage:"下一页",//下翻页文字描述，默认“下一页”
+                    backFun:function(page){
+                        //点击分页按钮回调函数，返回当前页码
+                        sendFindUsers(page,key);
+                    }
+                });
+            }
+        });
+    }
     layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
         var  form = layui.form;
@@ -150,25 +171,37 @@
 
     /*用户-停用*/
     function member_stop(obj,id){
-        layer.confirm('确认要停用吗？',function(index){
-
-            if($(obj).attr('title')=='启用'){
-
-                //发异步把用户状态进行更改
-                $(obj).attr('title','停用')
-                $(obj).find('i').html('&#xe62f;');
-
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!',{icon: 5,time:1000});
-
+        layer.confirm('确认要停用/启用吗？',function(index){
+            var flag = 1;
+            if($(obj).attr('title')=='1'){
+                flag = 2;
             }else{
-                $(obj).attr('title','启用')
-                $(obj).find('i').html('&#xe601;');
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!',{icon: 5,time:1000});
+                flag = 1;
             }
-
+            //发异步把用户状态进行更改
+            $.ajax({
+                url:"/user/changeUserState",
+                type: "get",
+                data: {"uid":id,"state":flag},
+                success:function (data) {
+                    if (data.msg) {
+                        if (flag == 1){
+                            $(obj).attr('title','1')
+                            $(obj).find('i').html('&#xe601;');
+                            $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
+                            layer.msg('已启用!',{icon: 6,time:1000});
+                        } else if (flag == 2) {
+                            $(obj).attr('title','2')
+                            $(obj).find('i').html('&#xe62f;');
+                            $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
+                            layer.msg('已停用!',{icon: 5,time:1000});
+                        }
+                    }else {
+                        layer.msg('修改失败!',{icon: 5,time:1000});
+                    }
+                }
+            });
+            return;
         });
     }
 
@@ -176,6 +209,14 @@
     function member_del(obj,id){
         layer.confirm('确认要删除吗？',function(index){
             //发异步删除数据
+            $.ajax({
+                url:"/article/deleteArticle",
+                type: "get",
+                data: {"articleId":id,"state":0},
+                success:function () {
+
+                }
+            });
             $(obj).parents("tr").remove();
             layer.msg('已删除!',{icon:1,time:1000});
         });
@@ -195,9 +236,22 @@
 
         layer.confirm('确认要删除吗？'+ids.toString(),function(index){
             //捉到所有被选中的，发异步进行删除
+            $.ajax({
+                url:"/article/deleteArticle",
+                type: "get",
+                data: {"articleId":ids.toString(),"state":0},
+                success:function () {
+                }
+            });
             layer.msg('删除成功', {icon: 1});
             $(".layui-form-checked").not('.header').parents('tr').remove();
         });
+    }
+    function findArticleByKey() {
+        var articleKey = $("#member_key").val();
+        if (articleKey!=""){
+            sendFindUsers(1,articleKey)
+        }
     }
 </script>
 </html>

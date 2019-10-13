@@ -43,10 +43,10 @@
                 <div class="layui-card-body ">
                     <form class="layui-form layui-col-space5">
                         <div class="layui-inline layui-show-xs-block">
-                            <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                            <input type="text" name="uname" id="member_key" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-inline layui-show-xs-block">
-                            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                            <label class="layui-btn"  lay-submit="" onclick="findArticleByKey()" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></label>
                         </div>
                     </form>
                 </div>
@@ -88,13 +88,13 @@
 <script>
 
     $(function () {
-        sendFindUsers(1);
+        sendFindUsers(1,"");
     });
-    function sendFindUsers(pageNum){
+    function sendFindUsers(pageNum,key){
         $.ajax({
             url: "/user/findUsers",
             type:"get",
-            data:{"pageNum":pageNum,"state":1},
+            data:{"pageNum":pageNum,"state":1,"key":key},
             success:function (data) {
                 var usersPageInfo = data.usersPageInfo;
                 var showList = "";
@@ -134,7 +134,7 @@
                     nextPage:"下一页",//下翻页文字描述，默认“下一页”
                     backFun:function(page){
                         //点击分页按钮回调函数，返回当前页码
-                        sendFindUsers(page);
+                        sendFindUsers(page,key);
                     }
                 });
             }
@@ -171,34 +171,37 @@
 
     /*用户-停用*/
     function member_stop(obj,id){
-        layer.confirm('确认要停用吗？',function(index){
+        layer.confirm('确认要停用/启用吗？',function(index){
             var flag = 1;
             if($(obj).attr('title')=='1'){
-
-                //发异步把用户状态进行更改
-                $(obj).attr('title','2')
-                $(obj).find('i').html('&#xe62f;');
-                var flag = 2;
-
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!',{icon: 5,time:1000});
-
+                flag = 2;
             }else{
-                $(obj).attr('title','1')
-                $(obj).find('i').html('&#xe601;');
                 flag = 1;
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!',{icon: 5,time:1000});
             }
+            //发异步把用户状态进行更改
             $.ajax({
-                url:"/article/changeArticleState",
+                url:"/user/changeUserState",
                 type: "get",
-                data: {"articleId":id,"state":flag},
-                success:function () {
-
+                data: {"uid":id,"state":flag},
+                success:function (data) {
+                    if (data.msg) {
+                        if (flag == 1){
+                            $(obj).attr('title','1')
+                            $(obj).find('i').html('&#xe601;');
+                            $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
+                            layer.msg('已启用!',{icon: 6,time:1000});
+                        } else if (flag == 2) {
+                            $(obj).attr('title','2')
+                            $(obj).find('i').html('&#xe62f;');
+                            $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
+                            layer.msg('已停用!',{icon: 5,time:1000});
+                        }
+                    }else {
+                        layer.msg('修改失败!',{icon: 5,time:1000});
+                    }
                 }
             });
+            return;
         });
     }
 
@@ -245,66 +248,10 @@
         });
     }
     function findArticleByKey() {
-        var articleKey = $("#article_key").val();
+        var articleKey = $("#member_key").val();
         if (articleKey!=""){
-            sendFindArticleByKey(1,articleKey)
+            sendFindUsers(1,articleKey)
         }
-    }
-    function sendFindArticleByKey(pageNum,key){
-        $.ajax({
-            url:"/article/findArticleByKey",
-            type:"get",
-            data:{"pageNum":pageNum,"articleKey":key},
-            success:function (data) {
-                var articlesPageInfo = data.articlesPageInfo;
-                var showList = "";
-                var index;
-                for (index in articlesPageInfo.list){
-                    var releaseDate = articlesPageInfo.list[index].releaseDate;
-                    var releaseFormat = new Date(releaseDate);
-                    releaseFormat = releaseFormat.getFullYear()+"-"+(releaseFormat.getMonth()+1)+"-"+releaseFormat.getDate()
-                    showList += ("<tr>\n" +
-                        "                                <td>\n" +
-                        "                                    <input type=\"checkbox\" name=\"id\" value="+articlesPageInfo.list[index].articleId+"   lay-skin=\"primary\">\n" +
-                        "                                </td>\n" +
-                        "                                <td>"+articlesPageInfo.list[index].articleId+"</td>\n" +
-                        "                                <td>"+articlesPageInfo.list[index].head+"</td>\n" +
-                        "                                <td>"+articlesPageInfo.list[index].describe+"</td>\n" +
-                        "                                <td>"+releaseFormat+"</td>\n" +
-                        "                                <td>"+articlesPageInfo.list[index].fontCount+"</td>\n" +
-                        "                                <td>"+articlesPageInfo.list[index].view+"</td>\n" +
-                        "                                <td>"+articlesPageInfo.list[index].good+"</td>\n" +
-                        "                                <td>"+articlesPageInfo.list[index].report+"</td>\n" +
-                        "                                <td class=\"td-status\">\n" +
-                        "                                    <span class=\"layui-btn layui-btn-normal layui-btn-mini\">"+articlesPageInfo.list[index].articleStateStr+"</span></td>\n" +
-                        "                                <td class=\"td-manage\">\n" +
-                        "                                    <a onclick=\"member_stop(this,'"+articlesPageInfo.list[index].articleId+"')\" href=\"javascript:;\"  title='"+articlesPageInfo.list[index].articleState+"'>\n" +
-                        "                                        <i class=\"layui-icon\">&#xe601;</i>\n" +
-                        "                                    </a>\n" +
-                        "                                    <a title=\"删除\" onclick=\"member_del(this,'"+articlesPageInfo.list[index].articleId+"')\" href=\"javascript:;\">\n" +
-                        "                                        <i class=\"layui-icon\">&#xe640;</i>\n" +
-                        "                                    </a>\n" +
-                        "                                </td>\n" +
-                        "                            </tr>");
-                }
-                $(".article-tbody").html(showList);
-                $("#articlePage").sPage({
-                    page:articlesPageInfo.pageNum,//当前页码，必填
-                    total:articlesPageInfo.total,//数据总条数，必填
-                    pageSize:10,//每页显示多少条数据，默认10条
-                    totalTxt:"共"+articlesPageInfo.total+"条",//数据总条数文字描述，{total}为占位符，默认"共{total}条"
-                    showTotal:true,//是否显示总条数，默认关闭：false
-                    showSkip:false,//是否显示跳页，默认关闭：false
-                    showPN:true,//是否显示上下翻页，默认开启：true
-                    prevPage:"上一页",//上翻页文字描述，默认“上一页”
-                    nextPage:"下一页",//下翻页文字描述，默认“下一页”
-                    backFun:function(page){
-                        //点击分页按钮回调函数，返回当前页码
-                        sendFindArticleByKey(page,key);
-                    }
-                });
-            }
-        });
     }
 </script>
 </html>

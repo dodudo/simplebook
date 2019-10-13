@@ -120,7 +120,7 @@ public class User implements Serializable {
         }else if (userState == 1){
             userStateStr = "已启用";
         }else if (userState == 2){
-            userStateStr = "不可用";
+            userStateStr = "已停用";
         }
         return userStateStr;
     }

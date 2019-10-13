@@ -23,12 +23,10 @@ public class UserServiceImpl implements UserService {
     @Cacheable("usersCache")
     public PageInfo<User> findUsers(int pageNum,int state,String key) throws Exception {
         PageHelper.startPage(pageNum,10);
-        try {
-            if (!"".equals(key)&&key != null){
-                key = "%"+key+"%";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!"".equals(key)&&key!=null){
+            key = "%"+key+"%";
+        }else {
+            key = null;
         }
         List<User> users = userDao.findUsers(state,key);
         PageInfo pageInfo = new PageInfo(users);
@@ -120,6 +118,23 @@ public class UserServiceImpl implements UserService {
         if (userDao.changePwd(user) > 0) {
             return true;
         } else {
+            return false;
+        }
+    }
+
+    /**
+     * 批量修改用户状态
+     *
+     * @param uid
+     * @param state
+     * @return
+     */
+    @Override
+    @CacheEvict(value = {"userCache","usersCache"},allEntries = true)
+    public boolean changeState(String[] uid, int state) throws Exception {
+        if(userDao.changeState(uid,state)>0){
+            return true;
+        }else {
             return false;
         }
     }

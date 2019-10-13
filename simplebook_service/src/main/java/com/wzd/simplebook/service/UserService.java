@@ -70,4 +70,12 @@ public interface UserService {
      * @return
      */
     boolean changePwd(User user) throws Exception;
+
+    /**
+     * 批量修改用户状态
+     * @param uid
+     * @param state
+     * @return
+     */
+    boolean changeState(String[] uid, int state) throws Exception;
 }

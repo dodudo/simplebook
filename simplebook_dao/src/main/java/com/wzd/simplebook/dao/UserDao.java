@@ -115,10 +115,25 @@ public interface UserDao {
      */
     @Select("<script> SELECT * FROM USER " +
             "<where>" +
-            "<if test='state == 1'>and userstate != 0</if>" +
-            "<if test='state == 0'>and userstate = 0</if>" +
+            "<if test='state == 1'>and userstate != 0 </if>" +
+            "<if test='state == 0'>and userstate = 0 </if>" +
             "<if test='key != null'>and uname like #{key}</if>" +
             "</where>" +
             "</script>")
     List<User> findUsers(@Param("state") int state, @Param("key") String key)throws Exception;
+
+    /**
+     * 根据id批量修改用户状态
+     * @param uid
+     * @param state
+     * @return
+     * @throws Exception
+     */
+    @Update("<script>" +
+            "update user set userstate = #{state} where uid in " +
+            "<foreach item='item' index='index' collection='uid' open='(' separator=',' close=')'>" +
+            "#{item}" +
+            "</foreach>" +
+            "</script>")
+    int changeState(@Param("uid") String[] uid, @Param("state") int state) throws Exception;
 }

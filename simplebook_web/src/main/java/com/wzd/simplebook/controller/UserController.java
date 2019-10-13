@@ -52,9 +52,6 @@ public class UserController {
     public @ResponseBody Map<String,Object> findUsers(int pageNum,int state,String key) throws Exception {
         Map<String,Object> map = new HashMap<>();
 //        System.out.println(key);
-        if ("".equals(key)||key == null){
-            key = "";
-        }
         PageInfo<User> usersPageInfo = userService.findUsers(pageNum,state,key);
         map.put("usersPageInfo", usersPageInfo);
         return map;
@@ -247,4 +244,30 @@ public class UserController {
         }
         return map;
     }
+    /**
+     * 更改管理员状态
+     * @param request
+     * @param
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/changeUserState")
+    public @ResponseBody
+    Map<String, Object> changeUserState(HttpServletRequest request, @RequestParam("uid") String[] uid, int state) throws Exception {
+        Map<String, Object> map = new HashMap<>();
+        User user = (User) request.getSession().getAttribute("user");
+        if (uid.length > 0 && uid != null) {
+            if (userService.changeState(uid, state)) {
+                map.put("msg", true);
+            } else {
+                map.put("msg", false);
+            }
+        }else {
+            map.put("msg", false);
+        }
+
+        return map;
+    }
+
+
 }
