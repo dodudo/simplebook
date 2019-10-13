@@ -8,24 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="bd238562-8784-4ae8-80f3-c1414cadd912" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_dao/target/classes/com/wzd/simplebook/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_dao/target/classes/com/wzd/simplebook/dao/UserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_domain/src/main/java/com/wzd/simplebook/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_domain/src/main/java/com/wzd/simplebook/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_domain/target/classes/com/wzd/simplebook/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_domain/target/classes/com/wzd/simplebook/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_service/target/classes/com/wzd/simplebook/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_service/target/classes/com/wzd/simplebook/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_service/target/classes/com/wzd/simplebook/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_service/target/classes/com/wzd/simplebook/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/member-del.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/member-del.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/member-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/member-list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/PageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/classes/com/wzd/simplebook/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/PageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/PageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/classes/com/wzd/simplebook/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_dao-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_dao-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_domain-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_domain-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_service-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/lib/simplebook_service-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/admin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/member-del.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/member-del.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/member-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/simplebook_web/target/simplebook_web/WEB-INF/pages/member-list.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -73,9 +58,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/member-list.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="173" column="31" selection-start-line="173" selection-start-column="31" selection-end-line="173" selection-end-column="31" />
+            <state relative-caret-position="3408">
+              <caret line="241" column="27" selection-start-line="241" selection-start-column="27" selection-end-line="241" selection-end-column="27" />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/member-del.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="358">
+              <caret line="53" column="113" selection-start-line="53" selection-start-column="113" selection-end-line="53" selection-end-column="113" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/article-delete.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3000" />
           </provider>
         </entry>
       </file>
@@ -107,24 +108,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/UserDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="134" column="19" selection-start-line="134" selection-start-column="19" selection-end-line="134" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/AdminController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="123" column="19" lean-forward="true" selection-start-line="123" selection-start-column="19" selection-end-line="123" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/simplebook_domain/src/main/java/com/wzd/simplebook/domain/User.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="121">
@@ -150,10 +133,11 @@
         <option value="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/admin.jsp" />
         <option value="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/UserService.java" />
         <option value="$PROJECT_DIR$/simplebook_dao/src/main/java/com/wzd/simplebook/dao/UserDao.java" />
-        <option value="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/member-list.jsp" />
         <option value="$PROJECT_DIR$/simplebook_web/src/main/java/com/wzd/simplebook/controller/UserController.java" />
         <option value="$PROJECT_DIR$/simplebook_service/src/main/java/com/wzd/simplebook/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/simplebook_domain/src/main/java/com/wzd/simplebook/domain/User.java" />
+        <option value="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/member-list.jsp" />
+        <option value="$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/member-del.jsp" />
       </list>
     </option>
   </component>
@@ -445,7 +429,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570959002723" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570959544975" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/simplebook_web/target/simplebook_web/userImg" />
   </component>
   <component name="RunDashboard">
@@ -558,7 +542,7 @@
       <workItem from="1570619671032" duration="950000" />
       <workItem from="1570669675971" duration="10869000" />
       <workItem from="1570755008396" duration="4009000" />
-      <workItem from="1570929577929" duration="13313000" />
+      <workItem from="1570929577929" duration="13863000" />
     </task>
     <task id="LOCAL-00001" summary="修改了些小细节">
       <created>1570784706038</created>
@@ -574,12 +558,12 @@
       <option name="project" value="LOCAL" />
       <updated>1570955764884</updated>
     </task>
-    <task id="LOCAL-00003" summary="-完成文章编辑，图片上传、articleid自动生成未解决">
-      <created>1570380318183</created>
+    <task id="LOCAL-00003" summary="完成修改状态，之前空指针异常不是redis的问题，是未考虑当查询关键字为空或者“”时的值，统一当关键字值为空或者&quot;&quot;时关键字的值为null">
+      <created>1570959146760</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1570380318183</updated>
+      <updated>1570959146760</updated>
     </task>
     <task id="LOCAL-00004" summary="-完成文章编辑以及图片上传，未解决自动生成的articleid同时插入多表">
       <created>1570380995334</created>
@@ -602,11 +586,11 @@
       <option name="project" value="LOCAL" />
       <updated>1570618992626</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16711000" />
+    <option name="totallyTimeSpent" value="17261000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -622,7 +606,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" weight="0.2917847" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.2917847" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.46033993" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -673,7 +657,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修改了些小细节" />
     <MESSAGE value="通过动态sql完成管理用户查询列表，当方法参数有空值时，redis会报空指针异常" />
-    <option name="LAST_COMMIT_MESSAGE" value="通过动态sql完成管理用户查询列表，当方法参数有空值时，redis会报空指针异常" />
+    <MESSAGE value="完成修改状态" />
+    <MESSAGE value="完成修改状态，之前空指针异常不是redis的问题，是未考虑当查询关键字为空或者“”时的值，统一当关键字值为空或者&quot;&quot;时关键字的值为null" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成修改状态，之前空指针异常不是redis的问题，是未考虑当查询关键字为空或者“”时的值，统一当关键字值为空或者&quot;&quot;时关键字的值为null" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/signup.jsp">
@@ -909,13 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/member-list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="173" column="31" selection-start-line="173" selection-start-column="31" selection-end-line="173" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/admin-list.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -941,6 +920,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
           <caret line="122" column="31" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/article-delete.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3000" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/member-list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3408">
+          <caret line="241" column="27" selection-start-line="241" selection-start-column="27" selection-end-line="241" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simplebook_web/src/main/webapp/WEB-INF/pages/member-del.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="53" column="113" selection-start-line="53" selection-start-column="113" selection-end-line="53" selection-end-column="113" />
         </state>
       </provider>
     </entry>

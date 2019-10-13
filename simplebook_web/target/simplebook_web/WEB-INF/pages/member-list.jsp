@@ -210,9 +210,9 @@
         layer.confirm('确认要删除吗？',function(index){
             //发异步删除数据
             $.ajax({
-                url:"/article/deleteArticle",
+                url:"/user/changeUserState",
                 type: "get",
-                data: {"articleId":id,"state":0},
+                data: {"uid":id,"state":0},
                 success:function () {
 
                 }
@@ -237,9 +237,9 @@
         layer.confirm('确认要删除吗？'+ids.toString(),function(index){
             //捉到所有被选中的，发异步进行删除
             $.ajax({
-                url:"/article/deleteArticle",
+                url:"/user/changeUserState",
                 type: "get",
-                data: {"articleId":ids.toString(),"state":0},
+                data: {"uid":ids.toString(),"state":0},
                 success:function () {
                 }
             });
