@@ -26,6 +26,6 @@ public interface ArticleContentDao {
      * @param articleContent
      * @throws Exception
      */
-    @Insert("insert into articlecontent(articleid,articleContent)value(#{articleId},#{articleContent})")
+    @Insert("insert into articlecontent(articlecontentid,articleid,articleContent)value(#{articleContentId},#{articleId},#{articleContent})")
     void addArticleContent(ArticleContent articleContent) throws Exception;
 }

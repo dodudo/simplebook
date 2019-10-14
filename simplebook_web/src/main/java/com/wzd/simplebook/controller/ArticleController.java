@@ -36,6 +36,9 @@ public class ArticleController {
     ArticleContentService articleContentService;
 
     @Autowired
+    UUIDUtils uuidUtils;
+
+    @Autowired
     FavorService favorService;
 
     @Autowired
@@ -294,11 +297,14 @@ public class ArticleController {
         return map;
     }
 
+    private static String articleId = null;
     /**
      * 添加文章
      */
     @RequestMapping("/addArticle")
     public String addArticle(Article article) throws Exception {
+        articleId = uuidUtils.getUUID();
+        article.setArticleId(articleId);
         articleService.addArticle(article);
         return "redirect:/editor-sccuss";
     }
@@ -309,6 +315,8 @@ public class ArticleController {
      */
     @RequestMapping("/addArticleContent")
     public String addArticleContent(ArticleContent articleContent) throws Exception {
+        articleContent.setArticleId(articleId);
+        articleContent.setArticleContentId(uuidUtils.getUUID());
         articleContentService.addArticleContent(articleContent);
         return "redirect:/editor-sccuss";
     }
@@ -318,6 +326,7 @@ public class ArticleController {
      */
     @RequestMapping("/addFavor")
     public String addFavor(Favor favor, HttpServletResponse response, RedirectAttributes attr) throws Exception {
+        favor.setFavorId(uuidUtils.getUUID());
         favorService.addFavor(favor);
         PrintWriter out = response.getWriter();
         out.print("<script language=\"javascript\">alert('收藏成功！');</script>");
@@ -330,6 +339,7 @@ public class ArticleController {
      */
     @RequestMapping("/addFollow")
     public String addFollow(Follow follow, HttpServletResponse response, RedirectAttributes attr) throws Exception {
+        follow.setFollowId(uuidUtils.getUUID());
         followService.addFollow(follow);
         PrintWriter out = response.getWriter();
         out.print("<script language=\"javascript\">alert('收藏成功！');</script>");

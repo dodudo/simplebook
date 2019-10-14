@@ -19,6 +19,7 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     CommentDao commentDao;
     @Override
+    @CacheEvict(value = "commentsCache",allEntries = true)
     public void addComment(Comment comment) throws Exception {
         commentDao.addComment(comment);
     }

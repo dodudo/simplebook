@@ -6,6 +6,7 @@ import com.wzd.simplebook.domain.Article;
 import com.wzd.simplebook.domain.Comment;
 import com.wzd.simplebook.domain.User;
 import com.wzd.simplebook.service.CommentService;
+import com.wzd.simplebook.utils.UUIDUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,8 @@ public class CommentController {
     @Autowired
     CommentService commentService;
 
+    @Autowired
+    UUIDUtils uuidUtils;
     /**
      * 查询用户所有评论
      * @param pageNum
@@ -64,6 +67,7 @@ public class CommentController {
     @RequestMapping("/insertComment")
     public String save(Comment comment, RedirectAttributes attr) throws Exception {
         commentService.addComment(comment);
+        comment.setCommentId(uuidUtils.getUUID());
         attr.addAttribute("articleId", comment.getArticleId());
         return "redirect:/article/findArticleByAId";
     }

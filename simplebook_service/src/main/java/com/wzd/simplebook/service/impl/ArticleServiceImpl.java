@@ -45,11 +45,17 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    @CacheEvict(value = {"allArticleCache","articleCache","riskArticlesCache",
+            "searcherArticleKeyCache","searRiskcherArticleKeyCache","searchHadDelArticleKeyCache",
+            "hadDelArticleCache"},allEntries = true)
     public void addArticle(Article article) throws Exception {
         articleDao.addArticle(article);
     }
 
     @Override
+    @CacheEvict(value = {"allArticleCache","articleCache","riskArticlesCache",
+            "searcherArticleKeyCache","searRiskcherArticleKeyCache","searchHadDelArticleKeyCache",
+            "hadDelArticleCache"},allEntries = true)
     public void updateGoodforArticle(Article article) throws Exception {
         articleDao.updateGoodforArticle(article);
     }
