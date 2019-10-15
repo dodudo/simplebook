@@ -84,14 +84,14 @@ function sendFindUserArticals(pageNum) {
                        "                    <div class=\"service-item\" style=\"padding: 20px\">\n" +
                        "                        <a href=\"essay-detail\" class=\"media\">\n" +
                        "                            <div class=\"media-left media-middle\">\n" +
-                       "                                <img class=\"media-object headimg\" src="+articlePageInfo.list[index].headurl+" alt=\"...\">\n" +
+                       "                                <img class=\"media-object headimg\" style='width: 70px;height: 70px;margin-right: 10px;' src='images/masonary-post/"+articlePageInfo.list[index].headurl+"' alt=\"...\">\n" +
                        "                            </div>\n" +
                        "                            <div class=\"media-body\">\n" +
                        "                                <h4 class=\"media-heading\">"+articlePageInfo.list[index].head+"</h4>\n" +
                        "                                <p class='article-body'>\n" +
                        articlePageInfo.list[index].describe +
                        "                                </p>\n" +
-                       "                            </div><div class='media-right media-middle'><a  pageNum ='"+data.articlePageInfo.pageNum+"' onclick='deleteArtile(this)' class='btn btn-danger' value='"+articlePageInfo.list[index].articleId+"'>删除</a></div>\n" +
+                       "                            </div><div class='media-right media-middle'><a  pageNum ='"+data.articlePageInfo.pageNum+"' onclick='deleteArticle(this)' class='btn btn-danger' value='"+articlePageInfo.list[index].articleId+"'>删除</a></div>\n" +
                        "                        </a>\n" +
                        "                    </div>\n" +
                        "                </div>\n" +
@@ -157,7 +157,7 @@ function sendFindFavorArticlesByUid(pageNum) {
                         "                    <div class=\"service-item\" style=\"padding: 20px\">\n" +
                         "                        <a href=\"essay-detail\" class=\"media\">\n" +
                         "                            <div class=\"media-left media-middle\">\n" +
-                        "                                <img class=\"media-object headimg\" src="+favorArticlePageInfo.list[index].headurl+" alt=\"...\">\n" +
+                        "                                <img class=\"media-object headimg\" style='width: 70px;height: 70px;margin-right: 10px;' src='images/masonary-post/"+favorArticlePageInfo.list[index].headurl+"' alt=\"...\">\n" +
                         "                            </div>\n" +
                         "                            <div class=\"media-body\">\n" +
                         "                                <h4 class=\"media-heading\">"+favorArticlePageInfo.list[index].head+"</h4>\n" +
@@ -252,7 +252,7 @@ function deleteArticle(e) {
             data:{"articleId":id},
             type:"get",
             success:function () {
-                sendFindCommentsByUid(num);
+                sendFindUserArticals(num);
             }
         });
     }else {

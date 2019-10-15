@@ -167,7 +167,8 @@ public class UserController {
         //获取用户详细信息
         UserTotal userTotal = new UserTotal();
         userTotal.setFontCount(articleService.findUserArticleFont(user.getUid()));
-        userTotal.setFavorTotal(articleService.findUserArticleFavor(user.getUid()));
+        userTotal.setTotalGood(articleService.findUserArticleFavor(user.getUid()));
+//        System.out.println("userTotal:::::::::::::"+userTotal);
         //将usermap，userTotal等对象存入map集合中
         userMap.put("userTotal",userTotal);
         return userMap;

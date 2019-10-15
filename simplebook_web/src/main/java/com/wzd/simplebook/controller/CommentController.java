@@ -66,8 +66,8 @@ public class CommentController {
      */
     @RequestMapping("/insertComment")
     public String save(Comment comment, RedirectAttributes attr) throws Exception {
-        commentService.addComment(comment);
         comment.setCommentId(uuidUtils.getUUID());
+        commentService.addComment(comment);
         attr.addAttribute("articleId", comment.getArticleId());
         return "redirect:/article/findArticleByAId";
     }

@@ -2,11 +2,10 @@ package com.wzd.simplebook.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
-import java.util.Objects;
+
 @JsonIgnoreProperties(value = "handler",ignoreUnknown = true)
 public class Article implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -18,7 +17,7 @@ public class Article implements Serializable {
     private Date releaseDate;
     private Integer fontCount;
     private Integer view;
-    private String good;
+    private Integer good;
     private Integer articleState;
     private String articleStateStr;
     private Integer report;
@@ -92,11 +91,11 @@ public class Article implements Serializable {
         this.view = view;
     }
 
-    public String getGood() {
+    public Integer getGood() {
         return good;
     }
 
-    public void setGood(String good) {
+    public void setGood(Integer good) {
         this.good = good;
     }
 

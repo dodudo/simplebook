@@ -55,7 +55,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @CacheEvict(value = {"allArticleCache","articleCache","riskArticlesCache",
             "searcherArticleKeyCache","searRiskcherArticleKeyCache","searchHadDelArticleKeyCache",
-            "hadDelArticleCache"},allEntries = true)
+            "hadDelArticleCache","favorArticleCache"},allEntries = true)
     public void updateGoodforArticle(Article article) throws Exception {
         articleDao.updateGoodforArticle(article);
     }
@@ -83,7 +83,9 @@ public class ArticleServiceImpl implements ArticleService {
      * @return
      */
     public int findUserArticleFont(String uid) throws Exception {
-        return articleDao.findUserArticleFont(uid);
+        int userArticleFont = articleDao.findUserArticleFont(uid);
+//       System.out.println("UserArticleFont::::::::::::"+userArticleFont);
+        return userArticleFont;
     }
 
     /**
@@ -92,7 +94,9 @@ public class ArticleServiceImpl implements ArticleService {
      * @return
      */
     public int findUserArticleFavor(String uid) throws Exception {
-        return articleDao.findUserArticleFavor(uid);
+        int userArticleFavor = articleDao.findUserArticleFavor(uid);
+//        System.out.println("userArticleFavor::::::::::::"+userArticleFavor);
+        return userArticleFavor;
     }
 
     /**
