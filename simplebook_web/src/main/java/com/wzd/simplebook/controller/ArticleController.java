@@ -1,7 +1,6 @@
 package com.wzd.simplebook.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.sun.tools.doclets.internal.toolkit.Content;
 import com.wzd.simplebook.domain.*;
 import com.wzd.simplebook.service.ArticleContentService;
 import com.wzd.simplebook.service.ArticleService;

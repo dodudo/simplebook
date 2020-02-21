@@ -3,7 +3,6 @@ package com.wzd.simplebook.controller;
 import com.wzd.simplebook.utils.EmailUtil;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
-import org.omg.CORBA.OBJ_ADAPTER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
